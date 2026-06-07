@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BookingReassurance } from "@/components/booking-reassurance";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
+import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
 import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import type { ExcursionData } from "@/lib/excursion-types";
 import { featuredTour } from "@/lib/featured-tour";
@@ -146,7 +147,10 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
         </section>
 
         {isFeaturedTour ? (
-          <WhyWeCreatedThisTourSection variant="muted" />
+          <>
+            <WhyThisExcursionIsDifferentSection variant="muted" />
+            <WhyWeCreatedThisTourSection variant="light" showCta={false} />
+          </>
         ) : null}
 
         <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 sm:pt-16">

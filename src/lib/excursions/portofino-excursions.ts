@@ -28,7 +28,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   snapshotCards: [
     { label: "Tender transfer", value: "Approx. 15 to 20 minutes each way" },
     { label: "Fitness level", value: "Easy — mostly walking on paved surfaces" },
-    { label: "Group size", value: "Small group — limited spaces" },
+    { label: "Group size", value: "Maximum 8 guests per van" },
     { label: "Port call suitability", value: "Best for 7 to 10 hour visits" },
   ],
   gallery: [
@@ -59,7 +59,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   ],
   highlights: [
     "Three Riviera destinations in one cruise day — Portofino, Santa Margherita Ligure and Camogli",
-    "Small-group format designed for cruise passengers arriving by tender",
+    "Small-group format with a maximum of 8 guests per van — personal, not private-tour pricing",
     "Local English-speaking guide who knows the coastal roads and port schedules",
     "Free time in Portofino's famous piazzetta and harbour",
     "Scenic drive along the Tigullio Gulf with photo stops",

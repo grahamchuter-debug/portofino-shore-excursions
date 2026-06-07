@@ -9,6 +9,7 @@ import {
   FeaturedTourSampleItinerarySection,
   FeaturedTourTrustSection,
 } from "@/components/homepage-conversion-sections";
+import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
 import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
@@ -46,6 +47,7 @@ const recommendedBadges = [
 
 const recommendedBullets = [
   "Three Riviera stops in one cruise day",
+  "Maximum 8 guests per van",
   "Tender-port aware",
   "Return-to-ship friendly",
   "Limited spaces",
@@ -205,6 +207,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <WhyThisExcursionIsDifferentSection showCta />
 
         <WhyWeCreatedThisTourSection variant="muted" showCta={false} />
 

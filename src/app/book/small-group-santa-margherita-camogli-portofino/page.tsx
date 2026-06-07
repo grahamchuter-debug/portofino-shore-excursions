@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { BookingEnquiryForm } from "@/components/booking-enquiry-form";
 import { BookingReassurance } from "@/components/booking-reassurance";
+import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
@@ -75,8 +76,8 @@ export default function BookFeaturedTourPage() {
             </h2>
             <ul className="mt-3 space-y-1 text-sm leading-6 text-gray-700">
               <li>Portofino, Santa Margherita Ligure and Camogli in one day</li>
-              <li>Designed for cruise passengers arriving by tender</li>
-              <li>Approx. 5 to 6 hours · small-group · limited spaces</li>
+              <li>Maximum 8 guests per van — shared small-group format</li>
+              <li>Approx. 5 to 6 hours · tender-port aware</li>
             </ul>
             <Link
               href={featuredTour.path}
@@ -85,6 +86,11 @@ export default function BookFeaturedTourPage() {
               View full tour details
             </Link>
           </div>
+
+          <WhyThisExcursionIsDifferentSection
+            className="mb-8 !border-0 !bg-transparent"
+            showCta={false}
+          />
 
           <BookingReassurance className="mb-8" />
 

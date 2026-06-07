@@ -115,6 +115,16 @@ export const featuredTourPassengerQuestions = [
   },
 ] as const;
 
+export const featuredTourWhyDifferent = {
+  heading: "Why this excursion is different",
+  paragraphs: [
+    "Most Portofino excursions are private tours designed for a single family or group.",
+    "This is one of the only shared small-group shore excursions available in Portofino, allowing cruise passengers to explore Portofino, Santa Margherita Ligure and Camogli without the cost of a private vehicle.",
+    "With a maximum of 8 guests per van, the experience remains personal while still offering excellent value.",
+    "The itinerary is specifically designed around cruise ship schedules and Portofino tender operations.",
+  ],
+} as const;
+
 export const featuredTourWhyCreated = {
   heading: "Why we created this tour",
   paragraphs: [
