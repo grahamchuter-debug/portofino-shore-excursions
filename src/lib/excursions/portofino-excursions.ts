@@ -52,8 +52,8 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
       alt: "Camogli waterfront with fishing boats on the Italian Riviera",
     },
     {
-      src: siteImages.rivieraCoast,
-      alt: "Coastal scenery along the Ligurian Riviera near Portofino",
+      src: siteImages.portofinoHarbourAerial,
+      alt: "Aerial view of Portofino harbour with yachts and colourful waterfront buildings on the Italian Riviera",
     },
   ],
   highlights: [
@@ -239,7 +239,7 @@ export const camogliPortofinoCoastExcursion: ExcursionData = {
     },
     {
       src: siteImages.rivieraCoast,
-      alt: "Santa Margherita Ligure waterfront",
+      alt: "Aerial view of Portofino harbour on the Italian Riviera",
     },
   ],
   highlights: [
