@@ -14,9 +14,11 @@ export type ShipScheduleMonthCardData = ShipScheduleMonth & {
   shipCount: number;
 };
 
+import { portGuidePath } from "@/lib/site-paths";
+
 const planningLinks = [
   { label: "Cruise Ships", href: "/cruise-ships" },
-  { label: "Port Guide", href: "/portofino-port-guide" },
+  { label: "Port Guide", href: portGuidePath },
   { label: "Tender Information", href: "/portofino-tender-information" },
   { label: "Cruise Planner", href: "/cruise-planner" },
 ] as const;

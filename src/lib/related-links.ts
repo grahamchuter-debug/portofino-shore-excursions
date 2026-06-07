@@ -1,6 +1,8 @@
+import { portGuidePath } from "@/lib/site-paths";
+
 export const coreGuideLinks = [
   { label: "Shore excursions", href: "/portofino-shore-excursions" },
-  { label: "Port guide", href: "/portofino-port-guide" },
+  { label: "Port guide", href: portGuidePath },
   { label: "One day in Portofino", href: "/one-day-in-portofino" },
   {
     label: "Best shore excursions",

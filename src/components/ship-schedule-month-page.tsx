@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { JsonLd } from "@/components/json-ld";
+import { portGuidePath } from "@/lib/site-paths";
 import {
   ShipScheduleMonthLinks,
 } from "@/components/ship-schedule-month-links";
@@ -101,7 +102,7 @@ export function ShipScheduleMonthPage({ monthSlug }: ShipScheduleMonthPageProps)
               </Link>
               , read the{" "}
               <Link
-                href="/portofino-port-guide"
+                href={portGuidePath}
                 className="font-medium text-blue-700 underline underline-offset-2"
               >
                 port guide

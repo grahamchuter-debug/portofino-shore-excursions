@@ -115,11 +115,27 @@ export const featuredTourPassengerQuestions = [
   },
 ] as const;
 
+export const featuredTourWhyCreated = {
+  heading: "Why we created this tour",
+  paragraphs: [
+    "Most cruise passengers only see Portofino harbour — and it is stunning. But the best Riviera day combines Portofino with Santa Margherita Ligure and Camogli: three very different coastal villages within a short drive of the tender landing.",
+    "We built this itinerary specifically around cruise passengers. That means a meeting point at the Portofino harbour, realistic pacing for tender ashore and return queues, and enough margin to get you back before all aboard. We are not a generic travel directory — this is the excursion we recommend when your port times allow.",
+    "If your call is shorter, we will tell you honestly. Portofino village on foot may be the smarter choice. When you have five to seven usable hours ashore, check availability and tender timing. With seven or more, this small-group tour is an excellent fit.",
+  ],
+} as const;
+
+export const bookingReassurancePoints = [
+  "We check your ship arrival and departure time before confirming",
+  "Meeting details are sent after confirmation",
+  "Tender timing is considered in our recommendation",
+  "Return-to-ship planning is built into the itinerary",
+] as const;
+
 export const featuredTourRecommendationCopy = {
-  label: "Recommended for this call",
-  title: featuredTour.cardName,
+  label: "Recommended Portofino excursion",
+  title: featuredTour.fullName,
   description:
-    "See Santa Margherita, Camogli and Portofino in one small-group day — built for tender passengers with return-to-ship planning.",
-  tourLinkLabel: "View the main Portofino excursion",
-  availabilityLinkLabel: "Check availability",
+    "Best for cruise passengers who want to see more than Portofino harbour in one day — Santa Margherita Ligure, Camogli and Portofino village with tender-aware timing.",
+  tourLinkLabel: "View Small Group Tour",
+  availabilityLinkLabel: "Check Availability",
 } as const;

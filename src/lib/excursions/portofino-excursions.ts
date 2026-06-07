@@ -1,5 +1,6 @@
 import type { ExcursionData } from "@/lib/excursion-types";
 import { featuredTour } from "@/lib/featured-tour";
+import { portGuidePath } from "@/lib/site-paths";
 import { siteImages } from "@/lib/site-images";
 
 export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData = {
@@ -173,7 +174,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   ],
   relatedLinks: [
     { label: "Book this tour", href: featuredTour.bookingPath },
-    { label: "Port guide", href: "/portofino-port-guide" },
+    { label: "Port guide", href: portGuidePath },
     { label: "Tender information", href: "/portofino-tender-information" },
     { label: "Meeting points", href: "/portofino-meeting-points" },
     { label: "One day in Portofino", href: "/one-day-in-portofino" },

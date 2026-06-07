@@ -5,6 +5,7 @@ import { ContentPage } from "@/components/content-page";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteHeroAlt, siteImages } from "@/lib/site-images";
+import { portGuidePath } from "@/lib/site-paths";
 import { portofinoTenderExplainer } from "@/lib/tender-port-copy";
 
 const pageMeta = {
@@ -100,7 +101,7 @@ export default function FaqPage() {
             </li>
           ))}
           <li>
-            <Link href="/portofino-port-guide">Port guide</Link>
+            <Link href={portGuidePath}>Port guide</Link>
           </li>
         </ul>
 

@@ -1,8 +1,11 @@
 import Link from "next/link";
 
+import { BookingReassurance } from "@/components/booking-reassurance";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
+import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import type { ExcursionData } from "@/lib/excursion-types";
+import { featuredTour } from "@/lib/featured-tour";
 import { siteConfig } from "@/lib/site-config";
 import {
   buildBreadcrumbSchema,
@@ -41,6 +44,7 @@ function SnapshotCard({ label, value }: { label: string; value: string }) {
 }
 
 export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
+  const isFeaturedTour = excursion.slug === featuredTour.slug;
   const schema = [
     buildWebPageSchema({
       path: excursion.path,
@@ -140,6 +144,10 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
             ) : null}
           </div>
         </section>
+
+        {isFeaturedTour ? (
+          <WhyWeCreatedThisTourSection variant="muted" />
+        ) : null}
 
         <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 sm:pt-16">
           <h2 className="mb-6 text-2xl font-bold text-gray-900">Photo gallery</h2>
@@ -305,6 +313,11 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
               {excursion.ctaText ??
                 "Secure your place before port day and explore more cruise friendly excursions designed around your ship's timetable."}
             </p>
+            {isFeaturedTour ? (
+              <div className="mx-auto mt-6 max-w-xl text-left">
+                <BookingReassurance />
+              </div>
+            ) : null}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               {excursion.bookingHref?.startsWith("http") ? (
                 <a

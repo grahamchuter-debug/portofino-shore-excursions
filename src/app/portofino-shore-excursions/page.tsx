@@ -9,9 +9,9 @@ import { coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
 
 const pageMeta = {
-  title: "Portofino Shore Excursions | Small Group Riviera Tours",
+  title: "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino",
   description:
-    "Compare Portofino shore excursions for cruise passengers. Our top pick: small-group Santa Margherita, Camogli and Portofino tour with return-to-ship timing.",
+    `Compare Portofino shore excursions for cruise passengers. Our top pick: the ${featuredTour.fullName} with return-to-ship timing.`,
   path: "/portofino-shore-excursions",
   ogImage: siteImages.santaMargherita,
   ogImageAlt:
@@ -53,17 +53,17 @@ export default function PortofinoShoreExcursionsPage() {
   return (
     <ContentPage
       title="Portofino Shore Excursions"
-      lead="Small-group Riviera tours for cruise ship guests — starting with our most popular Santa Margherita, Camogli and Portofino excursion."
+      lead={`Small-group Portofino shore excursions for cruise ship guests — starting with our recommended ${featuredTour.fullName}.`}
       heroImage={pageMeta.ogImage}
       heroImageAlt={pageMeta.ogImageAlt}
       pagePath={pageMeta.path}
       pageDescription={pageMeta.description}
       relatedLinks={relatedLinks}
       faqs={faqs}
-      ctaTitle="Book the small-group Riviera tour"
+      ctaTitle={`Book the ${featuredTour.cardName} tour`}
       ctaText="Three Italian Riviera highlights in one cruise day — send your cruise details and we will confirm availability."
       ctaHref={featuredTour.bookingPath}
-      ctaLabel="Book now"
+      ctaLabel="Check Availability"
     >
       <section>
         <h2>Our recommended tour: Small Group Santa Margherita, Camogli &amp; Portofino</h2>

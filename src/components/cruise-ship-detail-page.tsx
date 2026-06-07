@@ -9,6 +9,10 @@ import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleShell } from "@/components/ship-schedule-shell";
 import type { CruiseShipProfile } from "@/lib/cruise-ship-types";
 import {
+  getCruiseShipPageNotes,
+  getCruiseShipScheduleIntro,
+} from "@/lib/cruise-ship-notes";
+import {
   cruiseShipExcursionRecommendations,
   cruiseShipRelatedLinks,
   getCruiseShipFaqs,
@@ -29,6 +33,8 @@ type CruiseShipDetailPageProps = {
 export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
   const faqs = getCruiseShipFaqs(ship);
   const visitAdvice = getVisitLengthAdvice(ship.visitLengthCategory);
+  const shipNotes = getCruiseShipPageNotes(ship);
+  const scheduleIntro = getCruiseShipScheduleIntro(ship);
   const title = `${ship.name} in Portofino`;
   const lead = getCruiseShipLead(ship);
   const pagePath = `/cruise-ships/${ship.slug}`;
@@ -76,14 +82,12 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
             <h2 className="text-2xl font-bold text-gray-900">
               {ship.name} Portofino schedule
             </h2>
-            <p className="leading-7">
-                {ship.name} ({ship.cruiseLine}) has {ship.callCount} known
-                Portofino port call{ship.callCount === 1 ? "" : "s"} in our
-                published schedules. Passengers tender into Portofino village
-                from the anchored ship — use these timings to judge how much time you
-              have ashore and whether a guided excursion or independent visit
-              makes more sense.
-            </p>
+            <p className="leading-7">{scheduleIntro}</p>
+            {shipNotes.cruiseLineContext ? (
+              <p className="leading-7 text-gray-600">
+                {shipNotes.cruiseLineContext}
+              </p>
+            ) : null}
           </div>
 
           <div className="mt-8">
@@ -153,6 +157,9 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
                 offshore and transfer passengers by tender boat into Portofino
                 village, near the harbour.
               </p>
+              {shipNotes.tenderNote ? (
+                <p>{shipNotes.tenderNote}</p>
+              ) : null}
               <p>
                 Early tenders can be busy, especially when several ships are in
                 the Gulf on the same day. Do not plan an excursion to start

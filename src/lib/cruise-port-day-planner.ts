@@ -31,6 +31,7 @@ export type PortofinoPlannerResult = {
   fitBadge: string;
   fitHeadline: string;
   fitMessage: string;
+  mainTourWhyItFits: string | null;
   recommendMainTour: boolean;
   mainTourStrength: "none" | "good" | "strong";
   excursions: readonly PlannerExcursionLink[];
@@ -164,6 +165,7 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
       fitHeadline: "Shorter Portofino call — village focus recommended",
       fitMessage:
         "This is a shorter Portofino call. Stay close to the tender pier and focus on Portofino village, harbour viewpoints and a shorter walking experience.",
+      mainTourWhyItFits: null,
       recommendMainTour: false,
       mainTourStrength: "none" as const,
       excursions: [
@@ -188,10 +190,12 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
     return {
       confidenceScore: 7,
       confidenceLabel: "Good Port Call",
-      fitBadge: "Good fit — check availability",
-      fitHeadline: `${featuredTour.cardName} may work well`,
+      fitBadge: "Good fit — check availability and tender timing",
+      fitHeadline: `Good fit for the ${featuredTour.fullName}`,
       fitMessage:
-        "This may work well for the small-group Riviera tour, depending on tender timing and final meeting time. We recommend checking availability before booking.",
+        "This may work well for the small-group tour, depending on tender timing and final meeting time. We recommend checking availability before booking.",
+      mainTourWhyItFits:
+        "Your usable time ashore may allow Santa Margherita, Camogli and Portofino in one day — confirm tender timing and meeting time before you book.",
       recommendMainTour: true,
       mainTourStrength: "good" as const,
       excursions: [
@@ -216,10 +220,12 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
   return {
     confidenceScore: usableHours >= 9 ? 10 : 9,
     confidenceLabel: "Excellent Port Call",
-    fitBadge: "Excellent fit for the full Riviera small-group tour",
-    fitHeadline: "Excellent fit for the full Riviera small-group tour",
+    fitBadge: `Excellent fit for the ${featuredTour.fullName}`,
+    fitHeadline: `Excellent fit for the ${featuredTour.fullName}`,
     fitMessage:
       "Your ship time gives you enough room for a full Italian Riviera small-group excursion, including Portofino, Santa Margherita Ligure and Camogli, with sensible return-to-ship planning.",
+    mainTourWhyItFits:
+      "Seven or more usable hours ashore is the sweet spot for this tour — enough time for three Riviera villages plus return-to-ship margin after tender delays.",
     recommendMainTour: true,
     mainTourStrength: "strong" as const,
     excursions: [
@@ -286,6 +292,7 @@ export function calculatePortofinoPlannerResult(
     fitBadge: bandDetails.fitBadge,
     fitHeadline: bandDetails.fitHeadline,
     fitMessage: bandDetails.fitMessage,
+    mainTourWhyItFits: bandDetails.mainTourWhyItFits,
     recommendMainTour: bandDetails.recommendMainTour,
     mainTourStrength: bandDetails.mainTourStrength,
     excursions: bandDetails.excursions,

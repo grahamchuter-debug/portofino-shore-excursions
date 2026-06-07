@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { BookingReassurance } from "@/components/booking-reassurance";
 import { ConversionCtaStrip } from "@/components/conversion-cta-strip";
 import {
   FeaturedTourComparisonSection,
@@ -8,6 +9,7 @@ import {
   FeaturedTourSampleItinerarySection,
   FeaturedTourTrustSection,
 } from "@/components/homepage-conversion-sections";
+import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourPassengerQuestions } from "@/lib/featured-tour-content";
@@ -43,29 +45,30 @@ const recommendedBadges = [
 ] as const;
 
 const recommendedBullets = [
-  "Three Riviera villages in one cruise day",
-  "Portofino, Santa Margherita Ligure and Camogli",
-  "Designed for cruise passengers arriving by tender",
-  "Approx. 5 to 6 hours",
+  "Three Riviera stops in one cruise day",
+  "Tender-port aware",
+  "Return-to-ship friendly",
   "Limited spaces",
-  "Return-to-ship friendly timing",
 ] as const;
 
-const popularTours = [
+const alternativeTours = [
   {
-    name: featuredTour.cardName,
+    name: "Camogli & Portofino Coast Tour",
     description:
-      "Three Riviera villages in one cruise day — Portofino, Santa Margherita Ligure and Camogli on a small-group shore excursion.",
-  },
-  {
-    name: "Camogli & Portofino Coast",
-    description:
-      "Intimate small-group excursion to Camogli fishing village and the Portofino coastline.",
+      "Intimate small-group excursion to Camogli fishing village and the Portofino coastline — an alternative when you want coastal depth without the full three-village itinerary.",
+    href: "/excursions/camogli-portofino-coast",
+    image: siteImages.camogli,
+    imageAlt: "Camogli fishing village on the Portofino coast shore excursion",
+    badge: "Coastal alternative",
   },
   {
     name: "Portofino Coastal Walk",
     description:
-      "Guided headland walk and village free time — ideal for first-time visitors on moderate port calls.",
+      "Guided headland walk and village free time — ideal for shorter port calls when staying close to the tender pier.",
+    href: "/excursions/portofino-coastal-walk",
+    image: siteImages.coastalWalk,
+    imageAlt: "Portofino lighthouse on the coastal headland walk shore excursion",
+    badge: "Best for shorter port calls",
   },
 ] as const;
 
@@ -79,7 +82,17 @@ export default function Home() {
             title: pageMeta.title,
             description: pageMeta.description,
           }),
-          buildItemListSchema(popularTours),
+          buildItemListSchema([
+            {
+              name: featuredTour.fullName,
+              description:
+                "Three Riviera villages in one cruise day — Portofino, Santa Margherita Ligure and Camogli on a small-group shore excursion.",
+            },
+            ...alternativeTours.map((t) => ({
+              name: t.name,
+              description: t.description,
+            })),
+          ]),
           buildFaqSchema([...featuredTourPassengerQuestions]),
         ]}
       />
@@ -98,9 +111,9 @@ export default function Home() {
               </h1>
 
               <p className="mx-auto mb-6 max-w-3xl text-base sm:mb-8 sm:text-xl md:text-2xl">
-                Explore three Italian Riviera highlights in one cruise day with
-                a small-group excursion designed for cruise passengers arriving
-                in Portofino.
+                See three Italian Riviera highlights in one cruise day with a
+                small-group Portofino excursion designed around tender timings
+                and return-to-ship planning.
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
@@ -111,16 +124,10 @@ export default function Home() {
                   View Small Group Tour
                 </Link>
                 <Link
-                  href="/portofino-port-guide"
+                  href="/cruise-planner"
                   className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
                 >
-                  View Cruise Port Guide
-                </Link>
-                <Link
-                  href={featuredTour.bookingPath}
-                  className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
-                >
-                  Check Availability
+                  Plan My Portofino Cruise Day
                 </Link>
               </div>
 
@@ -192,11 +199,14 @@ export default function Home() {
                       Check Availability
                     </Link>
                   </div>
+                  <BookingReassurance className="mt-6" compact />
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        <WhyWeCreatedThisTourSection variant="muted" showCta={false} />
 
         <FeaturedTourTrustSection />
 
@@ -233,105 +243,51 @@ export default function Home() {
           id="tours"
           className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24"
         >
-          <h2 className="mb-6 text-3xl font-bold sm:mb-8 sm:text-4xl">
-            Popular Portofino Tours
+          <h2 className="mb-2 text-3xl font-bold sm:mb-3 sm:text-4xl">
+            Alternative Portofino shore excursions
           </h2>
+          <p className="mb-6 max-w-3xl text-base leading-7 text-gray-600 sm:mb-8">
+            Our top recommendation is the{" "}
+            <Link
+              href={featuredTour.path}
+              className="font-medium text-blue-700 underline"
+            >
+              {featuredTour.fullName}
+            </Link>
+            . These alternatives suit different port times or preferences.
+          </p>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <article className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-blue-600 shadow-lg ring-2 ring-blue-100 lg:order-first">
-              <img
-                src={siteImages.santaMargherita}
-                alt="Small Group Santa Margherita, Camogli and Portofino shore excursion on the Italian Riviera"
-                className="h-44 w-full object-cover"
-              />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {alternativeTours.map((tour) => (
+              <article
+                key={tour.href}
+                className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 shadow-sm"
+              >
+                <img
+                  src={tour.image}
+                  alt={tour.imageAlt}
+                  className="h-40 w-full object-cover"
+                />
 
-              <div className="flex flex-1 flex-col bg-blue-50/50 p-4 md:p-5">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
-                  Most Popular · Recommended
-                </p>
-                <h3 className="mb-1.5 text-base font-bold text-gray-900 md:text-lg">
-                  {featuredTour.cardName}
-                </h3>
+                <div className="flex flex-1 flex-col p-3.5 md:p-4">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
+                    {tour.badge}
+                  </p>
+                  <h3 className="mb-1.5 text-base font-semibold">{tour.name}</h3>
 
-                <p className="mb-3 flex-1 text-sm leading-5 text-gray-600">
-                  Three Riviera villages in one port day — Santa Margherita,
-                  Camogli and Portofino with return-to-ship timing built in.
-                </p>
+                  <p className="mb-3 flex-1 text-sm leading-5 text-gray-600">
+                    {tour.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-2">
                   <Link
-                    href={featuredTour.path}
-                    className="rounded-full bg-blue-600 px-5 py-2 text-xs font-semibold text-white transition hover:bg-blue-700 md:text-sm"
+                    href={tour.href}
+                    className="w-fit rounded-full bg-gray-900 px-4 py-1.5 text-xs font-medium text-white transition hover:bg-black"
                   >
-                    View Small Group Tour
-                  </Link>
-                  <Link
-                    href={featuredTour.bookingPath}
-                    className="rounded-full border border-blue-600 bg-white px-5 py-2 text-xs font-semibold text-blue-700 transition hover:bg-blue-50 md:text-sm"
-                  >
-                    Check Availability
+                    View Tour
                   </Link>
                 </div>
-              </div>
-            </article>
-
-            <article className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 shadow-sm">
-              <img
-                src={siteImages.camogli}
-                alt="Camogli fishing village on the Portofino coast shore excursion"
-                className="h-40 w-full object-cover"
-              />
-
-              <div className="flex flex-1 flex-col p-3.5 md:p-4">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
-                  Coastal alternative
-                </p>
-                <h3 className="mb-1.5 text-base font-semibold">
-                  Camogli &amp; Portofino Coast
-                </h3>
-
-                <p className="mb-3 flex-1 text-sm leading-5 text-gray-600">
-                  Discover authentic Camogli and the Portofino coastline on an
-                  intimate small-group excursion.
-                </p>
-
-                <Link
-                  href="/excursions/camogli-portofino-coast"
-                  className="w-fit rounded-full bg-gray-900 px-4 py-1.5 text-xs font-medium text-white transition hover:bg-black"
-                >
-                  View Tour
-                </Link>
-              </div>
-            </article>
-
-            <article className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 shadow-sm">
-              <img
-                src={siteImages.coastalWalk}
-                alt="Portofino lighthouse on the coastal headland walk shore excursion"
-                className="h-40 w-full object-cover"
-              />
-
-              <div className="flex flex-1 flex-col p-3.5 md:p-4">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
-                  Best for shorter port calls
-                </p>
-                <h3 className="mb-1.5 text-base font-semibold">
-                  Portofino Coastal Walk
-                </h3>
-
-                <p className="mb-3 flex-1 text-sm leading-5 text-gray-600">
-                  Guided headland walk and village free time — compact duration
-                  for moderate port calls.
-                </p>
-
-                <Link
-                  href="/excursions/portofino-coastal-walk"
-                  className="w-fit rounded-full bg-gray-900 px-4 py-1.5 text-xs font-medium text-white transition hover:bg-black"
-                >
-                  View Tour
-                </Link>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
 
           <div className="mt-8 text-center">

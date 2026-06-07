@@ -146,20 +146,31 @@ export function CruisePortDayPlanner() {
                   {result.fitMessage}
                 </p>
 
-                {result.recommendMainTour ? (
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    <Link
-                      href={featuredTour.path}
-                      className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                    >
-                      View Small Group Tour
-                    </Link>
-                    <Link
-                      href={featuredTour.bookingPath}
-                      className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-                    >
-                      Check Availability
-                    </Link>
+                {result.recommendMainTour && result.mainTourWhyItFits ? (
+                  <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50/70 p-4 sm:p-5">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+                      Recommended excursion
+                    </p>
+                    <h4 className="mt-2 text-lg font-bold text-gray-900">
+                      {featuredTour.fullName}
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
+                      {result.mainTourWhyItFits}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <Link
+                        href={featuredTour.path}
+                        className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                      >
+                        View Small Group Tour
+                      </Link>
+                      <Link
+                        href={featuredTour.bookingPath}
+                        className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                      >
+                        Check Availability
+                      </Link>
+                    </div>
                   </div>
                 ) : null}
               </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import type { CruiseShipProfile } from "@/lib/cruise-ship-types";
 import { featuredTour } from "@/lib/featured-tour";
+import { portGuidePath } from "@/lib/site-paths";
 import { portofinoTenderExplainer } from "@/lib/tender-port-copy";
 import { cruiseShipsHub } from "@/lib/portofino-cruise-ships";
 import { buildPageMetadata } from "@/lib/site-metadata";
@@ -46,7 +47,7 @@ export function getCruiseShipFaqs(ship: CruiseShipProfile) {
     },
     {
       question: `What shore excursions suit ${ship.name} passengers?`,
-      answer: `Small-group Riviera tours work well when your port call is seven hours or longer. Our top pick is the ${featuredTour.cardName} — see tour details for full information.`,
+      answer: `The ${featuredTour.fullName} works well when your port call is seven hours or longer once tender time is counted. See tour details for full information.`,
     },
     {
       question: `When should ${ship.name} passengers return to the tender pier?`,
@@ -59,7 +60,7 @@ export function getCruiseShipFaqs(ship: CruiseShipProfile) {
 export const cruiseShipRelatedLinks = [
   { label: featuredTour.cardName, href: featuredTour.path },
   { label: "Shore excursions", href: "/portofino-shore-excursions" },
-  { label: "Port guide", href: "/portofino-port-guide" },
+  { label: "Port guide", href: portGuidePath },
   { label: "Ship schedules", href: "/ship-schedules" },
   { label: "Tender information", href: "/portofino-tender-information" },
   { label: "One day in Portofino", href: "/one-day-in-portofino" },
@@ -72,9 +73,9 @@ export const cruiseShipRelatedLinks = [
 
 export const cruiseShipExcursionRecommendations = [
   {
-    title: featuredTour.cardName,
+    title: featuredTour.fullName,
     description:
-      "Our top recommendation — Santa Margherita Ligure, Camogli, and Portofino village in one small-group tour with coordinated transport from the harbour.",
+      "Our top recommendation — Santa Margherita Ligure, Camogli, and Portofino village in one small-group shore excursion with coordinated transport from the harbour.",
     href: featuredTour.path,
     bestFor: "7+ hour calls",
     featured: true,

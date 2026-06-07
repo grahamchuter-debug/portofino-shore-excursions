@@ -1,13 +1,14 @@
 import Link from "next/link";
 
 import { featuredTour } from "@/lib/featured-tour";
+import { portGuidePath } from "@/lib/site-paths";
 import { siteConfig } from "@/lib/site-config";
 
 const planYourVisitLinks = [
   { label: "Book the Small Group Tour", href: featuredTour.bookingPath },
   { label: featuredTour.cardName, href: featuredTour.path },
   { label: "Portofino Shore Excursions", href: "/portofino-shore-excursions" },
-  { label: "Portofino Port Guide", href: "/portofino-port-guide" },
+  { label: "Portofino Port Guide", href: portGuidePath },
   { label: "One Day in Portofino", href: "/one-day-in-portofino" },
   {
     label: "Best Portofino Shore Excursions",
@@ -110,7 +111,7 @@ export function SiteFooter() {
         />
 
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-4">
               <Link
                 href="/"
@@ -120,9 +121,19 @@ export function SiteFooter() {
               </Link>
               <p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">
                 Small-group Portofino shore excursions for cruise passengers —
-                Santa Margherita, Camogli and Portofino in one Riviera tour,
-                plus tender guides and port planning.
+                {featuredTour.cardName} plus tender guides and port planning.
               </p>
+              <div className="mt-5 rounded-lg border border-white/10 bg-white/5 p-4">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-sky-200/90">
+                  Recommended Excursion
+                </h2>
+                <Link
+                  href={featuredTour.path}
+                  className="mt-2 block text-sm font-medium text-white transition hover:text-sky-200"
+                >
+                  {featuredTour.cardName}
+                </Link>
+              </div>
               <ul className="mt-4 space-y-2">
                 {trustBullets.map((item) => (
                   <li

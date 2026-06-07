@@ -18,24 +18,24 @@ export function ConversionCtaStrip({
       className={`flex flex-wrap items-center justify-center gap-3 ${className}`}
     >
       <Link
-        href={featuredTour.bookingPath}
+        href={featuredTour.path}
         className={
           isDark
             ? "rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-500 sm:px-6 sm:py-3 sm:text-base"
             : "rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 sm:px-6 sm:py-3 sm:text-base"
         }
       >
-        Check availability for the small-group tour
+        View Small Group Tour
       </Link>
       <Link
-        href={featuredTour.path}
+        href={featuredTour.bookingPath}
         className={
           isDark
             ? "rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 sm:px-6 sm:py-3 sm:text-base"
             : "rounded-full border border-blue-600 px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 sm:px-6 sm:py-3 sm:text-base"
         }
       >
-        View the main Portofino excursion
+        Check Availability
       </Link>
       <Link
         href="/cruise-planner"

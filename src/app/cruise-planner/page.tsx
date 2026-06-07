@@ -23,7 +23,7 @@ const pageMeta = {
 export const metadata: Metadata = buildPageMetadata(pageMeta);
 
 const relatedLinks = [
-  { label: featuredTour.cardName, href: featuredTour.path },
+  { label: featuredTour.fullName, href: featuredTour.path },
   { label: "Check availability", href: featuredTour.bookingPath },
   { label: "Tender information", href: "/portofino-tender-information" },
   { label: "Meeting points", href: "/portofino-meeting-points" },
@@ -54,12 +54,12 @@ const faqs = [
   {
     question: "When is the Small Group Santa Margherita, Camogli and Portofino tour recommended?",
     answer:
-      "When the planner shows 5 or more usable hours ashore, the small-group Riviera tour may be a good fit. With 7 or more usable hours, it is an excellent fit for the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
+      "When the planner shows 5 or more usable hours ashore, the Small Group Santa Margherita, Camogli & Portofino Shore Excursion may be a good fit. With 7 or more usable hours, it is an excellent fit for the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
   },
   {
     question: "What confidence score should I aim for?",
     answer:
-      "A score of 9 or 10 means your port call comfortably fits the full small-group Riviera tour. Scores around 7 mean the tour may work if tendering is smooth — check availability. Lower scores mean staying in Portofino village is the safer choice.",
+      "A score of 9 or 10 means your port call comfortably fits the Small Group Santa Margherita, Camogli & Portofino Shore Excursion. Scores around 7 mean the tour may work if tendering is smooth — check availability. Lower scores mean staying in Portofino village is the safer choice.",
   },
 ] as const;
 
@@ -74,7 +74,7 @@ export default function CruisePlannerPage() {
       pageDescription={pageMeta.description}
       relatedLinks={relatedLinks}
       faqs={faqs}
-      ctaTitle="Check availability for the small-group Riviera tour"
+      ctaTitle={`Check availability for the ${featuredTour.cardName} tour`}
       ctaText="If the planner shows a good fit, secure your place on the Santa Margherita, Camogli and Portofino excursion before port day."
       ctaHref={featuredTour.bookingPath}
       ctaLabel="Check availability"

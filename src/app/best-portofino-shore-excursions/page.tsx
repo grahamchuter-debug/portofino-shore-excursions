@@ -58,10 +58,10 @@ export default function BestPortofinoShoreExcursionsPage() {
       pageDescription={pageMeta.description}
       relatedLinks={relatedLinks}
       faqs={faqs}
-      ctaTitle="Book the #1 ranked Riviera tour"
-      ctaText="Small-group Santa Margherita, Camogli and Portofino — three villages, one cruise day."
+      ctaTitle={`Book the #1 ranked tour — ${featuredTour.cardName}`}
+      ctaText={`The ${featuredTour.fullName} — three villages, one cruise day.`}
       ctaHref={featuredTour.bookingPath}
-      ctaLabel="Book now"
+      ctaLabel="Check Availability"
     >
       <section>
         <h2>

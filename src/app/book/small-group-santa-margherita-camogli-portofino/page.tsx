@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BookingEnquiryForm } from "@/components/booking-enquiry-form";
+import { BookingReassurance } from "@/components/booking-reassurance";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
@@ -85,31 +86,7 @@ export default function BookFeaturedTourPage() {
             </Link>
           </div>
 
-          <div className="mb-8 rounded-xl border border-blue-100 bg-blue-50 p-6">
-            <p className="text-base leading-7 text-gray-800">
-              Before we confirm your booking, we check your ship arrival time,
-              tender arrangements and all aboard time to make sure the tour
-              fits your Portofino port day.
-            </p>
-            <ul className="mt-4 space-y-2">
-              {[
-                "We confirm availability before taking payment",
-                "Meeting point details sent after confirmation",
-                "Return-to-ship timing checked against your cruise schedule",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm leading-6 text-gray-700 sm:text-base"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <BookingReassurance className="mb-8" />
 
           <BookingEnquiryForm tourName={featuredTour.fullName} />
 

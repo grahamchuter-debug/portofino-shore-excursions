@@ -1,4 +1,5 @@
 import { featuredTour } from "@/lib/featured-tour";
+import { legacyPortGuidePath, portGuidePath } from "@/lib/site-paths";
 import {
   buildCruiseShipSummaries,
   cruiseShipsHub,
@@ -44,8 +45,13 @@ export const siteRoutes = [
     changeFrequency: "weekly" as const,
   },
   {
-    path: "/portofino-port-guide",
-    priority: 0.8,
+    path: portGuidePath,
+    priority: 0.85,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: legacyPortGuidePath,
+    priority: 0.4,
     changeFrequency: "monthly" as const,
   },
   {
