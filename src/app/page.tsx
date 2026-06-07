@@ -31,17 +31,25 @@ const trustBadges = [
   "Small-group experiences",
 ] as const;
 
-const featuredBadges = [
+const recommendedBadges = [
   "Most Popular Cruise Excursion",
   "Small Group Favourite",
-  "Return-to-Ship Friendly",
+] as const;
+
+const recommendedBullets = [
+  "Three Riviera villages in one cruise day",
+  "Portofino, Santa Margherita Ligure and Camogli",
+  "Designed for cruise passengers arriving by tender",
+  "Approx. 5 to 6 hours",
+  "Limited spaces",
+  "Return-to-ship friendly timing",
 ] as const;
 
 const popularTours = [
   {
-    name: featuredTour.fullName,
+    name: featuredTour.cardName,
     description:
-      "Three Riviera destinations in one cruise day — Portofino, Santa Margherita Ligure and Camogli on a small-group shore excursion.",
+      "Three Riviera villages in one cruise day — Portofino, Santa Margherita Ligure and Camogli on a small-group shore excursion.",
   },
   {
     name: "Camogli & Portofino Coast",
@@ -90,14 +98,8 @@ export default function Home() {
 
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link
-                  href={featuredTour.bookingPath}
-                  className="inline-block rounded-full bg-blue-600 px-6 py-3 text-base font-semibold transition hover:bg-blue-700 sm:px-8 sm:py-4 sm:text-lg"
-                >
-                  Book Now
-                </Link>
-                <Link
                   href={featuredTour.path}
-                  className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
+                  className="inline-block rounded-full bg-blue-600 px-6 py-3 text-base font-semibold transition hover:bg-blue-700 sm:px-8 sm:py-4 sm:text-lg"
                 >
                   View Small Group Tour
                 </Link>
@@ -106,6 +108,12 @@ export default function Home() {
                   className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
                 >
                   View Cruise Port Guide
+                </Link>
+                <Link
+                  href={featuredTour.bookingPath}
+                  className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
+                >
+                  Check Availability
                 </Link>
               </div>
 
@@ -123,18 +131,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-b bg-gradient-to-b from-blue-50 to-white">
+        <section
+          id="recommended-tour"
+          className="border-b bg-gradient-to-b from-blue-50 to-white"
+        >
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+            <h2 className="mb-8 text-3xl font-bold text-gray-900 sm:text-4xl">
+              Our Recommended Portofino Shore Excursion
+            </h2>
             <div className="overflow-hidden rounded-2xl border-2 border-blue-600 bg-white shadow-lg">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <img
                   src={siteImages.santaMargherita}
-                  alt="Santa Margherita Ligure, Camogli and Portofino on the small-group Riviera shore excursion"
-                  className="h-56 w-full object-cover lg:h-full lg:min-h-[320px]"
+                  alt="Small Group Santa Margherita, Camogli and Portofino shore excursion on the Italian Riviera"
+                  className="h-56 w-full object-cover lg:h-full lg:min-h-[360px]"
                 />
                 <div className="flex flex-col p-6 sm:p-8">
                   <ul className="mb-4 flex flex-wrap gap-2">
-                    {featuredBadges.map((badge) => (
+                    {recommendedBadges.map((badge) => (
                       <li
                         key={badge}
                         className="rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white"
@@ -143,29 +157,32 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl">
+                  <h3 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">
                     {featuredTour.fullName}
-                  </h2>
+                  </h3>
                   <ul className="mb-6 flex-1 space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
-                    <li>Three Riviera destinations in one cruise day</li>
-                    <li>
-                      Portofino, Santa Margherita Ligure and Camogli
-                    </li>
-                    <li>Designed for cruise passengers arriving by tender</li>
-                    <li>Small-group experience with limited spaces</li>
+                    {recommendedBullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
+                        />
+                        {bullet}
+                      </li>
+                    ))}
                   </ul>
                   <div className="flex flex-wrap gap-3">
                     <Link
-                      href={featuredTour.bookingPath}
+                      href={featuredTour.path}
                       className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base"
                     >
-                      Book Now
+                      View Small Group Tour
                     </Link>
                     <Link
-                      href={featuredTour.path}
-                      className="rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-800 transition hover:border-blue-300 sm:text-base"
+                      href={featuredTour.bookingPath}
+                      className="rounded-full border border-blue-600 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 sm:text-base"
                     >
-                      View tour details
+                      Check Availability
                     </Link>
                   </div>
                 </div>
@@ -200,11 +217,11 @@ export default function Home() {
           className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24"
         >
           <h2 className="mb-6 text-3xl font-bold sm:mb-8 sm:text-4xl">
-            Portofino Shore Excursions
+            Popular Portofino Tours
           </h2>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <article className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-blue-600 shadow-lg ring-2 ring-blue-100 lg:col-span-1">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <article className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-blue-600 shadow-lg ring-2 ring-blue-100 lg:order-first">
               <img
                 src={siteImages.santaMargherita}
                 alt="Small Group Santa Margherita, Camogli and Portofino shore excursion on the Italian Riviera"
@@ -226,16 +243,16 @@ export default function Home() {
 
                 <div className="flex flex-wrap gap-2">
                   <Link
-                    href={featuredTour.bookingPath}
+                    href={featuredTour.path}
                     className="rounded-full bg-blue-600 px-5 py-2 text-xs font-semibold text-white transition hover:bg-blue-700 md:text-sm"
                   >
-                    Book Now
+                    View Small Group Tour
                   </Link>
                   <Link
-                    href={featuredTour.path}
-                    className="rounded-full border border-blue-300 bg-white px-5 py-2 text-xs font-medium text-blue-800 transition hover:border-blue-400 md:text-sm"
+                    href={featuredTour.bookingPath}
+                    className="rounded-full border border-blue-600 bg-white px-5 py-2 text-xs font-semibold text-blue-700 transition hover:bg-blue-50 md:text-sm"
                   >
-                    View tour
+                    Check Availability
                   </Link>
                 </div>
               </div>
@@ -302,10 +319,16 @@ export default function Home() {
 
           <div className="mt-8 text-center">
             <Link
-              href={featuredTour.bookingPath}
-              className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base"
+              href={featuredTour.path}
+              className="mr-3 inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base"
             >
-              Book the Small Group Riviera Tour
+              View Small Group Tour
+            </Link>
+            <Link
+              href={featuredTour.bookingPath}
+              className="inline-block rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 sm:text-base"
+            >
+              Check Availability
             </Link>
           </div>
         </section>
@@ -316,9 +339,11 @@ export default function Home() {
               Tender Port Day Tips
             </h2>
             <p className="text-base leading-8 text-gray-700 sm:text-lg">
-              Cruise ships anchor offshore and tender passengers into Portofino
-              village. Allow 15 to 20 minutes each way for tender transfers, and
-              be at the pier 45 minutes before all aboard. Read our{" "}
+              Cruise ships do not dock in Portofino village. They anchor
+              offshore and tender passengers into the harbour, so it is
+              important to allow enough time to get ashore and return before
+              all aboard. Allow 15 to 20 minutes each way for tender transfers.
+              Read our{" "}
               <Link
                 href="/portofino-tender-information"
                 className="font-medium text-blue-700 underline"
@@ -330,7 +355,7 @@ export default function Home() {
                 href={featuredTour.path}
                 className="font-medium text-blue-700 underline"
               >
-                small-group Riviera tour
+                {featuredTour.cardName}
               </Link>{" "}
               for the best way to combine Santa Margherita, Camogli and
               Portofino.

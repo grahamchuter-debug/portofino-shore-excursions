@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "What are the best Portofino shore excursions?",
     answer:
-      "For first-time visitors, the Portofino and Santa Margherita Riviera tour is most popular. Active passengers on shorter calls prefer the coastal walk. Longer port calls suit the Camogli and Portofino coast tour.",
+      "For first-time visitors, the Small Group Santa Margherita, Camogli and Portofino tour is most popular. Active passengers on shorter calls prefer the coastal walk. Longer port calls suit the Camogli and Portofino coast tour.",
   },
   {
     question: "Can I visit Cinque Terre from Portofino?",

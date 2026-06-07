@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { featuredTour } from "@/lib/featured-tour";
 import { siteConfig } from "@/lib/site-config";
 import { siteNavLinks } from "@/lib/site-nav";
 
@@ -27,7 +28,7 @@ export function SiteHeader() {
         </nav>
 
         <Link
-          href={siteConfig.excursionsHubPath}
+          href={featuredTour.bookingPath}
           className="rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-semibold transition hover:bg-blue-500 sm:px-4 sm:py-2 sm:text-sm"
         >
           Book a Tour

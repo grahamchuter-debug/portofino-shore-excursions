@@ -169,7 +169,7 @@ export default function PortofinoPortGuidePage() {
           <p>
             Visiting all three independently from the tender pier means
             navigating infrequent buses on a tight schedule. The{" "}
-            <Link href={featuredTour.path}>small-group Riviera tour</Link>{" "}
+            <Link href={featuredTour.path}>{featuredTour.cardName}</Link>{" "}
             handles transport and return timing. Compare destinations on our{" "}
             <Link href="/portofino-vs-santa-margherita">
               Portofino vs Santa Margherita

@@ -190,7 +190,7 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
 
             {excursion.itinerary && excursion.itinerary.length > 0 ? (
               <ContentSection title="Itinerary">
-                <ol className="space-y-6 leading-7">
+                <ol className="list-none space-y-6 pl-0 leading-7">
                   {excursion.itinerary.map((step, index) => (
                     <li key={step.title} className="flex gap-4">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">

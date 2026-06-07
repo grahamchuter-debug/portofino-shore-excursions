@@ -113,7 +113,7 @@ export default function PortofinoMeetingPointsPage() {
         <p>
           See individual tour pages for full details:{" "}
           <Link href={featuredTour.path}>
-            Small group Riviera tour
+            {featuredTour.cardName}
           </Link>
           ,{" "}
           <Link href="/excursions/camogli-portofino-coast">Camogli tour</Link>
