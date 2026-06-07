@@ -2,6 +2,7 @@ import { featuredTour } from "@/lib/featured-tour";
 import {
   featuredTourFacts,
   featuredTourGroupSizeLine,
+  featuredTourGuideMeetAdvice,
   featuredTourMeetingInstructions,
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
@@ -62,7 +63,7 @@ export const featuredTourSampleItineraryDisclaimer =
 export const featuredTourSampleItinerary = [
   {
     title: "Meet at Farmacia, Portofino",
-    description: `After tendering ashore, walk to ${featuredTourMeetingPointLine} (${featuredTourFacts.meetingPoint.walkFromTender}). Look for the ${featuredTourFacts.meetingPoint.guideSign} sign. ${featuredTourFacts.arrivalAdvice}`,
+    description: `After tendering ashore, walk to ${featuredTourMeetingPointLine} (${featuredTourFacts.meetingPoint.walkFromTender}). ${featuredTourGuideMeetAdvice} ${featuredTourFacts.arrivalAdvice}`,
   },
   {
     title: "Santa Margherita Ligure",
@@ -100,7 +101,7 @@ export const featuredTourPassengerQuestions = [
   {
     question: "What if I arrive early and cannot see the guide?",
     answer:
-      `Head to ${featuredTourMeetingPointLine} and look for the ${featuredTourFacts.meetingPoint.guideSign} sign. Call the number on your booking confirmation if you cannot see your guide. Do not wander far from the meeting area.`,
+      `Head to ${featuredTourMeetingPointLine}. ${featuredTourGuideMeetAdvice} Call the number on your booking confirmation if you cannot see your guide. Do not wander far from the meeting area.`,
   },
   {
     question: "What if my tender is delayed?",
@@ -135,7 +136,7 @@ export const featuredTourWhyCreated = {
   paragraphs: [
     "Most cruise passengers only see Portofino harbour — and it is stunning. But the best Riviera day combines Portofino with Santa Margherita Ligure and Camogli: three very different coastal villages within a short drive of the tender landing.",
     "We built this itinerary specifically around cruise passengers and Portofino tender operations. That means a fixed meeting point at Farmacia on Piazza della Libertà, realistic pacing for tender ashore and return queues, and enough margin to get you back before all aboard.",
-    "If your call is shorter, we will tell you honestly. Portofino village on foot may be the smarter choice. When you have five to seven usable hours ashore, check availability and tender timing. With seven or more, this small-group tour is an excellent fit.",
+    "If your call is shorter, we will tell you honestly. Portofino village on foot may be the smarter choice. When you have five to seven usable hours ashore, check availability and tender timing. With seven or more, this small-group tour is the best use of your port day.",
   ],
 } as const;
 

@@ -3,6 +3,7 @@ import { featuredTour } from "@/lib/featured-tour";
 import {
   featuredTourFacts,
   featuredTourGroupSizeLine,
+  featuredTourGuideMeetAdvice,
   featuredTourMeetingInstructions,
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
@@ -162,7 +163,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     },
     {
       question: "How do I find my guide?",
-      answer: `Look for the ${featuredTourFacts.meetingPoint.guideSign} sign at ${featuredTourMeetingPointLine}. ${featuredTourFacts.meetingPoint.walkFromTender}.`,
+      answer: `${featuredTourMeetingPointLine}. ${featuredTourFacts.meetingPoint.walkFromTender}. ${featuredTourGuideMeetAdvice}`,
     },
     {
       question: "Why book a small-group tour instead of going independently?",

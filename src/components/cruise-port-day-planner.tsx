@@ -146,33 +146,69 @@ export function CruisePortDayPlanner() {
                   {result.fitMessage}
                 </p>
 
-                {result.recommendMainTour && result.mainTourWhyItFits ? (
-                  <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50/70 p-4 sm:p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-                      Recommended excursion
-                    </p>
-                    <h4 className="mt-2 text-lg font-bold text-gray-900">
-                      {featuredTour.fullName}
-                    </h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
-                      {result.mainTourWhyItFits}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      <Link
-                        href={featuredTour.path}
-                        className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                      >
-                        View Small Group Tour
-                      </Link>
-                      <Link
-                        href={featuredTour.bookingPath}
-                        className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-                      >
-                        Check Availability
-                      </Link>
-                    </div>
-                  </div>
-                ) : null}
+                <div
+                  className={`mt-5 rounded-xl border p-4 sm:p-5 ${
+                    result.recommendMainTour
+                      ? "border-blue-200 bg-blue-50/70"
+                      : "border-amber-200 bg-amber-50/60"
+                  }`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+                    {result.recommendationTitle}
+                  </p>
+
+                  {result.recommendMainTour ? (
+                    <>
+                      <h4 className="mt-2 text-lg font-bold text-gray-900">
+                        {featuredTour.fullName}
+                      </h4>
+                      {result.mainTourWhyItFits ? (
+                        <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
+                          {result.mainTourWhyItFits}
+                        </p>
+                      ) : null}
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <Link
+                          href={featuredTour.path}
+                          className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                        >
+                          View Small Group Tour
+                        </Link>
+                        <Link
+                          href={featuredTour.bookingPath}
+                          className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                        >
+                          Check Availability
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h4 className="mt-2 text-lg font-bold text-gray-900">
+                        Stay in Portofino village
+                      </h4>
+                      {result.recommendationSummary ? (
+                        <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
+                          {result.recommendationSummary}
+                        </p>
+                      ) : null}
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <Link
+                          href="/excursions/portofino-coastal-walk"
+                          className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                        >
+                          View Coastal Walk
+                        </Link>
+                        <Link
+                          href="/one-day-in-portofino"
+                          className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                        >
+                          One Day in Portofino
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -204,7 +240,7 @@ export function CruisePortDayPlanner() {
                   </p>
                 </ResultCard>
 
-                <ResultCard title="Confidence score">
+                <ResultCard title="Port day rating">
                   <div className="flex flex-wrap items-center gap-2">
                     <span
                       className={`inline-flex rounded-full px-3 py-1 text-sm font-bold ${getConfidenceTone(result.confidenceScore).badge}`}
@@ -273,7 +309,7 @@ export function CruisePortDayPlanner() {
                 </p>
               </ResultCard>
 
-              <ResultCard title="Recommended for your port time">
+              <ResultCard title="Also worth considering">
                 <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {result.excursions.map((excursion) => (
                     <li key={excursion.label}>

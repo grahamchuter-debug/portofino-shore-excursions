@@ -7,7 +7,7 @@ import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excurs
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
-import { featuredTourFacts, featuredTourGroupSizeLine, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
+import { featuredTourFacts, featuredTourGroupSizeLine, featuredTourGuideMeetAdvice, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { buildWebPageSchema } from "@/lib/site-schema";
 import { siteConfig } from "@/lib/site-config";
@@ -65,7 +65,7 @@ export default function BookFeaturedTourPage() {
                 return-to-ship timing for your port day.
               </p>
               <p className="mt-5 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm sm:text-sm">
-                {featuredTourFacts.durationLabel} · {featuredTourFacts.vehicle.label} · Look for {featuredTourFacts.meetingPoint.guideSign}
+                {featuredTourFacts.durationLabel} · {featuredTourFacts.vehicle.label} · Meet at {featuredTourFacts.meetingPoint.landmark}
               </p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function BookFeaturedTourPage() {
               <li>{featuredTourFacts.durationLabel} · {featuredTourFacts.portType}</li>
               <li>{featuredTourGroupSizeLine} · {featuredTourFacts.vehicle.largerGroupsNote}</li>
               <li>Meet at {featuredTourMeetingPointLine}</li>
-              <li>Guide sign: {featuredTourFacts.meetingPoint.guideSign}</li>
+              <li>{featuredTourGuideMeetAdvice}</li>
             </ul>
             <Link
               href={featuredTour.path}

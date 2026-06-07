@@ -6,6 +6,7 @@ import { featuredTour } from "@/lib/featured-tour";
 import {
   featuredTourFacts,
   featuredTourGroupSizeLine,
+  featuredTourGuideMeetAdvice,
   featuredTourMeetingInstructions,
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
@@ -21,7 +22,7 @@ import {
 const pageMeta = {
   title: "Portofino Meeting Points for Cruise Shore Excursions",
   description:
-    "Where to meet the Small Group Santa Margherita, Camogli and Portofino shore excursion after tendering ashore — Farmacia on Piazza della Libertà, Papillon Service sign, and walking directions from the pier.",
+    "Where to meet the Small Group Santa Margherita, Camogli and Portofino shore excursion after tendering ashore — Farmacia on Piazza della Libertà and walking directions from the pier.",
   path: "/portofino-meeting-points",
   ogImage: siteImages.portofinoCruisePort,
   ogImageAlt: portofinoTenderPortAlt,
@@ -44,7 +45,7 @@ const faqs = [
   },
   {
     question: "How do I find my guide after tendering ashore?",
-    answer: `After disembarking at the Portofino tender pier, walk to ${featuredTourMeetingPointLine} — ${featuredTourFacts.meetingPoint.walkFromTender}. Look for the ${featuredTourFacts.meetingPoint.guideSign} sign. ${featuredTourFacts.arrivalAdvice}`,
+    answer: `After disembarking at the Portofino tender pier, walk to ${featuredTourMeetingPointLine} — ${featuredTourFacts.meetingPoint.walkFromTender}. ${featuredTourGuideMeetAdvice} ${featuredTourFacts.arrivalAdvice}`,
   },
   {
     question: "What if my tender arrives after the meeting time?",
@@ -105,7 +106,7 @@ export default function PortofinoMeetingPointsPage() {
             {featuredTourFacts.meetingPoint.walkFromTender}
           </li>
           <li>
-            <strong>Guide sign:</strong> {featuredTourFacts.meetingPoint.guideSign}
+            <strong>Guide identification:</strong> {featuredTourGuideMeetAdvice}
           </li>
           <li>
             <strong>Arrival timing:</strong> {featuredTourFacts.arrivalAdvice}
@@ -126,7 +127,7 @@ export default function PortofinoMeetingPointsPage() {
             {featuredTourFacts.meetingPoint.walkFromTender})
           </li>
           <li>
-            Look for the {featuredTourFacts.meetingPoint.guideSign} sign
+            {featuredTourGuideMeetAdvice}
           </li>
           <li>
             {featuredTourFacts.arrivalAdvice}

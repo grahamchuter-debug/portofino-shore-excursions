@@ -7,6 +7,7 @@ import { featuredTour } from "@/lib/featured-tour";
 import {
   featuredTourFacts,
   featuredTourGroupSizeLine,
+  featuredTourGuideMeetAdvice,
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
@@ -85,7 +86,7 @@ export default function PortofinoShoreExcursionsPage() {
           <li>{featuredTourGroupSizeLine} · {featuredTourFacts.vehicle.largerGroupsNote}</li>
           <li>{featuredTourFacts.durationLabel} tour time (excluding tender transfers)</li>
           <li>Best for 5+ usable hours ashore after tender time is counted</li>
-          <li>Meet at {featuredTourMeetingPointLine} — {featuredTourFacts.meetingPoint.guideSign} sign</li>
+          <li>Meet at {featuredTourMeetingPointLine} — {featuredTourGuideMeetAdvice}</li>
           <li>
             <Link href={featuredTour.path}>View full tour details</Link>
           </li>

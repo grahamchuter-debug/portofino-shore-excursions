@@ -39,7 +39,7 @@ const faqs = [
   {
     question: "How does the Portofino cruise planner work?",
     answer:
-      "Enter your ship's published arrival and departure times. The planner automatically deducts 30 minutes after arrival before you are realistically ashore, and a 60-minute return window before departure, then shows your usable time ashore, confidence score, and excursion recommendations.",
+      "Enter your ship's published arrival and departure times. The planner automatically deducts 30 minutes after arrival before you are realistically ashore, and a 60-minute return window before departure, then shows your usable time ashore, port day rating, and excursion recommendations.",
   },
   {
     question: "Does the planner account for tender transfer time?",
@@ -54,12 +54,12 @@ const faqs = [
   {
     question: "When is the Small Group Santa Margherita, Camogli and Portofino tour recommended?",
     answer:
-      "When the planner shows 5 or more usable hours ashore, the Small Group Santa Margherita, Camogli & Portofino Shore Excursion may be a good fit. With 7 or more usable hours, it is an excellent fit for the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
+      "When the planner shows five or more usable hours ashore, the small-group tour may work — check availability and tender timing. With seven or more usable hours, your schedule comfortably suits the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
   },
   {
-    question: "What confidence score should I aim for?",
+    question: "What does the port day rating mean?",
     answer:
-      "A score of 9 or 10 means your port call comfortably fits the Small Group Santa Margherita, Camogli & Portofino Shore Excursion. Scores around 7 mean the tour may work if tendering is smooth — check availability. Lower scores mean staying in Portofino village is the safer choice.",
+      "The rating reflects how comfortably your published port times cover tender delays, the tour duration, and return-to-ship margin. Higher scores mean more room for the full small-group Riviera tour. Lower scores mean staying in Portofino village is the safer choice.",
   },
 ] as const;
 
@@ -75,7 +75,7 @@ export default function CruisePlannerPage() {
       relatedLinks={relatedLinks}
       faqs={faqs}
       ctaTitle={`Check availability for the ${featuredTour.cardName} tour`}
-      ctaText="If the planner shows a good fit, secure your place on the Santa Margherita, Camogli and Portofino excursion before port day."
+      ctaText="If the planner recommends the small-group tour, secure your place on the Santa Margherita, Camogli and Portofino excursion before port day."
       ctaHref={featuredTour.bookingPath}
       ctaLabel="Check availability"
     >
