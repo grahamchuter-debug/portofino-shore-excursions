@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ConversionCtaStrip } from "@/components/conversion-cta-strip";
+import {
+  FeaturedTourComparisonSection,
+  FeaturedTourPassengerQuestionsSection,
+  FeaturedTourSampleItinerarySection,
+  FeaturedTourTrustSection,
+} from "@/components/homepage-conversion-sections";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourPassengerQuestions } from "@/lib/featured-tour-content";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import {
+  buildFaqSchema,
   buildItemListSchema,
   buildWebPageSchema,
 } from "@/lib/site-schema";
+import { featuredTourTrustPoints } from "@/lib/featured-tour-content";
 import { siteImages, siteHeroAlt } from "@/lib/site-images";
 
 const pageMeta = {
@@ -25,11 +35,7 @@ export const metadata: Metadata = buildPageMetadata({
   absoluteTitle: true,
 });
 
-const trustBadges = [
-  "Return to ship on time",
-  "Tender port specialists",
-  "Small-group experiences",
-] as const;
+const trustBadges = featuredTourTrustPoints.slice(0, 3);
 
 const recommendedBadges = [
   "Most Popular Cruise Excursion",
@@ -74,6 +80,7 @@ export default function Home() {
             description: pageMeta.description,
           }),
           buildItemListSchema(popularTours),
+          buildFaqSchema([...featuredTourPassengerQuestions]),
         ]}
       />
       <main className="min-h-screen bg-white text-gray-900">
@@ -189,6 +196,16 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        <FeaturedTourTrustSection />
+
+        <FeaturedTourComparisonSection />
+
+        <FeaturedTourSampleItinerarySection />
+
+        <section className="border-b bg-white py-10">
+          <ConversionCtaStrip className="mx-auto max-w-6xl px-4 sm:px-6" />
         </section>
 
         <section id="about" className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
@@ -333,6 +350,21 @@ export default function Home() {
           </div>
         </section>
 
+        <FeaturedTourPassengerQuestionsSection />
+
+        <section className="border-t bg-gray-900 py-12">
+          <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
+            <h2 className="mb-2 text-2xl font-bold text-white sm:text-3xl">
+              Ready to book your Portofino port day?
+            </h2>
+            <p className="mx-auto mb-6 max-w-2xl text-base text-white/80">
+              See three Riviera villages in one cruise day — with tender-aware
+              timing and return-to-ship planning built in.
+            </p>
+            <ConversionCtaStrip variant="dark" />
+          </div>
+        </section>
+
         <section id="tips" className="border-t bg-gray-50">
           <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
             <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
@@ -378,7 +410,23 @@ export default function Home() {
                   href={featuredTour.bookingPath}
                   className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-800 transition hover:border-blue-300"
                 >
-                  Book small group tour
+                  Check availability
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={featuredTour.path}
+                  className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-800 transition hover:border-blue-300"
+                >
+                  View main excursion
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cruise-planner"
+                  className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:border-gray-300"
+                >
+                  Plan your Portofino cruise day
                 </Link>
               </li>
               <li>

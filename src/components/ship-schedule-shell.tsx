@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { FeaturedTourRecommendationBox } from "@/components/featured-tour-recommendation-box";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
 import { portofinoCruisePortAlt, siteImages } from "@/lib/site-images";
@@ -51,6 +52,10 @@ export function ShipScheduleShell({
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+        <FeaturedTourRecommendationBox />
+      </div>
 
       {children}
 

@@ -1,0 +1,125 @@
+import { featuredTour } from "@/lib/featured-tour";
+
+export const featuredTourTrustPoints = [
+  "Built for cruise passengers",
+  "Tender-port aware",
+  "Small group",
+  "Local knowledge",
+  "Designed around realistic time in port",
+  "Return-to-ship planning",
+] as const;
+
+export const featuredTourComparisonRows = [
+  {
+    label: "See more in one cruise day",
+    portofinoOnly: "Portofino village only — compact and crowded on busy days",
+    independent:
+      "Possible with buses, but connections are infrequent and eat into your time",
+    tour: "Santa Margherita, Camogli and Portofino in one coordinated day",
+  },
+  {
+    label: "Less planning stress",
+    portofinoOnly: "Simple, but you may wonder what you missed along the coast",
+    independent:
+      "High — tender queues, bus timetables, and return timing are on you",
+    tour: "Guide and driver handle routes, pacing, and port-day logistics",
+  },
+  {
+    label: "Local guide and driver support",
+    portofinoOnly: "No",
+    independent: "No",
+    tour: "Yes — English-speaking local guide throughout",
+  },
+  {
+    label: "Better for tender-port timings",
+    portofinoOnly: "Works for a short village visit only",
+    independent: "Risky when connections slip or return queues build",
+    tour: "Meeting point at the harbour with schedule margins built in",
+  },
+  {
+    label: "Camogli — often missed by cruise passengers",
+    portofinoOnly: "Not reachable on foot from the tender landing",
+    independent: "Often skipped because transport is unreliable on a tight schedule",
+    tour: "Included — authentic fishing village away from the Portofino crowds",
+  },
+  {
+    label: "Return-to-ship planning",
+    portofinoOnly: "You watch the clock yourself",
+    independent: "You watch the clock and manage every connection",
+    tour: "Return timing coordinated with typical all-aboard schedules",
+  },
+] as const;
+
+export const featuredTourSampleItineraryDisclaimer =
+  "Example itinerary only. Actual timings may vary by ship schedule, tender operations, traffic, and local conditions." as const;
+
+export const featuredTourSampleItinerary = [
+  {
+    title: "Meet in Portofino",
+    description:
+      "Join your guide near the harbour after tendering ashore. Allow time for the morning tender queue on busy port days.",
+  },
+  {
+    title: "Santa Margherita Ligure",
+    description:
+      "Explore the elegant promenade and working harbour — a relaxed contrast to Portofino's celebrity-resort atmosphere.",
+  },
+  {
+    title: "Camogli",
+    description:
+      "Visit the colourful fishing village that many cruise passengers never reach when they stay in Portofino only.",
+  },
+  {
+    title: "Scenic coastal time",
+    description:
+      "Drive along the Tigullio Gulf with views of the Ligurian coastline. Photo stops when traffic and timing allow.",
+  },
+  {
+    title: "Return to Portofino",
+    description:
+      "Head back to Portofino village with your guide monitoring the schedule throughout the day.",
+  },
+  {
+    title: "Free time if schedule allows",
+    description:
+      "Enjoy the piazzetta and harbour before returning to the tender pier well before all aboard.",
+  },
+] as const;
+
+export const featuredTourPassengerQuestions = [
+  {
+    question: "What tender should I take for a 9:30am tour?",
+    answer:
+      "Take the earliest tender that gets you ashore in time to reach the meeting point — usually the first or second departure after your ship clears passengers. Check your cruise app the night before for tender ticket distribution. Allow 15 to 20 minutes for the boat transfer plus queuing time, and aim to be at the harbour meeting point a few minutes before your tour start time.",
+  },
+  {
+    question: "What if I arrive early and cannot see the guide?",
+    answer:
+      "Stay near the Portofino harbour and piazzetta — do not wander far from the village centre. Call the number on your booking confirmation. Your guide meets at a fixed point close to the tender landing; on busy mornings, look for a small-group sign or ask at the confirmation details you received by email.",
+  },
+  {
+    question: "What if my tender is delayed?",
+    answer:
+      "Contact your excursion provider immediately with your ship name and revised arrival time. If the delay is short, the group may wait briefly; if tenders are running significantly late, the operator may adjust the itinerary or offer alternatives. See our guide on what to do if your tender is late for immediate steps.",
+  },
+  {
+    question: "Is Portofino a tender port?",
+    answer:
+      "Yes. Cruise ships anchor offshore and transfer passengers into Portofino village by tender boat. There is no large-ship dock in the harbour itself. Build 30 to 40 minutes into your port day for tender transfers in both directions, plus return-queue time before all aboard.",
+  },
+  {
+    question:
+      "Is this tour suitable if we want to see more than just Portofino?",
+    answer:
+      "Yes — that is exactly what this tour is designed for. You visit Santa Margherita Ligure and Camogli as well as Portofino village, with coordinated transport so you do not lose time navigating local buses on a tight cruise schedule.",
+  },
+] as const;
+
+export const featuredTourRecommendationCopy = {
+  label: "Recommended for this call",
+  title: featuredTour.cardName,
+  description:
+    "See Santa Margherita, Camogli and Portofino in one small-group day — built for tender passengers with return-to-ship planning.",
+  tourLinkLabel: "View the main Portofino excursion",
+  availabilityLinkLabel: "Check availability",
+} as const;

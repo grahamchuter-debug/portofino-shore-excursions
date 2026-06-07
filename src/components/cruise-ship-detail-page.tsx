@@ -4,6 +4,7 @@ import {
   CruiseShipCallCards,
   CruiseShipSnapshot,
 } from "@/components/cruise-ship-call-cards";
+import { FeaturedTourRecommendationBox } from "@/components/featured-tour-recommendation-box";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleShell } from "@/components/ship-schedule-shell";
 import type { CruiseShipProfile } from "@/lib/cruise-ship-types";
@@ -65,6 +66,10 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
         ctaLabel="View shore excursions"
       >
         <CruiseShipSnapshot typicalVisitLength={ship.typicalVisitLength} />
+
+        <section className="mx-auto max-w-6xl px-4 sm:px-6">
+          <FeaturedTourRecommendationBox className="mt-2" />
+        </section>
 
         <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-3xl space-y-4 text-gray-700">
