@@ -4,9 +4,11 @@ import { BookingReassurance } from "@/components/booking-reassurance";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
+import { WhyThisTourBooksEarlySection } from "@/components/why-this-tour-books-early-section";
 import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import type { ExcursionData } from "@/lib/excursion-types";
 import { featuredTour } from "@/lib/featured-tour";
+import { meetingPointPath } from "@/lib/site-paths";
 import { siteConfig } from "@/lib/site-config";
 import {
   buildBreadcrumbSchema,
@@ -151,6 +153,7 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
         {isFeaturedTour ? (
           <>
             <WhyThisExcursionIsDifferentSection variant="muted" />
+            <WhyThisTourBooksEarlySection variant="light" />
             <WhyWeCreatedThisTourSection variant="light" showCta={false} />
           </>
         ) : null}
@@ -266,10 +269,10 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
                 </Link>
                 , check{" "}
                 <Link
-                  href="/portofino-meeting-points"
+                  href={meetingPointPath}
                   className="font-medium text-blue-700 underline underline-offset-2"
                 >
-                  meeting points
+                  meeting point guide
                 </Link>
                 , and plan your day with our{" "}
                 <Link

@@ -7,7 +7,8 @@ import {
   featuredTourMeetingInstructions,
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
-import { portGuidePath } from "@/lib/site-paths";
+import { operatorImageSlots } from "@/lib/operator-images";
+import { meetingPointPath, portGuidePath } from "@/lib/site-paths";
 import { siteImages } from "@/lib/site-images";
 
 export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData = {
@@ -40,6 +41,26 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     { label: "Port call suitability", value: "Best for 5+ usable hours ashore after tender time" },
   ],
   gallery: [
+    {
+      src: operatorImageSlots.santaMargheritaWaterfront.src,
+      alt: operatorImageSlots.santaMargheritaWaterfront.alt,
+    },
+    {
+      src: operatorImageSlots.camogliFishingVillage.src,
+      alt: operatorImageSlots.camogliFishingVillage.alt,
+    },
+    {
+      src: operatorImageSlots.smallGroupVan.src,
+      alt: operatorImageSlots.smallGroupVan.alt,
+    },
+    {
+      src: operatorImageSlots.meetingPointFarmacia.src,
+      alt: operatorImageSlots.meetingPointFarmacia.alt,
+    },
+    {
+      src: operatorImageSlots.tenderPierWalk.src,
+      alt: operatorImageSlots.tenderPierWalk.alt,
+    },
     {
       src: siteImages.santaMargherita,
       alt: "Santa Margherita Ligure harbour on the small-group Portofino shore excursion",
@@ -185,7 +206,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     { label: "Book this tour", href: featuredTour.bookingPath },
     { label: "Port guide", href: portGuidePath },
     { label: "Tender information", href: "/portofino-tender-information" },
-    { label: "Meeting points", href: "/portofino-meeting-points" },
+    { label: "Meeting point", href: meetingPointPath },
     { label: "One day in Portofino", href: "/one-day-in-portofino" },
     { label: "Cruise planner", href: "/cruise-planner" },
   ],
@@ -319,7 +340,7 @@ export const camogliPortofinoCoastExcursion: ExcursionData = {
   ],
   relatedLinks: [
     { label: "Camogli vs Portofino", href: "/camogli-vs-portofino" },
-    { label: "Meeting points", href: "/portofino-meeting-points" },
+    { label: "Meeting point", href: meetingPointPath },
     { label: "One day in Portofino", href: "/one-day-in-portofino" },
     { label: "Cruise planner", href: "/cruise-planner" },
   ],

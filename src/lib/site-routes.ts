@@ -1,5 +1,6 @@
 import { featuredTour } from "@/lib/featured-tour";
-import { portGuidePath } from "@/lib/site-paths";
+import { cruiseLinePortofinoPages } from "@/lib/cruise-line-portofino-pages";
+import { portGuidePath, meetingPointPath } from "@/lib/site-paths";
 import {
   buildCruiseShipSummaries,
   cruiseShipsHub,
@@ -70,8 +71,8 @@ export const siteRoutes = [
     changeFrequency: "monthly" as const,
   },
   {
-    path: "/portofino-meeting-points",
-    priority: 0.8,
+    path: meetingPointPath,
+    priority: 0.85,
     changeFrequency: "monthly" as const,
   },
   {
@@ -120,5 +121,10 @@ export const siteRoutes = [
     priority: 0.8,
     changeFrequency: "weekly" as const,
   },
+  ...cruiseLinePortofinoPages.map((page) => ({
+    path: page.path,
+    priority: 0.75,
+    changeFrequency: "monthly" as const,
+  })),
   ...cruiseShipRoutes,
 ] as const;

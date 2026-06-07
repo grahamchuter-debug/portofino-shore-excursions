@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { featuredTour } from "@/lib/featured-tour";
-import { portGuidePath } from "@/lib/site-paths";
+import { cruiseLinePortofinoHubLinks } from "@/lib/cruise-line-portofino-pages";
+import { portGuidePath, meetingPointPath } from "@/lib/site-paths";
 import { siteConfig } from "@/lib/site-config";
 
 const planYourVisitLinks = [
@@ -27,13 +28,15 @@ const cruiseToolsLinks = [
   { label: "2027 Schedule", href: "/ship-schedules/2027" },
   { label: "Cruise Planner", href: "/cruise-planner" },
   { label: "Tender Information", href: "/portofino-tender-information" },
-  { label: "Meeting Points", href: "/portofino-meeting-points" },
+  { label: "Meeting Point", href: meetingPointPath },
   {
     label: "What If My Tender Is Late?",
     href: "/what-if-my-tender-is-late",
   },
   { label: "FAQ", href: "/faq" },
 ] as const;
+
+const cruiseLineLinks = cruiseLinePortofinoHubLinks;
 
 const whyBookWithUs = [
   "Small-group experiences",
@@ -48,6 +51,7 @@ const trustBullets = [
 ] as const;
 
 const ctaSecondaryLinks = [
+  { label: "Meeting Point", href: meetingPointPath },
   { label: "Ship Schedules", href: "/ship-schedules" },
   { label: "Cruise Ships", href: "/cruise-ships" },
   { label: "Tender Information", href: "/portofino-tender-information" },
@@ -149,7 +153,7 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 sm:col-span-1 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:col-span-1 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
               <FooterColumn title="Plan Your Visit">
                 <ul className="space-y-2">
                   {planYourVisitLinks.map((link) => (
@@ -168,6 +172,21 @@ export function SiteFooter() {
               <FooterColumn title="Cruise Tools">
                 <ul className="space-y-2">
                   {cruiseToolsLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-slate-400 transition hover:text-white"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </FooterColumn>
+
+              <FooterColumn title="Cruise Lines">
+                <ul className="space-y-2">
+                  {cruiseLineLinks.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}

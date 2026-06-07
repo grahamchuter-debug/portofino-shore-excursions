@@ -472,7 +472,7 @@ export function CruisePortDayPlanner() {
                   </li>
                   <li>
                     <Link
-                      href="/portofino-meeting-points"
+                      href="/portofino-meeting-point"
                       className="font-medium text-blue-700 underline"
                     >
                       Meeting points

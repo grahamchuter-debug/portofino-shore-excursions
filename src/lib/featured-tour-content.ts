@@ -166,3 +166,13 @@ export const featuredTourRecommendationCopy = {
   tourLinkLabel: "View Tour",
   availabilityLinkLabel: "Check Availability",
 } as const;
+
+export const featuredTourBooksEarlyPoints = [
+  featuredTourGroupSizeLine,
+  "Shared small-group format — not a private vehicle for one family",
+  "One of the only shared small-group Portofino shore excursions visiting Santa Margherita Ligure and Camogli",
+  `${featuredTourFacts.durationLabel} works well for many cruise calls once tender time is counted`,
+  "Designed around tender-port timing — meet ashore after your ship clears passengers",
+  "More affordable than booking a private vehicle for one family or group",
+  featuredTourFacts.vehicle.largerGroupsNote,
+] as const;

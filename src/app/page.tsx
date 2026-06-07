@@ -11,12 +11,14 @@ import {
   FeaturedTourTrustSection,
 } from "@/components/homepage-conversion-sections";
 import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
+import { WhyThisTourBooksEarlySection } from "@/components/why-this-tour-books-early-section";
 import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { featuredTourPassengerQuestions, featuredTourRecommendedBullets, featuredTourTrustPoints } from "@/lib/featured-tour-content";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { meetingPointPath } from "@/lib/site-paths";
 import {
   buildFaqSchema,
   buildFeaturedTourTripSchema,
@@ -190,6 +192,8 @@ export default function Home() {
         </section>
 
         <WhyThisExcursionIsDifferentSection showCta />
+
+        <WhyThisTourBooksEarlySection variant="muted" />
 
         <WhyWeCreatedThisTourSection variant="muted" showCta={false} />
 
@@ -426,7 +430,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  href="/portofino-meeting-points"
+                  href={meetingPointPath}
                   className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:border-gray-300"
                 >
                   Meeting points

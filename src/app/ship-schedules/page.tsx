@@ -13,6 +13,7 @@ import {
 } from "@/lib/ship-schedule-page";
 import { shipScheduleHub, shipScheduleYearHubs } from "@/lib/ship-schedule-months";
 import { siteConfig } from "@/lib/site-config";
+import { meetingPointPath } from "@/lib/site-paths";
 import { buildWebPageSchema } from "@/lib/site-schema";
 
 export const metadata = buildShipScheduleHubMetadata();
@@ -88,7 +89,7 @@ export default function ShipSchedulesHubPage() {
             </Link>
             , check{" "}
             <Link
-              href="/portofino-meeting-points"
+              href={meetingPointPath}
               className="font-medium text-blue-700 underline underline-offset-2"
             >
               meeting points

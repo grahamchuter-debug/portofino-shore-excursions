@@ -9,7 +9,7 @@ import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { buildTouristAttractionSchema } from "@/lib/site-schema";
 import { excursionLinks, tenderLinks } from "@/lib/related-links";
-import { portGuidePath } from "@/lib/site-paths";
+import { portGuidePath, meetingPointPath } from "@/lib/site-paths";
 import { siteImages } from "@/lib/site-images";
 import {
   portofinoTenderExplainer,
@@ -135,7 +135,7 @@ export default function PortofinoCruisePortGuidePage() {
           <p>
             Shore excursion guides meet passengers near the harbour, not at
             the ship. See our{" "}
-            <Link href="/portofino-meeting-points">meeting points guide</Link>{" "}
+            <Link href={meetingPointPath}>meeting point guide</Link>{" "}
             for where to find your guide after tendering ashore.
           </p>
         </section>
@@ -300,7 +300,7 @@ export default function PortofinoCruisePortGuidePage() {
           </p>
           <p>
             Read our{" "}
-            <Link href="/portofino-meeting-points">meeting points guide</Link>{" "}
+            <Link href={meetingPointPath}>meeting point guide</Link>{" "}
             before port day.
           </p>
         </section>

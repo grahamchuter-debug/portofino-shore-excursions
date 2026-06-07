@@ -5,6 +5,7 @@ import { ContentPage } from "@/components/content-page";
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { meetingPointPath } from "@/lib/site-paths";
 import { coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
 import {
@@ -98,7 +99,7 @@ export default function PortofinoTenderInformationPage() {
           <li>
             <strong>Disembark at the landing</strong> — you arrive in Portofino
             village, near the harbour. See our{" "}
-            <Link href="/portofino-meeting-points">meeting points guide</Link>{" "}
+            <Link href={meetingPointPath}>meeting point guide</Link>{" "}
             for where excursions meet.
           </li>
         </ol>

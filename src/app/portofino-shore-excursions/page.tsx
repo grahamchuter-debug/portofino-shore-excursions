@@ -11,6 +11,7 @@ import {
   featuredTourMeetingPointLine,
 } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { meetingPointPath } from "@/lib/site-paths";
 import { coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
 
@@ -105,7 +106,7 @@ export default function PortofinoShoreExcursionsPage() {
           Before booking, read our{" "}
           <Link href="/portofino-tender-information">tender information</Link>{" "}
           guide and check{" "}
-          <Link href="/portofino-meeting-points">meeting points</Link>.
+          <Link href={meetingPointPath}>meeting point guide</Link>.
         </p>
       </section>
 

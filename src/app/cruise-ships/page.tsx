@@ -4,10 +4,8 @@ import { CruiseShipsHubCards } from "@/components/cruise-ships-hub-cards";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleShell } from "@/components/ship-schedule-shell";
 import { buildCruiseShipsHubMetadata } from "@/lib/cruise-ship-page";
-import {
-  buildCruiseShipSummaries,
-  cruiseShipsHub,
-} from "@/lib/portofino-cruise-ships";
+import { buildCruiseShipSummaries, cruiseShipsHub } from "@/lib/portofino-cruise-ships";
+import { cruiseLinePortofinoHubLinks } from "@/lib/cruise-line-portofino-pages";
 import { siteConfig } from "@/lib/site-config";
 import { buildWebPageSchema } from "@/lib/site-schema";
 
@@ -56,6 +54,28 @@ export default function CruiseShipsHubPage() {
           <div className="mt-10">
             <CruiseShipsHubCards ships={ships} />
           </div>
+
+          <section className="mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-gray-900">
+              Portofino guides by cruise line
+            </h2>
+            <p className="mt-3 text-base leading-7 text-gray-700">
+              Tender logistics and shore excursion planning for major cruise
+              lines calling at Portofino.
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-3">
+              {cruiseLinePortofinoHubLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition hover:border-gray-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link

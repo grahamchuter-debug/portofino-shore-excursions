@@ -1,4 +1,4 @@
-import { portGuidePath } from "@/lib/site-paths";
+import { meetingPointPath, portGuidePath } from "@/lib/site-paths";
 
 export const coreGuideLinks = [
   { label: "Shore excursions", href: "/portofino-shore-excursions" },
@@ -13,7 +13,7 @@ export const coreGuideLinks = [
     href: "/is-portofino-worth-visiting",
   },
   { label: "Tender information", href: "/portofino-tender-information" },
-  { label: "Meeting points", href: "/portofino-meeting-points" },
+  { label: "Meeting point", href: meetingPointPath },
   { label: "Cruise planner", href: "/cruise-planner" },
   { label: "Ship schedules", href: "/ship-schedules" },
   { label: "FAQ", href: "/faq" },
@@ -28,7 +28,7 @@ export const shipScheduleLinks = [
 
 export const tenderLinks = [
   { label: "Tender information", href: "/portofino-tender-information" },
-  { label: "Meeting points", href: "/portofino-meeting-points" },
+  { label: "Meeting point", href: meetingPointPath },
   {
     label: "What if my tender is late?",
     href: "/what-if-my-tender-is-late",

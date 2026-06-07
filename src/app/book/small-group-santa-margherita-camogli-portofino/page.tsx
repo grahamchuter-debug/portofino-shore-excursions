@@ -4,11 +4,13 @@ import Link from "next/link";
 import { BookingEnquiryForm } from "@/components/booking-enquiry-form";
 import { BookingReassurance } from "@/components/booking-reassurance";
 import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excursion-is-different-section";
+import { WhyThisTourBooksEarlySection } from "@/components/why-this-tour-books-early-section";
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts, featuredTourGroupSizeLine, featuredTourGuideMeetAdvice, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { meetingPointPath } from "@/lib/site-paths";
 import { buildFeaturedTourTripSchema, buildWebPageSchema } from "@/lib/site-schema";
 import { siteConfig } from "@/lib/site-config";
 import { siteImages } from "@/lib/site-images";
@@ -96,6 +98,23 @@ export default function BookFeaturedTourPage() {
             className="mb-8 !border-0 !bg-transparent"
             showCta={false}
           />
+
+          <WhyThisTourBooksEarlySection
+            className="mb-8 !border-0 !bg-transparent"
+            variant="bordered"
+            showCta
+          />
+
+          <p className="mb-8 text-sm leading-6 text-gray-600">
+            After booking, see our{" "}
+            <Link
+              href={meetingPointPath}
+              className="font-medium text-blue-700 underline underline-offset-2"
+            >
+              meeting point guide
+            </Link>{" "}
+            for walking directions from the tender pier.
+          </p>
 
           <BookingReassurance className="mb-8" />
 

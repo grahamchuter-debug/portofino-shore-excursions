@@ -7,6 +7,7 @@ import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, excursionLinks } from "@/lib/related-links";
+import { meetingPointPath } from "@/lib/site-paths";
 import { siteImages } from "@/lib/site-images";
 
 const cruisePlannerHeroAlt =
@@ -27,7 +28,7 @@ const relatedLinks = [
   { label: featuredTour.fullName, href: featuredTour.path },
   { label: "Check availability", href: featuredTour.bookingPath },
   { label: "Tender information", href: "/portofino-tender-information" },
-  { label: "Meeting points", href: "/portofino-meeting-points" },
+  { label: "Meeting point", href: meetingPointPath },
   {
     label: "What if my tender is late?",
     href: "/what-if-my-tender-is-late",
@@ -90,7 +91,7 @@ export default function CruisePlannerPage() {
           fits your schedule. For background, read our{" "}
           <Link href="/portofino-tender-information">tender information</Link>{" "}
           and{" "}
-          <Link href="/portofino-meeting-points">meeting points</Link> guides.
+          <Link href={meetingPointPath}>meeting point</Link> guides.
         </p>
       </section>
 

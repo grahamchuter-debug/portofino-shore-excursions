@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     question: "Where do shore excursions meet after tendering?",
-    answer: featuredTourMeetingInstructions,
+    answer: `${featuredTourMeetingInstructions} See our meeting point page for walking directions from the tender pier.`,
   },
   {
     question: "How early should I return to the tender pier?",

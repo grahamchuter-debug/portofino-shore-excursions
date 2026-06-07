@@ -20,6 +20,8 @@ import {
   getVisitLengthAdvice,
 } from "@/lib/cruise-ship-page";
 import { siteConfig } from "@/lib/site-config";
+import { getCruiseLinePageForShip } from "@/lib/cruise-line-portofino-pages";
+import { meetingPointPath } from "@/lib/site-paths";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -34,6 +36,7 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
   const faqs = getCruiseShipFaqs(ship);
   const visitAdvice = getVisitLengthAdvice(ship.visitLengthCategory);
   const shipNotes = getCruiseShipPageNotes(ship);
+  const cruiseLinePage = getCruiseLinePageForShip(ship.cruiseLine);
   const scheduleIntro = getCruiseShipScheduleIntro(ship);
   const title = `${ship.name} in Portofino`;
   const lead = getCruiseShipLead(ship);
@@ -86,6 +89,18 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
             {shipNotes.cruiseLineContext ? (
               <p className="leading-7 text-gray-600">
                 {shipNotes.cruiseLineContext}
+              </p>
+            ) : null}
+            {cruiseLinePage ? (
+              <p className="leading-7 text-gray-600">
+                See our{" "}
+                <Link
+                  href={cruiseLinePage.path}
+                  className="font-medium text-blue-700 underline underline-offset-2"
+                >
+                  {cruiseLinePage.cruiseLineName} Portofino guide
+                </Link>{" "}
+                for tender planning and excursion recommendations.
               </p>
             ) : null}
           </div>
@@ -206,8 +221,8 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
                 <li>
                   Meeting points are usually near the Portofino harbour and
                   piazzetta — see our{" "}
-                  <Link href="/portofino-meeting-points">
-                    meeting points guide
+                  <Link href={meetingPointPath}>
+                    meeting point guide
                   </Link>
                   .
                 </li>
