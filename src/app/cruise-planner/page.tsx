@@ -55,7 +55,7 @@ const faqs = [
   {
     question: "When is the Small Group Santa Margherita, Camogli and Portofino tour recommended?",
     answer:
-      `The planner shows Excellent Fit when you have seven or more usable hours ashore — a comfortable match for the ${featuredTourFacts.durationLabel.toLowerCase()} tour. Good Fit means five to seven usable hours: the tour may work depending on tender timing. Stay Close to Portofino is shown when you have under five usable hours ashore.`,
+      `Excellent Fit appears when you have six or more usable hours ashore — a comfortable match for the ${featuredTourFacts.durationLabel.toLowerCase()} tour. May Work — Check Availability means five to under six usable hours: the tour may work depending on tender timing. Stay Close to Portofino is shown when you have under five usable hours ashore.`,
   },
   {
     question: "What does the port day rating mean?",

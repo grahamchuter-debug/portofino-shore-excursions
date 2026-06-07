@@ -14,11 +14,45 @@ import {
   TENDER_PIER_RETURN_BUFFER_MINUTES,
 } from "@/lib/cruise-port-day-planner";
 
+const plannerPrimaryButtonClass =
+  "inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2";
+
+const plannerSecondaryButtonClass =
+  "inline-flex items-center justify-center rounded-full border-2 border-gray-900 bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2";
+
+const plannerLinkButtonClass =
+  "inline-flex items-center justify-center rounded-full border-2 border-blue-700 bg-white px-4 py-2 text-sm font-semibold text-blue-900 shadow-sm transition hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2";
+
 const plannerBadges = [
   "Tender-aware",
   "Return-to-ship planning",
   "Excursion recommendations",
 ] as const;
+
+function getRecommendationCardStyles(band: "short" | "good" | "excellent") {
+  if (band === "excellent") {
+    return {
+      outer: "border-emerald-500 bg-gradient-to-br from-emerald-50 via-white to-blue-50",
+      inner: "border-emerald-200 bg-white",
+      accent: "text-emerald-700",
+      bullet: "bg-emerald-600",
+    };
+  }
+  if (band === "good") {
+    return {
+      outer: "border-blue-500 bg-gradient-to-br from-blue-50 via-white to-sky-50",
+      inner: "border-blue-200 bg-white",
+      accent: "text-blue-700",
+      bullet: "bg-blue-600",
+    };
+  }
+  return {
+    outer: "border-slate-300 bg-gradient-to-br from-slate-50 via-white to-sky-50",
+    inner: "border-slate-200 bg-white",
+    accent: "text-slate-700",
+    bullet: "bg-slate-600",
+  };
+}
 
 function ResultCard({
   title,
@@ -53,92 +87,101 @@ function RecommendationCard({
     { error: string } | null
   >;
 }) {
+  const styles = getRecommendationCardStyles(result.band);
   const isMainTour = result.recommendMainTour;
-  const cardBorder = isMainTour ? "border-blue-500" : "border-amber-300";
-  const cardBg = isMainTour ? "bg-white" : "bg-white";
 
   return (
     <div
-      className={`rounded-2xl border-2 p-5 shadow-md sm:p-6 ${cardBorder} ${cardBg}`}
+      className={`rounded-2xl border-2 p-5 shadow-md sm:p-6 ${styles.outer}`}
     >
-      <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-        Excursion recommendation
+      <p className={`text-xs font-semibold uppercase tracking-wide ${styles.accent}`}>
+        Recommended for your port time
       </p>
       <h3 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
         {result.recommendationCardTitle}
       </h3>
-      <p className="mt-3 text-base leading-7 text-gray-700">
-        {result.fitMessage}
-      </p>
 
       {isMainTour ? (
-        <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50/70 p-4 sm:p-5">
-          <h4 className="text-lg font-bold text-gray-900 sm:text-xl">
-            {featuredTour.fullName}
-          </h4>
-          {result.mainTourWhyItFits ? (
-            <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
-              {result.mainTourWhyItFits}
+        <>
+          {result.recommendationHeading ? (
+            <h4 className="mt-4 text-lg font-bold text-gray-900 sm:text-xl">
+              {result.recommendationHeading}
+            </h4>
+          ) : null}
+          <p className="mt-3 text-base leading-7 text-gray-800">
+            {result.fitMessage}
+          </p>
+          <div className={`mt-5 rounded-xl border p-4 sm:p-5 ${styles.inner}`}>
+            <p className="text-sm font-semibold text-gray-900">
+              {featuredTour.fullName}
+            </p>
+            {result.mainTourBenefits && result.mainTourBenefits.length > 0 ? (
+              <ul className="mt-4 space-y-2 text-sm leading-6 text-gray-800 sm:text-base">
+                {result.mainTourBenefits.map((benefit) => (
+                  <li key={benefit} className="flex items-start gap-2">
+                    <span
+                      aria-hidden="true"
+                      className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${styles.bullet}`}
+                    />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href={featuredTour.path} className={plannerPrimaryButtonClass}>
+                View Small Group Tour
+              </Link>
+              <Link
+                href={featuredTour.bookingPath}
+                className={plannerSecondaryButtonClass}
+              >
+                Check Availability
+              </Link>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="mt-3 text-base leading-7 text-gray-800">
+            {result.fitMessage}
+          </p>
+          {result.shortStayNote ? (
+            <p className="mt-3 text-sm leading-6 text-gray-700 sm:text-base">
+              {result.shortStayNote}
             </p>
           ) : null}
-          {result.mainTourBenefits && result.mainTourBenefits.length > 0 ? (
-            <ul className="mt-4 space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
-              {result.mainTourBenefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-2">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
-                  />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href={featuredTour.path}
-              className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-            >
-              View Tour
-            </Link>
-            <Link
-              href={featuredTour.bookingPath}
-              className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-            >
-              Check Availability
-            </Link>
+          <div className={`mt-5 rounded-xl border p-4 sm:p-5 ${styles.inner}`}>
+            {result.shortStaySuggestions &&
+            result.shortStaySuggestions.length > 0 ? (
+              <ul className="space-y-2 text-sm leading-6 text-gray-800 sm:text-base">
+                {result.shortStaySuggestions.map((suggestion) => (
+                  <li key={suggestion} className="flex items-start gap-2">
+                    <span
+                      aria-hidden="true"
+                      className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${styles.bullet}`}
+                    />
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/one-day-in-portofino"
+                className={plannerPrimaryButtonClass}
+              >
+                One Day in Portofino
+              </Link>
+              <Link
+                href="/excursions/portofino-coastal-walk"
+                className={plannerSecondaryButtonClass}
+              >
+                View Coastal Walk
+              </Link>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50/60 p-4 sm:p-5">
-          {result.shortStaySuggestions && result.shortStaySuggestions.length > 0 ? (
-            <ul className="space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
-              {result.shortStaySuggestions.map((suggestion) => (
-                <li key={suggestion} className="flex items-start gap-2">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-600"
-                  />
-                  {suggestion}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/one-day-in-portofino"
-              className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-            >
-              One Day in Portofino
-            </Link>
-            <Link
-              href="/excursions/portofino-coastal-walk"
-              className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-            >
-              View Coastal Walk
-            </Link>
-          </div>
-        </div>
+        </>
       )}
     </div>
   );
@@ -154,19 +197,20 @@ function RecommendedExcursionSection({
 }) {
   if (!result.recommendMainTour) {
     return (
-      <aside className="rounded-xl border border-gray-200 bg-white/90 p-4 sm:p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+      <aside className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
           Recommended excursion
         </p>
-        <p className="mt-2 text-sm leading-6 text-gray-700">
-          The {featuredTour.cardName} tour needs at least five usable hours
-          ashore after tender time. On a longer Portofino call, it covers Santa
-          Margherita Ligure, Camogli and Portofino in{" "}
+        <p className="mt-2 text-sm leading-6 text-gray-800">
+          We generally recommend at least five hours of usable time ashore to
+          allow for tender operations, check-in and a comfortable return to the
+          ship. On a longer Portofino call, the {featuredTour.cardName} covers
+          Santa Margherita Ligure, Camogli and Portofino in{" "}
           {featuredTourFacts.durationLabel.toLowerCase()}.
         </p>
         <Link
           href={featuredTour.path}
-          className="mt-3 inline-block text-sm font-medium text-blue-700 underline underline-offset-2"
+          className={`mt-4 ${plannerLinkButtonClass}`}
         >
           View tour details for your next visit
         </Link>
@@ -175,29 +219,23 @@ function RecommendedExcursionSection({
   }
 
   return (
-    <aside className="rounded-xl border-2 border-blue-600 bg-blue-50/50 p-4 sm:p-5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+    <aside className="rounded-xl border-2 border-blue-600 bg-blue-50/40 p-4 sm:p-5 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-wide text-blue-800">
         Recommended excursion
       </p>
       <h3 className="mt-2 text-lg font-bold text-gray-900">
         {featuredTour.fullName}
       </h3>
-      <p className="mt-2 text-sm leading-6 text-gray-700">
+      <p className="mt-2 text-sm leading-6 text-gray-800">
         {result.band === "excellent"
           ? "Your port schedule is a strong match for our most popular small-group Riviera tour."
           : "Your schedule may work for this tour — confirm tender timing and check availability before port day."}
       </p>
       <div className="mt-4 flex flex-wrap gap-3">
-        <Link
-          href={featuredTour.path}
-          className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
-        >
-          View Tour
+        <Link href={featuredTour.path} className={plannerPrimaryButtonClass}>
+          View Small Group Tour
         </Link>
-        <Link
-          href={featuredTour.bookingPath}
-          className="rounded-full border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-        >
+        <Link href={featuredTour.bookingPath} className={plannerSecondaryButtonClass}>
           Check Availability
         </Link>
       </div>
@@ -385,10 +423,10 @@ export function CruisePortDayPlanner() {
                       {excursion.href ? (
                         <Link
                           href={excursion.href}
-                          className={`block rounded-lg border px-3 py-2.5 text-sm font-medium transition ${
+                          className={`block rounded-lg border px-3 py-2.5 text-sm font-semibold transition ${
                             excursion.href === featuredTour.path
-                              ? "border-blue-300 bg-blue-50 text-blue-900 hover:border-blue-400 hover:bg-blue-100"
-                              : "border-sky-100 bg-sky-50/70 text-blue-800 hover:border-blue-200 hover:bg-sky-100"
+                              ? "border-blue-400 bg-blue-50 text-blue-950 hover:border-blue-500 hover:bg-blue-100"
+                              : "border-sky-200 bg-white text-gray-900 hover:border-blue-300 hover:bg-sky-50"
                           }`}
                         >
                           {excursion.label}
