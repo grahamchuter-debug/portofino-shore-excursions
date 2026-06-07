@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -35,8 +36,7 @@ const faqs = [
   },
   {
     question: "What is the best alternative to Cinque Terre on a Portofino port day?",
-    answer:
-      "Camogli offers colourful harbourfront houses and authentic fishing village atmosphere without the transport marathon. The Camogli and Portofino coast tour covers both in one manageable excursion.",
+      answer: `Camogli offers colourful harbourfront houses and authentic fishing village atmosphere. The ${featuredTour.cardName} covers Camogli alongside Santa Margherita and Portofino in one manageable excursion.`,
   },
   {
     question: "Which cruise ports serve Cinque Terre?",
@@ -89,11 +89,9 @@ export default function PortofinoVsCinqueTerrePage() {
           If you want colourful harbourfront houses and village atmosphere
           without the Cinque Terre transport marathon,{" "}
           <Link href="/camogli-vs-portofino">Camogli</Link> is the answer. Our{" "}
-          <Link href="/excursions/camogli-portofino-coast">
-            Camogli & Portofino coast tour
-          </Link>{" "}
-          covers both villages in five to six hours — realistic on a standard
-          port call.
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
+          covers Santa Margherita, Camogli, and Portofino in one port day —
+          realistic on a standard port call.
         </p>
       </section>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -35,8 +36,7 @@ const faqs = [
   },
   {
     question: "Can I visit Camogli and Portofino in one port day?",
-    answer:
-      "Yes, on port calls of eight hours or more. The Camogli and Portofino coast tour covers both villages in five to six hours with a local guide.",
+      answer: `Yes, on port calls of seven hours or more. The ${featuredTour.cardName} covers Camogli alongside Santa Margherita and Portofino in one port day with a local guide.`,
   },
   {
     question: "Which is less crowded on port days?",
@@ -93,11 +93,9 @@ export default function CamogliVsPortofinoPage() {
       <section>
         <h2>Our recommendation</h2>
         <p>
-          First visit with six or more hours: do both on the{" "}
-          <Link href="/excursions/camogli-portofino-coast">
-            Camogli & Portofino coast tour
-          </Link>
-          . Returning visitors or those who dislike crowds: prioritise Camogli.
+          First visit with seven or more hours: do all three on the{" "}
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour.
+          Returning visitors or those who dislike crowds: prioritise Camogli.
           Short port call: Portofino village only via the{" "}
           <Link href="/excursions/portofino-coastal-walk">coastal walk</Link>.
         </p>

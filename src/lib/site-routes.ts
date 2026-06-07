@@ -1,3 +1,4 @@
+import { featuredTour } from "@/lib/featured-tour";
 import {
   buildCruiseShipSummaries,
   cruiseShipsHub,
@@ -18,9 +19,19 @@ export const siteRoutes = [
     changeFrequency: "weekly" as const,
   },
   {
-    path: "/excursions/portofino-santa-margherita-riviera",
-    priority: 0.9,
+    path: featuredTour.bookingPath,
+    priority: 0.95,
     changeFrequency: "weekly" as const,
+  },
+  {
+    path: "/excursions/small-group-santa-margherita-camogli-portofino",
+    priority: 0.95,
+    changeFrequency: "weekly" as const,
+  },
+  {
+    path: "/excursions/portofino-santa-margherita-riviera",
+    priority: 0.5,
+    changeFrequency: "monthly" as const,
   },
   {
     path: "/excursions/camogli-portofino-coast",

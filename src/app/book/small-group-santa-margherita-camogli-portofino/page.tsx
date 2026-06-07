@@ -1,0 +1,103 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { BookingEnquiryForm } from "@/components/booking-enquiry-form";
+import { JsonLd } from "@/components/json-ld";
+import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
+import { featuredTour } from "@/lib/featured-tour";
+import { buildPageMetadata } from "@/lib/site-metadata";
+import { buildWebPageSchema } from "@/lib/site-schema";
+import { siteConfig } from "@/lib/site-config";
+import { siteImages } from "@/lib/site-images";
+
+const pageMeta = {
+  title: "Book Small Group Santa Margherita, Camogli & Portofino Tour",
+  description:
+    "Book the small-group Santa Margherita, Camogli and Portofino shore excursion directly. Send your cruise details and we will confirm availability and meeting point.",
+  path: featuredTour.bookingPath,
+  ogImage: siteImages.santaMargherita,
+  ogImageAlt:
+    "Book the small-group Portofino shore excursion to Santa Margherita, Camogli and Portofino",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(pageMeta);
+
+export default function BookFeaturedTourPage() {
+  return (
+    <>
+      <JsonLd
+        data={[
+          buildWebPageSchema({
+            path: pageMeta.path,
+            title: pageMeta.title,
+            description: pageMeta.description,
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-white text-gray-900">
+        <ShipScheduleBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Shore Excursions", href: siteConfig.excursionsHubPath },
+            { label: featuredTour.cardName, href: featuredTour.path },
+            { label: "Book" },
+          ]}
+        />
+
+        <section
+          role="img"
+          aria-label={pageMeta.ogImageAlt}
+          className="relative bg-cover bg-center"
+          style={{ backgroundImage: `url('${pageMeta.ogImage}')` }}
+        >
+          <div className="bg-black/55">
+            <div className="mx-auto max-w-6xl px-4 py-16 text-white sm:px-6 sm:py-20">
+              <h1 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
+                Book {featuredTour.cardName}
+              </h1>
+              <p className="max-w-3xl text-base leading-7 text-white/90 sm:text-lg">
+                Send your cruise details and we will confirm availability,
+                meeting point at the Portofino tender landing, and
+                return-to-ship timing for your port day.
+              </p>
+              <p className="mt-5 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm sm:text-sm">
+                Direct booking · Small group · Limited spaces
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mb-8 rounded-xl border border-gray-200 bg-gray-50 p-5">
+            <h2 className="text-lg font-semibold text-gray-900">
+              {featuredTour.fullName}
+            </h2>
+            <ul className="mt-3 space-y-1 text-sm leading-6 text-gray-700">
+              <li>Portofino, Santa Margherita Ligure and Camogli in one day</li>
+              <li>Designed for cruise passengers arriving by tender</li>
+              <li>Approx. 5 to 6 hours · small-group · limited spaces</li>
+            </ul>
+            <Link
+              href={featuredTour.path}
+              className="mt-4 inline-block text-sm font-medium text-blue-700 underline underline-offset-2"
+            >
+              View full tour details
+            </Link>
+          </div>
+
+          <BookingEnquiryForm tourName={featuredTour.fullName} />
+
+          <p className="mt-8 text-center text-sm text-gray-600">
+            Prefer email only? Contact{" "}
+            <a
+              href={`mailto:${siteConfig.bookingEmail}`}
+              className="font-medium text-blue-700 underline"
+            >
+              {siteConfig.bookingEmail}
+            </a>
+          </p>
+        </section>
+      </main>
+    </>
+  );
+}

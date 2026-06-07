@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default:
-      "Portofino Shore Excursions | Cruise Port Tours & Riviera Guides for Passengers",
+      "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino Tours",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.defaultDescription,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Portofino Shore Excursions | Cruise Port Tours & Riviera Guides for Passengers",
+      "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino Tours",
     description: siteConfig.defaultDescription,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Portofino Shore Excursions | Cruise Port Tours & Riviera Guides for Passengers",
+      "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino Tours",
     description: siteConfig.defaultDescription,
     images: [siteConfig.defaultOgImage],
   },

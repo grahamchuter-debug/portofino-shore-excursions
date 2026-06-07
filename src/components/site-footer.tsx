@@ -1,8 +1,11 @@
 import Link from "next/link";
 
+import { featuredTour } from "@/lib/featured-tour";
 import { siteConfig } from "@/lib/site-config";
 
 const planYourVisitLinks = [
+  { label: "Book the Small Group Tour", href: featuredTour.bookingPath },
+  { label: featuredTour.cardName, href: featuredTour.path },
   { label: "Portofino Shore Excursions", href: "/portofino-shore-excursions" },
   { label: "Portofino Port Guide", href: "/portofino-port-guide" },
   { label: "One Day in Portofino", href: "/one-day-in-portofino" },
@@ -80,10 +83,10 @@ export function SiteFooter() {
             tools designed specifically for cruise passengers visiting Portofino.
           </p>
           <Link
-            href="/portofino-shore-excursions"
+            href={featuredTour.bookingPath}
             className="mt-6 inline-block rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-950/30 transition hover:bg-sky-400 sm:text-base"
           >
-            View Shore Excursions
+            Book Now
           </Link>
           <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
             {ctaSecondaryLinks.map((link) => (
@@ -116,9 +119,9 @@ export function SiteFooter() {
                 {siteConfig.name}
               </Link>
               <p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">
-                Independent Portofino cruise port guides and small-group shore
-                excursion planning for passengers arriving by tender to the
-                Italian Riviera.
+                Small-group Portofino shore excursions for cruise passengers —
+                Santa Margherita, Camogli and Portofino in one Riviera tour,
+                plus tender guides and port planning.
               </p>
               <ul className="mt-4 space-y-2">
                 {trustBullets.map((item) => (

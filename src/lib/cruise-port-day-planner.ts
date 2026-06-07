@@ -1,3 +1,5 @@
+import { featuredTour } from "@/lib/featured-tour";
+
 export type PlannerExcursionLink = {
   label: string;
   href?: string;
@@ -67,8 +69,8 @@ export const portofinoPortDayPlannerConfig: CruisePortDayPlannerConfig = {
           href: "/excursions/portofino-coastal-walk",
         },
         {
-          label: "Portofino & Santa Margherita Riviera",
-          href: "/excursions/portofino-santa-margherita-riviera",
+          label: featuredTour.cardName,
+          href: featuredTour.path,
         },
       ],
       dayPlan: [
@@ -88,8 +90,8 @@ export const portofinoPortDayPlannerConfig: CruisePortDayPlannerConfig = {
         "Plenty of time for the best Portofino shore excursions with comfortable return-to-ship margins.",
       excursions: [
         {
-          label: "Portofino & Santa Margherita Riviera",
-          href: "/excursions/portofino-santa-margherita-riviera",
+          label: featuredTour.cardName,
+          href: featuredTour.path,
         },
         {
           label: "Camogli & Portofino Coast",
@@ -121,8 +123,8 @@ export const portofinoPortDayPlannerConfig: CruisePortDayPlannerConfig = {
           href: "/excursions/camogli-portofino-coast",
         },
         {
-          label: "Portofino & Santa Margherita Riviera",
-          href: "/excursions/portofino-santa-margherita-riviera",
+          label: featuredTour.cardName,
+          href: featuredTour.path,
         },
         {
           label: "Portofino Coastal Walk",

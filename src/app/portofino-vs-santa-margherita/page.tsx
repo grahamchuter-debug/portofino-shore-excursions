@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -35,8 +36,7 @@ const faqs = [
   },
   {
     question: "Can I visit both in one port day?",
-    answer:
-      "Yes, on port calls of six hours or more. The Portofino and Santa Margherita Riviera tour covers both villages with coordinated transport from the Portofino harbour.",
+      answer: `Yes, on port calls of seven hours or more. The ${featuredTour.fullName} covers Santa Margherita, Camogli, and Portofino with coordinated transport from the Portofino harbour.`,
   },
   {
     question: "Which is better for a first visit?",
@@ -98,11 +98,9 @@ export default function PortofinoVsSantaMargheritaPage() {
           needing extra transport.
         </p>
         <p>
-          Six or more hours: combine both on the{" "}
-          <Link href="/excursions/portofino-santa-margherita-riviera">
-            Riviera tour
-          </Link>
-          . Your guide handles transport and return timing.
+          Seven or more hours: combine all three on the{" "}
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour.
+          Your guide handles transport and return timing.
         </p>
       </section>
     </ContentPage>

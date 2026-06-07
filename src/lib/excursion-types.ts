@@ -30,6 +30,11 @@ export type ExcursionSnapshotCard = {
   value: string;
 };
 
+export type ExcursionItineraryStep = {
+  title: string;
+  description: string;
+};
+
 export type ExcursionData = {
   slug: string;
   path: string;
@@ -46,6 +51,9 @@ export type ExcursionData = {
   gallery: ExcursionImage[];
   highlights: string[];
   description: readonly string[];
+  whyCruisePassengers?: readonly string[];
+  itinerary?: readonly ExcursionItineraryStep[];
+  bestForDetails?: readonly string[];
   included: readonly string[];
   notIncluded: readonly string[];
   timingAdvice: readonly string[];

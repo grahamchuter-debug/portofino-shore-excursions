@@ -44,8 +44,8 @@ export const comparisonLinks = [
 
 export const excursionLinks = [
   {
-    label: "Portofino & Santa Margherita Riviera",
-    href: "/excursions/portofino-santa-margherita-riviera",
+    label: "Small Group Santa Margherita, Camogli & Portofino",
+    href: "/excursions/small-group-santa-margherita-camogli-portofino",
   },
   {
     label: "Camogli & Portofino Coast",

@@ -82,12 +82,23 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
                 Return to ship on time, cruise passenger friendly
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href={excursion.bookingHref ?? siteConfig.excursionsHubPath}
-                  className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:text-base"
-                >
-                  {excursion.bookingLabel ?? "Book this excursion"}
-                </Link>
+                {excursion.bookingHref?.startsWith("http") ? (
+                  <a
+                    href={excursion.bookingHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:text-base"
+                  >
+                    {excursion.bookingLabel ?? "Book this excursion"}
+                  </a>
+                ) : (
+                  <Link
+                    href={excursion.bookingHref ?? siteConfig.excursionsHubPath}
+                    className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:text-base"
+                  >
+                    {excursion.bookingLabel ?? "Book this excursion"}
+                  </Link>
+                )}
                 <Link
                   href={siteConfig.excursionsHubPath}
                   className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:text-base"
@@ -165,6 +176,47 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
                 ))}
               </div>
             </ContentSection>
+
+            {excursion.whyCruisePassengers &&
+            excursion.whyCruisePassengers.length > 0 ? (
+              <ContentSection title="Why this tour works well for cruise passengers">
+                <ul className="list-disc space-y-2 pl-5 leading-7">
+                  {excursion.whyCruisePassengers.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </ContentSection>
+            ) : null}
+
+            {excursion.itinerary && excursion.itinerary.length > 0 ? (
+              <ContentSection title="Itinerary">
+                <ol className="space-y-6 leading-7">
+                  {excursion.itinerary.map((step, index) => (
+                    <li key={step.title} className="flex gap-4">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900">
+                          {step.title}
+                        </h3>
+                        <p className="mt-1 text-gray-700">{step.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </ContentSection>
+            ) : null}
+
+            {excursion.bestForDetails && excursion.bestForDetails.length > 0 ? (
+              <ContentSection title="Who this tour is best for">
+                <ul className="list-disc space-y-2 pl-5 leading-7">
+                  {excursion.bestForDetails.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </ContentSection>
+            ) : null}
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <ContentSection title="What's included">
@@ -254,12 +306,23 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
                 "Secure your place before port day and explore more cruise friendly excursions designed around your ship's timetable."}
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href={excursion.bookingHref ?? siteConfig.excursionsHubPath}
-                className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:px-8 sm:py-3.5 sm:text-base"
-              >
-                {excursion.bookingLabel ?? "Book this excursion"}
-              </Link>
+              {excursion.bookingHref?.startsWith("http") ? (
+                <a
+                  href={excursion.bookingHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:px-8 sm:py-3.5 sm:text-base"
+                >
+                  {excursion.bookingLabel ?? "Book this excursion"}
+                </a>
+              ) : (
+                <Link
+                  href={excursion.bookingHref ?? siteConfig.excursionsHubPath}
+                  className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:px-8 sm:py-3.5 sm:text-base"
+                >
+                  {excursion.bookingLabel ?? "Book this excursion"}
+                </Link>
+              )}
               <Link
                 href={siteConfig.excursionsHubPath}
                 className="inline-block rounded-full border border-white/30 px-6 py-3 text-sm font-semibold transition hover:bg-white/10 sm:px-8 sm:py-3.5 sm:text-base"

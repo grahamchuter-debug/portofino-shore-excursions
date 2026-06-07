@@ -103,10 +103,16 @@ export function CruiseShipDetailPage({ ship }: CruiseShipDetailPageProps) {
               {cruiseShipExcursionRecommendations.map((excursion) => (
                 <article
                   key={excursion.href}
-                  className="flex h-full flex-col rounded-xl border border-gray-200 bg-gray-50 p-5 shadow-sm"
+                  className={`flex h-full flex-col rounded-xl p-5 shadow-sm ${
+                    "featured" in excursion && excursion.featured
+                      ? "border-2 border-blue-600 bg-blue-50 ring-2 ring-blue-100 lg:col-span-2"
+                      : "border border-gray-200 bg-gray-50"
+                  }`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-                    {excursion.bestFor}
+                    {"featured" in excursion && excursion.featured
+                      ? "Most Popular · Recommended"
+                      : excursion.bestFor}
                   </p>
                   <h3 className="mt-2 text-lg font-semibold text-gray-900">
                     {excursion.title}

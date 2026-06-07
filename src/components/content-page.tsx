@@ -34,6 +34,7 @@ type ContentPageProps = {
   ctaTitle?: string;
   ctaText?: string;
   ctaHref?: string;
+  ctaLabel?: string;
   showShipReassurance?: boolean;
 };
 
@@ -52,6 +53,7 @@ export function ContentPage({
   ctaTitle = "Plan your Portofino shore excursion",
   ctaText = "Browse small-group tours designed around your tender schedule, with enough margin to return before all aboard.",
   ctaHref = siteConfig.excursionsHubPath,
+  ctaLabel = "View Portofino shore excursions",
   showShipReassurance = true,
 }: ContentPageProps) {
   const schema = [
@@ -111,7 +113,7 @@ export function ContentPage({
               href={ctaHref}
               className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold transition hover:bg-blue-500 sm:px-8 sm:py-3.5 sm:text-base"
             >
-              View Portofino shore excursions
+              {ctaLabel}
             </Link>
           </div>
         </section>

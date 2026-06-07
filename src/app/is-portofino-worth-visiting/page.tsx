@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -92,9 +93,9 @@ export default function IsPortofinoWorthVisitingPage() {
       <section>
         <h2>When to book a small-group excursion</h2>
         <p>
-          If you have six or more usable hours ashore and want to see Portofino
-          without transport stress, a{" "}
-          <Link href="/portofino-shore-excursions">small-group shore excursion</Link>{" "}
+          If you have seven or more usable hours ashore and want to see the
+          Riviera without transport stress, the{" "}
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
           is the best investment. Your guide handles tender-to-village logistics
           and return timing. Compare options on our{" "}
           <Link href="/best-portofino-shore-excursions">

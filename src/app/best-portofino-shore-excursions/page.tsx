@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -9,7 +10,7 @@ import { siteImages } from "@/lib/site-images";
 const pageMeta = {
   title: "Best Portofino Shore Excursions for Cruise Passengers",
   description:
-    "The best Portofino shore excursions ranked for cruise passengers: small-group Riviera tours, coastal walks, and Camogli visits with return-to-ship timing advice.",
+    "The best Portofino shore excursions ranked for cruise passengers — starting with the small-group Santa Margherita, Camogli and Portofino tour.",
   path: "/best-portofino-shore-excursions",
   ogImage: siteImages.portofinoHarbour,
   ogImageAlt:
@@ -19,6 +20,7 @@ const pageMeta = {
 export const metadata: Metadata = buildPageMetadata(pageMeta);
 
 const relatedLinks = [
+  { label: featuredTour.cardName, href: featuredTour.path },
   { label: "All shore excursions", href: "/portofino-shore-excursions" },
   ...coreGuideLinks,
 ] as const;
@@ -26,8 +28,7 @@ const relatedLinks = [
 const faqs = [
   {
     question: "What is the best Portofino shore excursion for first-time visitors?",
-    answer:
-      "The Portofino and Santa Margherita Riviera tour is our top recommendation. It covers both villages in one port day with a local guide and coordinated transport from the Portofino harbour.",
+    answer: `The ${featuredTour.fullName} is our top recommendation. It covers Santa Margherita Ligure, Camogli, and Portofino village in one port day with a local guide and coordinated transport from the Portofino harbour.`,
   },
   {
     question: "Which excursion is best for a short port call?",
@@ -37,7 +38,7 @@ const faqs = [
   {
     question: "Is a Camogli tour worth it on a Portofino port day?",
     answer:
-      "Yes, if you have eight or more hours in port. Camogli offers an authentic fishing village experience that Portofino cannot match. The small-group format (max 12) keeps it personal.",
+      "Yes — the small-group Santa Margherita, Camogli and Portofino tour includes Camogli alongside the other Riviera highlights. For Camogli only, the dedicated coast tour suits eight-hour port calls.",
   },
   {
     question: "Should I book through the cruise line or independently?",
@@ -57,29 +58,32 @@ export default function BestPortofinoShoreExcursionsPage() {
       pageDescription={pageMeta.description}
       relatedLinks={relatedLinks}
       faqs={faqs}
-      ctaTitle="Enquire about the best tour for your port day"
-      ctaText="Tell us your ship's schedule and we will recommend the right small-group excursion."
+      ctaTitle="Book the #1 ranked Riviera tour"
+      ctaText="Small-group Santa Margherita, Camogli and Portofino — three villages, one cruise day."
+      ctaHref={featuredTour.bookingPath}
+      ctaLabel="Book now"
     >
       <section>
-        <h2>1. Portofino & Santa Margherita Riviera — Most Popular</h2>
+        <h2>
+          1. {featuredTour.cardName} — Most Popular
+        </h2>
         <p>
-          The best all-round choice for first-time visitors. Covers both
-          villages, includes transport from the tender pier, and runs four to
-          five hours — ideal for standard port calls.
+          The best all-round choice for first-time visitors. Covers Santa
+          Margherita Ligure, Camogli, and Portofino village in one port day
+          with transport from the tender pier — ideal for standard and long port
+          calls.
         </p>
         <p>
-          <Link href="/excursions/portofino-santa-margherita-riviera">
-            View tour details →
-          </Link>
+          <Link href={featuredTour.path}>View tour details →</Link>
         </p>
       </section>
 
       <section>
-        <h2>2. Camogli & Portofino Coast — Small Group Favourite</h2>
+        <h2>2. Camogli &amp; Portofino Coast — Coastal Alternative</h2>
         <p>
-          Best for passengers who want authentic Ligurian village life beyond
-          the Portofino postcard. Maximum 12 guests, five to six hours, needs
-          eight or more hours in port.
+          Best for passengers who want a dedicated Camogli focus beyond the
+          three-village tour. Maximum 12 guests, five to six hours, needs eight
+          or more hours in port.
         </p>
         <p>
           <Link href="/excursions/camogli-portofino-coast">
@@ -89,7 +93,7 @@ export default function BestPortofinoShoreExcursionsPage() {
       </section>
 
       <section>
-        <h2>3. Portofino Coastal Walk — Best for First-Time Visitors</h2>
+        <h2>3. Portofino Coastal Walk — Best for Shorter Port Calls</h2>
         <p>
           Best for moderate port calls and active passengers. Guided headland
           walk plus village free time in three to four hours. Works from five-hour
@@ -105,11 +109,11 @@ export default function BestPortofinoShoreExcursionsPage() {
       <section>
         <h2>Why small-group beats independent travel</h2>
         <p>
-          From the tender pier, reaching Portofino independently means
-          navigating infrequent buses or negotiating water taxi fares — all while
-          watching the clock. Small-group excursions with local guides handle
-          transport, know the fastest return routes, and build schedule margins
-          into the day. See our{" "}
+          From the tender pier, reaching Camogli or Santa Margherita
+          independently means navigating infrequent buses while watching the
+          clock. Small-group excursions with local guides handle transport,
+          know the fastest return routes, and build schedule margins into the
+          day. See our{" "}
           <Link href="/portofino-shore-excursions">excursions hub</Link> to
           compare all options.
         </p>

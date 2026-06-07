@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Fetch Portofino cruise schedules from CruiseTimetables into public/data/.
-# Requires: node and scripts/parse-cruisetimetables-schedule.js (from norway-shore-excursions)
+# Requires: node and scripts/parse-cruisetimetables-schedule.js (local parser or set PARSER env)
 # Usage: PORTOFINO_NEXT=/path/to/portofino-next ./scripts/fetch-portofino-schedules.sh
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-PARSER="${PARSER:-$HOME/Desktop/norway-shore-excursions/scripts/parse-cruisetimetables-schedule.js}"
+PARSER="${PARSER:-$ROOT/scripts/parse-cruisetimetables-schedule.js}"
 OUT="$ROOT/public/data"
 BASE="https://www.cruisetimetables.com/portofinoitalyschedule"
 

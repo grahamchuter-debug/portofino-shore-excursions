@@ -1,37 +1,43 @@
 import type { ExcursionData } from "@/lib/excursion-types";
+import { featuredTour } from "@/lib/featured-tour";
 import { siteImages } from "@/lib/site-images";
 
-export const portofinoSantaMargheritaExcursion: ExcursionData = {
-  slug: "portofino-santa-margherita-riviera",
-  path: "/excursions/portofino-santa-margherita-riviera",
-  title: "Portofino & Santa Margherita Riviera Tour",
-  headline: "Portofino & Santa Margherita Riviera Tour for Cruise Passengers",
-  lead: "Explore the two jewels of the Tigullio Gulf on a small-group shore excursion designed around tender port times — colourful harbours, pastel waterfronts, and enough margin to return before all aboard.",
-  metaTitle: "Portofino & Santa Margherita Riviera Shore Excursion",
+export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData = {
+  slug: featuredTour.slug,
+  path: featuredTour.path,
+  title: featuredTour.cardName,
+  headline: `${featuredTour.fullName} for Cruise Passengers`,
+  lead: "Explore three Italian Riviera highlights in one cruise day — Santa Margherita Ligure, Camogli, and Portofino village — on a small-group shore excursion designed around tender port times and return-to-ship reassurance.",
+  metaTitle:
+    "Small Group Santa Margherita, Camogli & Portofino Shore Excursion",
   metaDescription:
-    "Book the Portofino and Santa Margherita Ligure Riviera shore excursion for cruise passengers. Small-group tour with local guide, tender-friendly timing, and return-to-ship reassurance.",
+    "Book the small-group Santa Margherita, Camogli and Portofino shore excursion for cruise passengers tendering into Portofino. Three Riviera villages, local guide, and return-to-ship timing.",
   heroImage: siteImages.santaMargherita,
   heroImageAlt:
-    "Santa Margherita Ligure on the Italian Riviera, a popular excursion destination from Portofino",
-  heroBadge: "⭐ Most Popular",
+    "Santa Margherita Ligure on the Italian Riviera, included on the small-group Portofino shore excursion",
+  heroBadge: "⭐ Most Popular Cruise Excursion",
   summary: {
-    duration: "Approx. 4 to 5 hours",
+    duration: "Approx. 5 to 6 hours",
     meetingPoint: "Portofino harbour, near tender landing",
     returnReassurance:
-      "Timed for typical port calls with 45-minute buffer before all aboard",
+      "Timed for typical port calls with buffer before all aboard",
     bestFor:
-      "First-time visitors wanting the classic Riviera experience in one tour",
+      "Cruise passengers who want Portofino, Santa Margherita and Camogli in one port day",
   },
   snapshotCards: [
     { label: "Tender transfer", value: "Approx. 15 to 20 minutes each way" },
-    { label: "Fitness level", value: "Easy to moderate" },
-    { label: "Group size", value: "Small group, max 16 guests" },
-    { label: "Port call suitability", value: "Ideal for 6 to 10 hour visits" },
+    { label: "Fitness level", value: "Easy — mostly walking on paved surfaces" },
+    { label: "Group size", value: "Small group — limited spaces" },
+    { label: "Port call suitability", value: "Best for 7 to 10 hour visits" },
   ],
   gallery: [
     {
       src: siteImages.santaMargherita,
-      alt: "Panoramic view of Santa Margherita Ligure harbour on the Italian Riviera",
+      alt: "Santa Margherita Ligure harbour on the small-group Portofino shore excursion",
+    },
+    {
+      src: siteImages.camogli,
+      alt: "Camogli fishing village colourful harbourfront on the Riviera shore excursion",
     },
     {
       src: siteImages.portofinoHarbour,
@@ -42,49 +48,90 @@ export const portofinoSantaMargheritaExcursion: ExcursionData = {
       alt: "Portofino village piazzetta with pastel buildings and harbour views",
     },
     {
+      src: siteImages.camogliHarbour,
+      alt: "Camogli waterfront with fishing boats on the Italian Riviera",
+    },
+    {
       src: siteImages.rivieraCoast,
       alt: "Coastal scenery along the Ligurian Riviera near Portofino",
     },
-    {
-      src: siteImages.portofinoCruisePort,
-      alt: "Portofino cruise port tender arrival at the village harbour",
-    },
-    {
-      src: siteImages.portofinoCoast,
-      alt: "Portofino lighthouse overlooking the Ligurian Sea",
-    },
   ],
   highlights: [
-    "Visit both Portofino village and Santa Margherita Ligure in one port day",
-    "Small-group format with a local English-speaking guide",
-    "Scenic coastal drive along the Tigullio Gulf",
+    "Three Riviera destinations in one cruise day — Portofino, Santa Margherita Ligure and Camogli",
+    "Small-group format designed for cruise passengers arriving by tender",
+    "Local English-speaking guide who knows the coastal roads and port schedules",
     "Free time in Portofino's famous piazzetta and harbour",
-    "Meeting point at the tender landing in Portofino village",
+    "Scenic drive along the Tigullio Gulf with photo stops",
     "Return-to-ship timing built around your cruise schedule",
   ],
   description: [
-    "This is the most popular shore excursion for cruise passengers calling at Portofino. Because large ships anchor offshore and tender into the village harbour, your port day starts with a short boat transfer — and this tour is designed from the ground up for that reality.",
-    "Your local guide meets you near the tender pier and leads a small group along the coast to Portofino village. You explore the famous piazzetta, watch fishing boats in the harbour, and enjoy free time for photos, gelato, or a quick espresso before returning along the scenic Riviera road.",
-    "Santa Margherita Ligure is often overlooked by passengers who rush straight to Portofino, yet its elegant promenade and relaxed atmosphere are worth seeing. This tour gives you both villages without the stress of navigating local buses or ferries on a tight schedule.",
-    "Many cruise passengers choose a small-group excursion rather than travelling independently because tender timing is unpredictable, local transport connections are infrequent, and a missed bus can mean missing the ship. A guided tour with built-in return margins removes that anxiety.",
+    "This is our most recommended shore excursion for cruise passengers calling at Portofino. Large ships anchor offshore and tender into the village harbour — and this tour is planned from the ground up for that reality, with a meeting point near the tender landing and enough margin to get you back before all aboard.",
+    "Your local guide leads a small group along the Riviera coast to Santa Margherita Ligure, where you explore the elegant promenade and working harbour. From there, continue to Camogli — a colourful fishing village with waterfront trattorias and a more authentic Ligurian atmosphere than the celebrity resort crowds in Portofino.",
+    "The day finishes in Portofino village itself, with free time in the piazzetta and harbour to photograph the iconic harbour, enjoy gelato, or relax at a waterfront café before returning to the tender pier.",
+  ],
+  whyCruisePassengers: [
+    "Covers three famous Riviera villages without navigating local buses or ferries on a tight schedule",
+    "Meeting point at the Portofino harbour — right where tender boats arrive",
+    "Small-group size means faster boarding, personal attention, and easier timing on busy port days",
+    "Your guide monitors traffic on the coastal road and adjusts the pace if queues at the tender pier are building",
+    "Independent travel to Camogli from the tender landing involves multiple connections with unreliable timetables — a guided tour removes that risk",
+  ],
+  itinerary: [
+    {
+      title: "Meet your guide at Portofino harbour",
+      description:
+        "After tendering ashore, join your guide near the harbour landing area. Allow time for the tender queue on busy mornings — exact meeting point details are on your booking confirmation.",
+    },
+    {
+      title: "Scenic coastal drive along the Tigullio Gulf",
+      description:
+        "Travel by small vehicle along the Riviera road with views of the Ligurian coastline. Your guide shares local context as you head toward Santa Margherita Ligure.",
+    },
+    {
+      title: "Santa Margherita Ligure",
+      description:
+        "Explore the elegant seafront promenade and harbour. Enjoy free time to stroll, take photos, or grab an espresso before continuing along the coast.",
+    },
+    {
+      title: "Camogli fishing village",
+      description:
+        "Discover one of Liguria's most authentic harbour towns — colourful waterfront houses, working fishing boats, and relaxed village streets away from the Portofino crowds.",
+    },
+    {
+      title: "Portofino village free time",
+      description:
+        "Return to Portofino for free time in the piazzetta and harbour. This is your chance for the classic Portofino photos before heading back to the tender pier.",
+    },
+    {
+      title: "Return to the tender pier",
+      description:
+        "Your guide ensures the group reaches the Portofino harbour with time to queue for the return tender. Be at the pier well before all aboard — typically 45 minutes ahead on busy days.",
+    },
+  ],
+  bestForDetails: [
+    "First-time visitors who want the classic Italian Riviera experience in one port day",
+    "Passengers with seven or more hours in port once tender transfers are counted",
+    "Travellers who prefer small groups over large coach tours",
+    "Anyone who wants Portofino plus nearby villages without transport stress",
+    "Not ideal for very short port calls under six hours — consider the Portofino coastal walk instead",
   ],
   included: [
-    "Small-group guided tour (max 16 guests)",
+    "Small-group guided tour with limited spaces",
     "Local English-speaking guide",
-    "Coastal transport between Santa Margherita and Portofino",
+    "Coastal transport between Santa Margherita, Camogli, and Portofino",
     "Free time in Portofino village",
     "Return-to-ship timing coordination",
   ],
   notIncluded: [
     "Tender boat between ship and shore (provided by your cruise line)",
-    "Food, drinks, and personal shopping in Portofino",
+    "Food, drinks, and personal shopping",
     "Gratuities for your guide",
     "Travel insurance or personal expenses",
   ],
   timingAdvice: [
-    "Check your cruise app for tender departure times, all aboard, and final departure before booking. Treat all aboard as your hard deadline, not the published sailing time.",
+    "Check your cruise app for tender departure times, all aboard, and final departure before booking. Treat all aboard as your hard deadline.",
     "Allow 45 minutes before all aboard to queue for the return tender, clear any security, and board without stress.",
-    "On days when multiple ships anchor in the Gulf, tender queues can be long. Disembark early and head straight to the meeting point listed on your confirmation.",
+    "On days when multiple ships anchor in the Gulf, tender queues can be long. Disembark early and head straight to the meeting point.",
     "Compare your hours in port using our cruise planner to confirm this tour fits your schedule comfortably.",
   ],
   faqs: [
@@ -94,43 +141,54 @@ export const portofinoSantaMargheritaExcursion: ExcursionData = {
         "Your guide meets you near the tender landing in Portofino village, a short walk from where cruise line tender boats arrive. Exact meeting point details are on your booking confirmation.",
     },
     {
-      question: "How long is the Portofino and Santa Margherita tour?",
+      question: "How long is the Santa Margherita, Camogli and Portofino tour?",
       answer:
-        "The tour typically runs four to five hours including transport and free time in Portofino village. Duration may vary slightly depending on traffic and your ship's port times.",
+        "The tour typically runs five to six hours including transport and free time in Portofino village. Duration may vary slightly depending on traffic and your ship's port times.",
     },
     {
       question: "Will I get back to my cruise ship on time?",
       answer:
-        "This excursion is designed for typical Portofino port calls with a 45-minute buffer before all aboard. Only your cruise line confirms the final deadline — monitor your ship's app throughout the day.",
+        "This excursion is designed for typical Portofino port calls with a buffer before all aboard. Only your cruise line confirms the final deadline — monitor your ship's app throughout the day.",
     },
     {
-      question: "Can I do this tour if my port call is only five hours?",
+      question: "Can I do this tour if my port call is only six hours?",
       answer:
-        "Five hours is tight once tender transfers are included. We recommend this tour for port calls of six hours or more. Use our cruise planner to check your specific schedule.",
+        "Six hours is tight once tender transfers are counted. We recommend this tour for port calls of seven hours or more. Use our cruise planner to check your specific schedule.",
     },
     {
       question: "Why book a small-group tour instead of going independently?",
       answer:
         "Independent travel requires navigating tender boats, local buses, and return timing on your own. A small-group tour with a local guide handles transport, knows the fastest routes, and builds return-to-ship margins into the itinerary.",
     },
+    {
+      question: "Does this tour visit all three villages?",
+      answer:
+        "Yes — Santa Margherita Ligure, Camogli, and Portofino village are all included. Portofino is where you tender ashore and where the tour ends, giving you free time in the famous harbour and piazzetta.",
+    },
   ],
   breadcrumbs: [
     { label: "Home", href: "/" },
     { label: "Shore Excursions", href: "/portofino-shore-excursions" },
-    { label: "Portofino & Santa Margherita Riviera" },
+    { label: featuredTour.cardName },
   ],
   relatedLinks: [
+    { label: "Book this tour", href: featuredTour.bookingPath },
+    { label: "Port guide", href: "/portofino-port-guide" },
     { label: "Tender information", href: "/portofino-tender-information" },
     { label: "Meeting points", href: "/portofino-meeting-points" },
     { label: "One day in Portofino", href: "/one-day-in-portofino" },
     { label: "Cruise planner", href: "/cruise-planner" },
   ],
-  bookingHref: "/portofino-shore-excursions",
-  bookingLabel: "Enquire about this tour",
+  bookingHref: featuredTour.bookingPath,
+  bookingLabel: "Book now",
   ctaTitle: "Ready to explore the Portofino Riviera?",
   ctaText:
-    "Secure your place on this small-group tour before port day. Local guides, tender-friendly timing, and return-to-ship reassurance included.",
+    "Secure your place on this small-group tour before port day. Three Riviera villages, local guides, tender-friendly timing, and return-to-ship reassurance.",
 };
+
+/** @deprecated Use smallGroupSantaMargheritaCamogliPortofinoExcursion — kept for legacy imports */
+export const portofinoSantaMargheritaExcursion =
+  smallGroupSantaMargheritaCamogliPortofinoExcursion;
 
 export const camogliPortofinoCoastExcursion: ExcursionData = {
   slug: "camogli-portofino-coast",

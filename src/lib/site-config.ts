@@ -5,10 +5,11 @@ export const siteConfig = {
   url: "https://portofinoshoreexcursions.com",
   locale: "en_GB",
   defaultDescription:
-    "Independent Portofino cruise port guides and small-group shore excursions for passengers arriving by tender to Portofino village and the Italian Riviera.",
+    "Small-group Portofino shore excursions for cruise passengers — Santa Margherita, Camogli and Portofino in one Riviera tour, plus tender guides and port planning.",
   defaultOgImage: siteImages.hero,
   defaultOgImageAlt: siteHeroAlt,
   copyrightEntity: "Portofino Shore Excursions",
   excursionsHubPath: "/portofino-shore-excursions",
   excursionsHubLabel: "Portofino shore excursions",
+  bookingEmail: "bookings@portofinoshoreexcursions.com",
 } as const;

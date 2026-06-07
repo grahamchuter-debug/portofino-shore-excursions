@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, excursionLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -37,8 +38,7 @@ const faqs = [
   },
   {
     question: "What is the best one-day plan for first-time visitors?",
-    answer:
-      "Tender ashore, take a small-group tour covering Portofino and Santa Margherita, and return to the pier 45 minutes before all aboard. This maximises your time without navigation stress.",
+      answer: `Tender ashore and take the ${featuredTour.cardName} — our top recommendation for standard port calls. Return to the pier 45 minutes before all aboard.`,
   },
   {
     question: "Is it worth visiting Santa Margherita on a Portofino port day?",
@@ -81,8 +81,8 @@ export default function OneDayInPortofinoPage() {
             — guided headland trail and village free time
           </li>
           <li>
-            <strong>Option B:</strong> Take the Portofino coastal walk — compact,
-            scenic, and easy to fit around tender times.
+            <strong>Option B:</strong> Stay in Portofino village — explore the
+            piazzetta and harbour near the tender landing
           </li>
           <li>
             <strong>Skip:</strong> Camogli, Cinque Terre, and any tour over
@@ -97,8 +97,8 @@ export default function OneDayInPortofinoPage() {
         <ul>
           <li>
             <strong>Morning:</strong>{" "}
-            <Link href="/excursions/portofino-santa-margherita-riviera">
-              Portofino & Santa Margherita Riviera tour
+            <Link href={featuredTour.path}>
+              {featuredTour.cardName}
             </Link>
           </li>
           <li>

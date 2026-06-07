@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -96,8 +97,9 @@ export default function PortofinoMeetingPointsPage() {
         <h2>Meeting points by excursion type</h2>
         <ul>
           <li>
-            <strong>Portofino & Santa Margherita Riviera:</strong> Portofino
-            harbour, near tender landing — transport to Santa Margherita included
+            <strong>{featuredTour.cardName}:</strong> Portofino
+            harbour, near tender landing — transport to Santa Margherita and
+            Camogli included
           </li>
           <li>
             <strong>Camogli & Portofino Coast:</strong> Portofino harbour —
@@ -110,8 +112,8 @@ export default function PortofinoMeetingPointsPage() {
         </ul>
         <p>
           See individual tour pages for full details:{" "}
-          <Link href="/excursions/portofino-santa-margherita-riviera">
-            Riviera tour
+          <Link href={featuredTour.path}>
+            Small group Riviera tour
           </Link>
           ,{" "}
           <Link href="/excursions/camogli-portofino-coast">Camogli tour</Link>

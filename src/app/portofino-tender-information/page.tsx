@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -125,9 +126,12 @@ export default function PortofinoTenderInformationPage() {
           Subtract 30 to 40 minutes from your published port time before
           choosing activities. Use our{" "}
           <Link href="/cruise-planner">cruise planner</Link> to see which
-          excursions fit your actual schedule. On port calls under five hours,
+          excursions fit your actual schedule. On port calls under six hours,
           stay in Portofino village or take the compact{" "}
           <Link href="/excursions/portofino-coastal-walk">coastal walk</Link>.
+          With seven or more hours, the{" "}
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
+          covers Santa Margherita, Camogli, and Portofino in one day.
         </p>
       </section>
     </ContentPage>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
-import { siteConfig } from "@/lib/site-config";
+import { featuredTour } from "@/lib/featured-tour";
 import { portofinoCruisePortAlt, siteImages } from "@/lib/site-images";
 
 type ShipScheduleShellProps = {
@@ -21,9 +21,9 @@ export function ShipScheduleShell({
   breadcrumbs,
   children,
   showReassurance = true,
-  ctaTitle = "See tours timed for your Portofino port day",
-  ctaHref = siteConfig.excursionsHubPath,
-  ctaLabel = "View shore excursions",
+  ctaTitle = "Book the small-group Santa Margherita, Camogli & Portofino tour",
+  ctaHref = featuredTour.bookingPath,
+  ctaLabel = "Book now",
 }: ShipScheduleShellProps) {
   return (
     <main className="min-h-screen bg-white text-gray-900">
