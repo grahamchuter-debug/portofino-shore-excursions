@@ -3,16 +3,18 @@ import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
 import { CruisePortDayPlanner } from "@/components/cruise-port-day-planner";
+import { featuredTour } from "@/lib/featured-tour";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, excursionLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
 
-const cruisePlannerHeroAlt = "Portofino harbour waterfront";
+const cruisePlannerHeroAlt =
+  "Portofino harbour waterfront for cruise passengers planning shore excursions";
 
 const pageMeta = {
   title: "Portofino Cruise Planner for Shore Excursions",
   description:
-    "Interactive Portofino cruise planner: match shore excursions to your tender port times, calculate return-to-ship margins, and plan your Italian Riviera port day.",
+    "Interactive Portofino cruise planner: enter ship times and see usable time ashore after tender delays, return-to-ship guidance, and small-group excursion recommendations.",
   path: "/cruise-planner",
   ogImage: siteImages.portofinoPier,
   ogImageAlt: cruisePlannerHeroAlt,
@@ -21,6 +23,14 @@ const pageMeta = {
 export const metadata: Metadata = buildPageMetadata(pageMeta);
 
 const relatedLinks = [
+  { label: featuredTour.cardName, href: featuredTour.path },
+  { label: "Check availability", href: featuredTour.bookingPath },
+  { label: "Tender information", href: "/portofino-tender-information" },
+  { label: "Meeting points", href: "/portofino-meeting-points" },
+  {
+    label: "What if my tender is late?",
+    href: "/what-if-my-tender-is-late",
+  },
   ...excursionLinks.map((l) => ({ label: l.label, href: l.href })),
   ...coreGuideLinks.filter((l) => l.href !== "/cruise-planner"),
 ] as const;
@@ -29,22 +39,27 @@ const faqs = [
   {
     question: "How does the Portofino cruise planner work?",
     answer:
-      "Enter your ship's arrival and departure times. The planner calculates your actual hours in port, recommends suitable excursions, and shows safe return times accounting for tender transfers.",
-  },
-  {
-    question: "Should I use published port times or all aboard time?",
-    answer:
-      "Use your ship's published arrival and departure for the planner. Then treat the recommended return time (45 minutes before departure) as your personal deadline for reaching the tender pier.",
+      "Enter your ship's published arrival and departure times. The planner automatically deducts 30 minutes after arrival before you are realistically ashore, and a 60-minute return window before departure, then shows your usable time ashore, confidence score, and excursion recommendations.",
   },
   {
     question: "Does the planner account for tender transfer time?",
     answer:
-      "The planner's recommendations assume you subtract tender transfer time mentally. On port calls under five hours, it recommends staying close to the tender landing rather than distant excursions.",
+      "Yes. Portofino is a tender port, so the planner builds in a 30-minute ashore delay after arrival and recommends being at the tender pier 60 minutes before departure. Actual tender queues may vary by cruise line, ship, and local conditions.",
+  },
+  {
+    question: "Should I use published port times or all aboard time?",
+    answer:
+      "Use your ship's published arrival and departure times in the planner. Always confirm all aboard on your cruise app — that is your hard deadline, and the planner's return time is a cautious planning guide.",
+  },
+  {
+    question: "When is the Small Group Santa Margherita, Camogli and Portofino tour recommended?",
+    answer:
+      "When the planner shows 5 or more usable hours ashore, the small-group Riviera tour may be a good fit. With 7 or more usable hours, it is an excellent fit for the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
   },
   {
     question: "What confidence score should I aim for?",
     answer:
-      "A score of 9 or 10 means your port call comfortably fits multiple excursions. Scores below 6 mean you should choose one compact activity and stay near the tender pier.",
+      "A score of 9 or 10 means your port call comfortably fits the full small-group Riviera tour. Scores around 7 mean the tour may work if tendering is smooth — check availability. Lower scores mean staying in Portofino village is the safer choice.",
   },
 ] as const;
 
@@ -52,25 +67,29 @@ export default function CruisePlannerPage() {
   return (
     <ContentPage
       title="Portofino Cruise Planner"
-      lead="Enter your ship's port times and see which shore excursions fit your schedule — with return-to-ship confidence scoring and tender-aware recommendations."
+      lead="Enter your ship's port times and see usable time ashore after tender delays — with clear excursion recommendations and return-to-ship guidance for Portofino."
       heroImage={pageMeta.ogImage}
       heroImageAlt={pageMeta.ogImageAlt}
       pagePath={pageMeta.path}
       pageDescription={pageMeta.description}
       relatedLinks={relatedLinks}
       faqs={faqs}
-      ctaTitle="Ready to book your Portofino excursion?"
-      ctaText="Use your planner results to choose the right small-group tour, then enquire to secure your place."
-      ctaHref="/portofino-shore-excursions"
+      ctaTitle="Check availability for the small-group Riviera tour"
+      ctaText="If the planner shows a good fit, secure your place on the Santa Margherita, Camogli and Portofino excursion before port day."
+      ctaHref={featuredTour.bookingPath}
+      ctaLabel="Check availability"
     >
       <section>
-        <h2>Plan around your real port time</h2>
+        <h2>Plan around your real port time — tender included</h2>
         <p>
-          Tender passengers lose 30 to 40 minutes to boat transfers. This
-          planner helps you see what is realistically achievable before you
-          book. For tender logistics, read our{" "}
+          You do not need to subtract tender time yourself. This planner
+          calculates how long you are realistically ashore at Portofino, when to
+          be back at the tender pier, and whether the{" "}
+          <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
+          fits your schedule. For background, read our{" "}
           <Link href="/portofino-tender-information">tender information</Link>{" "}
-          guide first.
+          and{" "}
+          <Link href="/portofino-meeting-points">meeting points</Link> guides.
         </p>
       </section>
 
@@ -80,22 +99,26 @@ export default function CruisePlannerPage() {
         <h2>After planning: next steps</h2>
         <ul>
           <li>
-            Compare recommended excursions on our{" "}
-            <Link href="/best-portofino-shore-excursions">
-              best shore excursions
-            </Link>{" "}
-            page
+            <Link href={featuredTour.path}>View the main Portofino excursion</Link>{" "}
+            if the planner recommends it
           </li>
           <li>
-            Confirm your{" "}
-            <Link href="/portofino-meeting-points">meeting point</Link> after
-            booking
+            <Link href={featuredTour.bookingPath}>
+              Check availability and send your cruise details
+            </Link>
           </li>
           <li>
             Read{" "}
             <Link href="/what-if-my-tender-is-late">
               what to do if your tender is late
             </Link>
+          </li>
+          <li>
+            Compare options on our{" "}
+            <Link href="/best-portofino-shore-excursions">
+              best shore excursions
+            </Link>{" "}
+            page
           </li>
           <li>
             Review our{" "}
