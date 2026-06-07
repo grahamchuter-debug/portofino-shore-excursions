@@ -1,4 +1,10 @@
 import { featuredTour } from "@/lib/featured-tour";
+import {
+  featuredTourFacts,
+  featuredTourGroupSizeLine,
+  featuredTourMeetingInstructions,
+  featuredTourMeetingPointLine,
+} from "@/lib/featured-tour-facts";
 
 export const featuredTourTrustPoints = [
   "Built for cruise passengers",
@@ -34,7 +40,7 @@ export const featuredTourComparisonRows = [
     label: "Better for tender-port timings",
     portofinoOnly: "Works for a short village visit only",
     independent: "Risky when connections slip or return queues build",
-    tour: "Meeting point at the harbour with schedule margins built in",
+    tour: `Meet at ${featuredTourFacts.meetingPoint.landmark} — ${featuredTourFacts.meetingPoint.walkFromTender}`,
   },
   {
     label: "Camogli — often missed by cruise passengers",
@@ -55,9 +61,8 @@ export const featuredTourSampleItineraryDisclaimer =
 
 export const featuredTourSampleItinerary = [
   {
-    title: "Meet in Portofino",
-    description:
-      "Join your guide near the harbour after tendering ashore. Allow time for the morning tender queue on busy port days.",
+    title: "Meet at Farmacia, Portofino",
+    description: `After tendering ashore, walk to ${featuredTourMeetingPointLine} (${featuredTourFacts.meetingPoint.walkFromTender}). Look for the ${featuredTourFacts.meetingPoint.guideSign} sign. ${featuredTourFacts.arrivalAdvice}`,
   },
   {
     title: "Santa Margherita Ligure",
@@ -90,12 +95,12 @@ export const featuredTourPassengerQuestions = [
   {
     question: "What tender should I take for a 9:30am tour?",
     answer:
-      "Take the earliest tender that gets you ashore in time to reach the meeting point — usually the first or second departure after your ship clears passengers. Check your cruise app the night before for tender ticket distribution. Allow 15 to 20 minutes for the boat transfer plus queuing time, and aim to be at the harbour meeting point a few minutes before your tour start time.",
+      `Take the earliest tender that gets you ashore in time to reach ${featuredTourMeetingPointLine} — usually the first or second departure after your ship clears passengers. Allow time for the tender boat and the ${featuredTourFacts.meetingPoint.walkFromTender}. ${featuredTourFacts.arrivalAdvice}`,
   },
   {
     question: "What if I arrive early and cannot see the guide?",
     answer:
-      "Stay near the Portofino harbour and piazzetta — do not wander far from the village centre. Call the number on your booking confirmation. Your guide meets at a fixed point close to the tender landing; on busy mornings, look for a small-group sign or ask at the confirmation details you received by email.",
+      `Head to ${featuredTourMeetingPointLine} and look for the ${featuredTourFacts.meetingPoint.guideSign} sign. Call the number on your booking confirmation if you cannot see your guide. Do not wander far from the meeting area.`,
   },
   {
     question: "What if my tender is delayed?",
@@ -119,8 +124,8 @@ export const featuredTourWhyDifferent = {
   heading: "Why this excursion is different",
   paragraphs: [
     "Most Portofino excursions are private tours designed for a single family or group.",
-    "This is one of the only shared small-group shore excursions available in Portofino, allowing cruise passengers to explore Portofino, Santa Margherita Ligure and Camogli without the cost of a private vehicle.",
-    "With a maximum of 8 guests per van, the experience remains personal while still offering excellent value.",
+    featuredTourFacts.uniqueSellingPoint,
+    `${featuredTourGroupSizeLine}. ${featuredTourFacts.vehicle.largerGroupsNote}.`,
     "The itinerary is specifically designed around cruise ship schedules and Portofino tender operations.",
   ],
 } as const;
@@ -129,14 +134,14 @@ export const featuredTourWhyCreated = {
   heading: "Why we created this tour",
   paragraphs: [
     "Most cruise passengers only see Portofino harbour — and it is stunning. But the best Riviera day combines Portofino with Santa Margherita Ligure and Camogli: three very different coastal villages within a short drive of the tender landing.",
-    "We built this itinerary specifically around cruise passengers. That means a meeting point at the Portofino harbour, realistic pacing for tender ashore and return queues, and enough margin to get you back before all aboard. We are not a generic travel directory — this is the excursion we recommend when your port times allow.",
+    "We built this itinerary specifically around cruise passengers and Portofino tender operations. That means a fixed meeting point at Farmacia on Piazza della Libertà, realistic pacing for tender ashore and return queues, and enough margin to get you back before all aboard.",
     "If your call is shorter, we will tell you honestly. Portofino village on foot may be the smarter choice. When you have five to seven usable hours ashore, check availability and tender timing. With seven or more, this small-group tour is an excellent fit.",
   ],
 } as const;
 
 export const bookingReassurancePoints = [
   "We check your ship arrival and departure time before confirming",
-  "Meeting details are sent after confirmation",
+  "Meeting point at Farmacia, Piazza della Libertà — sent after confirmation",
   "Tender timing is considered in our recommendation",
   "Return-to-ship planning is built into the itinerary",
 ] as const;
@@ -144,8 +149,7 @@ export const bookingReassurancePoints = [
 export const featuredTourRecommendationCopy = {
   label: "Recommended Portofino excursion",
   title: featuredTour.fullName,
-  description:
-    "Best for cruise passengers who want to see more than Portofino harbour in one day — Santa Margherita Ligure, Camogli and Portofino village with tender-aware timing.",
+  description: featuredTourFacts.uniqueSellingPoint,
   tourLinkLabel: "View Small Group Tour",
   availabilityLinkLabel: "Check Availability",
 } as const;

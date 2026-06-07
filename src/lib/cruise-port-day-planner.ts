@@ -1,4 +1,8 @@
 import { featuredTour } from "@/lib/featured-tour";
+import {
+  featuredTourFacts,
+  featuredTourMeetingPointLine,
+} from "@/lib/featured-tour-facts";
 
 /** Minutes after ship arrival before passengers are realistically ashore in Portofino. */
 export const TENDER_ASHORE_DELAY_MINUTES = 30;
@@ -209,7 +213,7 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
         },
       ],
       dayPlan: [
-        "Tender ashore as early as practical and head to the harbour meeting point",
+        `Tender ashore as early as practical and walk to ${featuredTourMeetingPointLine}`,
         `Book the ${featuredTour.cardName} if availability is confirmed`,
         "Allow margin for tender queues on the return journey",
         "Be at the tender pier by your recommended return time",

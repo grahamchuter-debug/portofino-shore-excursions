@@ -7,6 +7,7 @@ import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excurs
 import { JsonLd } from "@/components/json-ld";
 import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts, featuredTourGroupSizeLine, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { buildWebPageSchema } from "@/lib/site-schema";
 import { siteConfig } from "@/lib/site-config";
@@ -59,11 +60,12 @@ export default function BookFeaturedTourPage() {
               </h1>
               <p className="max-w-3xl text-base leading-7 text-white/90 sm:text-lg">
                 Send your cruise details and we will confirm availability,
-                meeting point at the Portofino tender landing, and
+                meeting point at {featuredTourFacts.meetingPoint.landmark},{" "}
+                {featuredTourFacts.meetingPoint.streetAddress}, and
                 return-to-ship timing for your port day.
               </p>
               <p className="mt-5 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm sm:text-sm">
-                Direct booking · Small group · Limited spaces
+                {featuredTourFacts.durationLabel} · {featuredTourFacts.vehicle.label} · Look for {featuredTourFacts.meetingPoint.guideSign}
               </p>
             </div>
           </div>
@@ -76,8 +78,10 @@ export default function BookFeaturedTourPage() {
             </h2>
             <ul className="mt-3 space-y-1 text-sm leading-6 text-gray-700">
               <li>Portofino, Santa Margherita Ligure and Camogli in one day</li>
-              <li>Maximum 8 guests per van — shared small-group format</li>
-              <li>Approx. 5 to 6 hours · tender-port aware</li>
+              <li>{featuredTourFacts.durationLabel} · {featuredTourFacts.portType}</li>
+              <li>{featuredTourGroupSizeLine} · {featuredTourFacts.vehicle.largerGroupsNote}</li>
+              <li>Meet at {featuredTourMeetingPointLine}</li>
+              <li>Guide sign: {featuredTourFacts.meetingPoint.guideSign}</li>
             </ul>
             <Link
               href={featuredTour.path}

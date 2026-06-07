@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -69,9 +70,10 @@ export default function BestPortofinoShoreExcursionsPage() {
         </h2>
         <p>
           The best all-round choice for first-time visitors. Covers Santa
-          Margherita Ligure, Camogli, and Portofino village in one port day
-          with transport from the tender pier — ideal for standard and long port
-          calls.
+          Margherita Ligure, Camogli, and Portofino village in a{" "}
+          {featuredTourFacts.durationLabel} shared small-group tour — meet at{" "}
+          {featuredTourMeetingPointLine}. Ideal when you have five or more
+          usable hours ashore after tender time.
         </p>
         <p>
           <Link href={featuredTour.path}>View tour details →</Link>

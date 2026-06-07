@@ -93,7 +93,7 @@ export default function CamogliVsPortofinoPage() {
       <section>
         <h2>Our recommendation</h2>
         <p>
-          First visit with seven or more hours: do all three on the{" "}
+          First visit with five or more usable hours ashore: do all three on the{" "}
           <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour.
           Returning visitors or those who dislike crowds: prioritise Camogli.
           Short port call: Portofino village only via the{" "}

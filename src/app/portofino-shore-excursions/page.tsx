@@ -4,6 +4,11 @@ import Link from "next/link";
 import { ContentPage } from "@/components/content-page";
 import { CruisePortDayPlanner } from "@/components/cruise-port-day-planner";
 import { featuredTour } from "@/lib/featured-tour";
+import {
+  featuredTourFacts,
+  featuredTourGroupSizeLine,
+  featuredTourMeetingPointLine,
+} from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -40,7 +45,7 @@ const faqs = [
   {
     question: "How long do Portofino shore excursions take?",
     answer:
-      "The small-group Santa Margherita, Camogli and Portofino tour runs five to six hours. The coastal walk runs three to four hours. The Camogli and Portofino coast tour needs five to six hours. All durations include transfer time from the tender pier.",
+      "The small-group Santa Margherita, Camogli and Portofino tour runs approximately four hours. The Camogli and Portofino coast tour needs a similar window. The coastal walk runs three to four hours. All durations exclude tender transfer time to and from the ship.",
   },
   {
     question: "Do Portofino tours guarantee return to the cruise ship?",
@@ -69,16 +74,18 @@ export default function PortofinoShoreExcursionsPage() {
         <h2>Our recommended tour: Small Group Santa Margherita, Camogli &amp; Portofino</h2>
         <p>
           This is the excursion we recommend most for cruise passengers calling
-          at Portofino. You tender into the village harbour, meet your guide,
+          at Portofino. You tender into the village, meet at{" "}
+          {featuredTourFacts.meetingPoint.landmark} on Piazza della Libertà,
           and visit three Riviera highlights in one port day — Santa Margherita
           Ligure, Camogli, and Portofino village — with coordinated transport
           and return-to-ship timing built in.
         </p>
         <ul>
           <li>Three Riviera destinations in one cruise day</li>
-          <li>Small-group format with limited spaces</li>
-          <li>Typical duration: five to six hours including transfer</li>
-          <li>Best for port calls of seven hours or more</li>
+          <li>{featuredTourGroupSizeLine} · {featuredTourFacts.vehicle.largerGroupsNote}</li>
+          <li>{featuredTourFacts.durationLabel} tour time (excluding tender transfers)</li>
+          <li>Best for 5+ usable hours ashore after tender time is counted</li>
+          <li>Meet at {featuredTourMeetingPointLine} — {featuredTourFacts.meetingPoint.guideSign} sign</li>
           <li>
             <Link href={featuredTour.path}>View full tour details</Link>
           </li>

@@ -129,7 +129,7 @@ export default function PortofinoTenderInformationPage() {
           excursions fit your actual schedule. On port calls under six hours,
           stay in Portofino village or take the compact{" "}
           <Link href="/excursions/portofino-coastal-walk">coastal walk</Link>.
-          With seven or more hours, the{" "}
+          With five or more usable hours ashore, the{" "}
           <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
           covers Santa Margherita, Camogli, and Portofino in one day.
         </p>

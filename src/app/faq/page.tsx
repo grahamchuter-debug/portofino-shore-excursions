@@ -5,6 +5,7 @@ import { ContentPage } from "@/components/content-page";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { comparisonLinks, coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteHeroAlt, siteImages } from "@/lib/site-images";
+import { featuredTourMeetingInstructions } from "@/lib/featured-tour-facts";
 import { portGuidePath } from "@/lib/site-paths";
 import { portofinoTenderExplainer } from "@/lib/tender-port-copy";
 
@@ -46,8 +47,7 @@ const faqs = [
   },
   {
     question: "Where do shore excursions meet after tendering?",
-    answer:
-      "Most small-group tours meet near the tender landing in Portofino village, close to the harbour and piazzetta. Your booking confirmation includes the exact meeting point.",
+    answer: featuredTourMeetingInstructions,
   },
   {
     question: "How early should I return to the tender pier?",
@@ -72,7 +72,7 @@ const faqs = [
   {
     question: "How much can I see in one port day?",
     answer:
-      "A six-hour call gives roughly four usable hours after tender transfers — enough for one focused excursion. An eight-hour call allows a fuller Riviera tour plus free time. Use our cruise planner to match activities to your schedule.",
+      "A six-hour scheduled call often gives enough usable time for the four-hour small-group Riviera tour once tender delays are counted. An eight-hour call allows more margin. Use our cruise planner to match activities to your schedule.",
   },
 ] as const;
 

@@ -13,6 +13,7 @@ import { WhyThisExcursionIsDifferentSection } from "@/components/why-this-excurs
 import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-tour-section";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { featuredTourPassengerQuestions } from "@/lib/featured-tour-content";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import {
@@ -47,10 +48,10 @@ const recommendedBadges = [
 
 const recommendedBullets = [
   "Three Riviera stops in one cruise day",
-  "Maximum 8 guests per van",
+  "Approx. 4 hours · 8-seat van",
+  "Meet at Farmacia, Piazza della Libertà",
   "Tender-port aware",
   "Return-to-ship friendly",
-  "Limited spaces",
 ] as const;
 
 const alternativeTours = [
@@ -112,10 +113,8 @@ export default function Home() {
                 Excursions
               </h1>
 
-              <p className="mx-auto mb-6 max-w-3xl text-base sm:mb-8 sm:text-xl md:text-2xl">
-                See three Italian Riviera highlights in one cruise day with a
-                small-group Portofino excursion designed around tender timings
-                and return-to-ship planning.
+              <p className="mx-auto mb-6 max-w-3xl text-base font-medium leading-relaxed sm:mb-8 sm:text-xl md:text-2xl">
+                {featuredTourFacts.uniqueSellingPoint}
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
@@ -173,9 +172,12 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <h3 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">
+                  <h3 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl">
                     {featuredTour.fullName}
                   </h3>
+                  <p className="mb-4 text-base font-medium leading-7 text-blue-900 sm:text-lg">
+                    {featuredTourFacts.uniqueSellingPoint}
+                  </p>
                   <ul className="mb-6 flex-1 space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
                     {recommendedBullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2">
@@ -224,22 +226,20 @@ export default function Home() {
 
         <section id="about" className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="mb-6 text-3xl font-bold sm:text-4xl">
-            Explore the Portofino Riviera Like a Local
+            The only shared small-group Riviera tour from Portofino
           </h2>
 
           <p className="text-base leading-8 text-gray-700 sm:text-lg">
-            Welcome to Portofino Shore Excursions, your specialist guide to the
-            Italian Riviera for cruise passengers. Ships anchor offshore and
-            tender into Portofino village — and every minute ashore counts. Our{" "}
+            {featuredTourFacts.uniqueSellingPoint} Ships anchor offshore and
+            tender into Portofino village — every minute ashore counts. Book the{" "}
             <Link
               href={featuredTour.path}
               className="font-medium text-blue-700 underline"
             >
-              small-group Santa Margherita, Camogli and Portofino tour
+              {featuredTour.cardName}
             </Link>{" "}
-            is the best way to see three Riviera highlights in one port day,
-            with local guides who know the roads, the tender schedule, and how
-            to get you back before all aboard.
+            tour for tender-aware timing, an 8-seat van, and return-to-ship
+            planning built around your cruise schedule.
           </p>
         </section>
 

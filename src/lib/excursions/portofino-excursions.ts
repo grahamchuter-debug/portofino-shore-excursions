@@ -1,5 +1,11 @@
 import type { ExcursionData } from "@/lib/excursion-types";
 import { featuredTour } from "@/lib/featured-tour";
+import {
+  featuredTourFacts,
+  featuredTourGroupSizeLine,
+  featuredTourMeetingInstructions,
+  featuredTourMeetingPointLine,
+} from "@/lib/featured-tour-facts";
 import { portGuidePath } from "@/lib/site-paths";
 import { siteImages } from "@/lib/site-images";
 
@@ -18,8 +24,8 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     "Santa Margherita Ligure on the Italian Riviera, included on the small-group Portofino shore excursion",
   heroBadge: "⭐ Most Popular Cruise Excursion",
   summary: {
-    duration: "Approx. 5 to 6 hours",
-    meetingPoint: "Portofino harbour, near tender landing",
+    duration: featuredTourFacts.durationLabel,
+    meetingPoint: featuredTourMeetingPointLine,
     returnReassurance:
       "Timed for typical port calls with buffer before all aboard",
     bestFor:
@@ -28,8 +34,9 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   snapshotCards: [
     { label: "Tender transfer", value: "Approx. 15 to 20 minutes each way" },
     { label: "Fitness level", value: "Easy — mostly walking on paved surfaces" },
-    { label: "Group size", value: "Maximum 8 guests per van" },
-    { label: "Port call suitability", value: "Best for 7 to 10 hour visits" },
+    { label: "Vehicle", value: featuredTourFacts.vehicle.label },
+    { label: "Group size", value: `${featuredTourGroupSizeLine} · ${featuredTourFacts.vehicle.largerGroupsNote}` },
+    { label: "Port call suitability", value: "Best for 5+ usable hours ashore after tender time" },
   ],
   gallery: [
     {
@@ -59,29 +66,28 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   ],
   highlights: [
     "Three Riviera destinations in one cruise day — Portofino, Santa Margherita Ligure and Camogli",
-    "Small-group format with a maximum of 8 guests per van — personal, not private-tour pricing",
+    `${featuredTourGroupSizeLine} in an ${featuredTourFacts.vehicle.label} — ${featuredTourFacts.vehicle.largerGroupsNote.toLowerCase()}`,
     "Local English-speaking guide who knows the coastal roads and port schedules",
     "Free time in Portofino's famous piazzetta and harbour",
     "Scenic drive along the Tigullio Gulf with photo stops",
     "Return-to-ship timing built around your cruise schedule",
   ],
   description: [
-    "This is our most recommended shore excursion for cruise passengers calling at Portofino. Large ships anchor offshore and tender into the village harbour — and this tour is planned from the ground up for that reality, with a meeting point near the tender landing and enough margin to get you back before all aboard.",
+    `This is our most recommended shore excursion for cruise passengers calling at Portofino — a ${featuredTourFacts.durationLabel} shared small-group day. Ships anchor offshore and tender into the village; the tour is planned around that reality, with a meeting point at ${featuredTourFacts.meetingPoint.landmark} and enough margin to get you back before all aboard.`,
     "Your local guide leads a small group along the Riviera coast to Santa Margherita Ligure, where you explore the elegant promenade and working harbour. From there, continue to Camogli — a colourful fishing village with waterfront trattorias and a more authentic Ligurian atmosphere than the celebrity resort crowds in Portofino.",
     "The day finishes in Portofino village itself, with free time in the piazzetta and harbour to photograph the iconic harbour, enjoy gelato, or relax at a waterfront café before returning to the tender pier.",
   ],
   whyCruisePassengers: [
     "Covers three famous Riviera villages without navigating local buses or ferries on a tight schedule",
-    "Meeting point at the Portofino harbour — right where tender boats arrive",
-    "Small-group size means faster boarding, personal attention, and easier timing on busy port days",
+    featuredTourMeetingInstructions,
+    `${featuredTourFacts.arrivalAdvice} Portofino is a ${featuredTourFacts.portType.toLowerCase()}.`,
     "Your guide monitors traffic on the coastal road and adjusts the pace if queues at the tender pier are building",
     "Independent travel to Camogli from the tender landing involves multiple connections with unreliable timetables — a guided tour removes that risk",
   ],
   itinerary: [
     {
-      title: "Meet your guide at Portofino harbour",
-      description:
-        "After tendering ashore, join your guide near the harbour landing area. Allow time for the tender queue on busy mornings — exact meeting point details are on your booking confirmation.",
+      title: `Meet at ${featuredTourFacts.meetingPoint.landmark}`,
+      description: `${featuredTourMeetingInstructions} ${featuredTourFacts.arrivalAdvice}`,
     },
     {
       title: "Scenic coastal drive along the Tigullio Gulf",
@@ -111,10 +117,10 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   ],
   bestForDetails: [
     "First-time visitors who want the classic Italian Riviera experience in one port day",
-    "Passengers with seven or more hours in port once tender transfers are counted",
+    "Passengers with five or more usable hours ashore once tender transfers are counted",
     "Travellers who prefer small groups over large coach tours",
     "Anyone who wants Portofino plus nearby villages without transport stress",
-    "Not ideal for very short port calls under six hours — consider the Portofino coastal walk instead",
+    "Not ideal for very short port calls under five usable hours — consider the Portofino coastal walk instead",
   ],
   included: [
     "Small-group guided tour with limited spaces",
@@ -132,19 +138,17 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   timingAdvice: [
     "Check your cruise app for tender departure times, all aboard, and final departure before booking. Treat all aboard as your hard deadline.",
     "Allow 45 minutes before all aboard to queue for the return tender, clear any security, and board without stress.",
-    "On days when multiple ships anchor in the Gulf, tender queues can be long. Disembark early and head straight to the meeting point.",
+    `${featuredTourFacts.arrivalAdvice} Disembark on an early tender on busy port days.`,
     "Compare your hours in port using our cruise planner to confirm this tour fits your schedule comfortably.",
   ],
   faqs: [
     {
       question: "Where does this excursion meet cruise passengers?",
-      answer:
-        "Your guide meets you near the tender landing in Portofino village, a short walk from where cruise line tender boats arrive. Exact meeting point details are on your booking confirmation.",
+      answer: featuredTourMeetingInstructions,
     },
     {
       question: "How long is the Santa Margherita, Camogli and Portofino tour?",
-      answer:
-        "The tour typically runs five to six hours including transport and free time in Portofino village. Duration may vary slightly depending on traffic and your ship's port times.",
+      answer: `The tour runs approximately ${featuredTourFacts.durationHours} hours including transport and village stops. Duration may vary slightly depending on traffic and your ship's port times.`,
     },
     {
       question: "Will I get back to my cruise ship on time?",
@@ -154,7 +158,11 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     {
       question: "Can I do this tour if my port call is only six hours?",
       answer:
-        "Six hours is tight once tender transfers are counted. We recommend this tour for port calls of seven hours or more. Use our cruise planner to check your specific schedule.",
+        "Six hours scheduled in port may work once tender time is counted — the tour itself is four hours. Use our cruise planner with your arrival and departure times to confirm you have enough usable time ashore.",
+    },
+    {
+      question: "How do I find my guide?",
+      answer: `Look for the ${featuredTourFacts.meetingPoint.guideSign} sign at ${featuredTourMeetingPointLine}. ${featuredTourFacts.meetingPoint.walkFromTender}.`,
     },
     {
       question: "Why book a small-group tour instead of going independently?",
