@@ -22,7 +22,7 @@ export const featuredTourComparisonRows = [
     portofinoOnly: "Portofino village only — compact and crowded on busy days",
     independent:
       "Possible with buses, but connections are infrequent and eat into your time",
-    tour: "Santa Margherita, Camogli and Portofino in one coordinated day",
+    tour: `${featuredTourFacts.durationLabel} — Santa Margherita, Camogli and Portofino in one coordinated excursion`,
   },
   {
     label: "Less planning stress",
@@ -58,7 +58,7 @@ export const featuredTourComparisonRows = [
 ] as const;
 
 export const featuredTourSampleItineraryDisclaimer =
-  "Example itinerary only. Actual timings may vary by ship schedule, tender operations, traffic, and local conditions." as const;
+  `Example itinerary for the ${featuredTourFacts.durationLabel.toLowerCase()} tour only. Actual timings may vary by ship schedule, tender operations, traffic, and local conditions.` as const;
 
 export const featuredTourSampleItinerary = [
   {

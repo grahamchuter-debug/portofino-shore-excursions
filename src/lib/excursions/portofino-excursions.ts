@@ -19,7 +19,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
   metaTitle:
     "Small Group Santa Margherita, Camogli & Portofino Shore Excursion",
   metaDescription:
-    "Book the small-group Santa Margherita, Camogli and Portofino shore excursion for cruise passengers tendering into Portofino. Three Riviera villages, local guide, and return-to-ship timing.",
+    "Book the small-group Santa Margherita, Camogli and Portofino shore excursion for cruise passengers tendering into Portofino. Approx. 4 hours, three Riviera villages, local guide, and return-to-ship timing.",
   heroImage: siteImages.santaMargherita,
   heroImageAlt:
     "Santa Margherita Ligure on the Italian Riviera, included on the small-group Portofino shore excursion",
@@ -74,7 +74,7 @@ export const smallGroupSantaMargheritaCamogliPortofinoExcursion: ExcursionData =
     "Return-to-ship timing built around your cruise schedule",
   ],
   description: [
-    `This is our most recommended shore excursion for cruise passengers calling at Portofino — a ${featuredTourFacts.durationLabel} shared small-group day. Ships anchor offshore and tender into the village; the tour is planned around that reality, with a meeting point at ${featuredTourFacts.meetingPoint.landmark} and enough margin to get you back before all aboard.`,
+    `This is our most recommended shore excursion for cruise passengers calling at Portofino — a ${featuredTourFacts.durationLabel} shared small-group excursion. Ships anchor offshore and tender into the village; the tour is planned around that reality, with a meeting point at ${featuredTourFacts.meetingPoint.landmark} and enough margin to get you back before all aboard.`,
     "Your local guide leads a small group along the Riviera coast to Santa Margherita Ligure, where you explore the elegant promenade and working harbour. From there, continue to Camogli — a colourful fishing village with waterfront trattorias and a more authentic Ligurian atmosphere than the celebrity resort crowds in Portofino.",
     "The day finishes in Portofino village itself, with free time in the piazzetta and harbour to photograph the iconic harbour, enjoy gelato, or relax at a waterfront café before returning to the tender pier.",
   ],

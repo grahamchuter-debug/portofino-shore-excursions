@@ -2,6 +2,8 @@
 export const featuredTourFacts = {
   durationHours: 4,
   durationLabel: "Approx. 4 hours",
+  /** ISO 8601 duration for structured data (schema.org). */
+  durationIso: "PT4H",
   vehicle: {
     label: "8-seat van",
     maxGuestsPerVan: 8,

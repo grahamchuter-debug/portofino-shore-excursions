@@ -1,8 +1,5 @@
 import { featuredTour } from "@/lib/featured-tour";
-import {
-  featuredTourFacts,
-  featuredTourMeetingPointLine,
-} from "@/lib/featured-tour-facts";
+import { featuredTourFacts, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 
 /** Minutes after ship arrival before passengers are realistically ashore in Portofino. */
 export const TENDER_ASHORE_DELAY_MINUTES = 30;
@@ -204,7 +201,7 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
       fitMessage:
         "Your usable time ashore may allow the small-group tour, depending on tender timing and meeting time at Farmacia. We recommend checking availability before you book.",
       mainTourWhyItFits:
-        "A four-hour small-group tour covering Santa Margherita, Camogli and Portofino can work on this schedule if tendering is smooth and you reach the meeting point on time.",
+        `A ${featuredTourFacts.durationLabel.toLowerCase()} small-group tour covering Santa Margherita, Camogli and Portofino can work on this schedule if tendering is smooth and you reach the meeting point on time.`,
       recommendMainTour: true,
       mainTourStrength: "good" as const,
       recommendationTitle: "Recommended excursion for your port time",
@@ -233,8 +230,8 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
     confidenceLabel: "Comfortable schedule",
     fitBadge: "Recommended",
     fitHeadline: `Your schedule suits the full ${featuredTour.cardName} tour`,
-    fitMessage:
-      "You have enough usable time ashore for Portofino, Santa Margherita Ligure and Camogli in one small-group day, with sensible return-to-ship planning built in.",
+      fitMessage:
+        `You have enough usable time ashore for Portofino, Santa Margherita Ligure and Camogli on this ${featuredTourFacts.durationLabel.toLowerCase()} small-group excursion, with sensible return-to-ship planning built in.`,
     mainTourWhyItFits:
       "This is our top recommendation for cruise passengers who want three Riviera villages in one port day — with an 8-seat van, Farmacia meeting point, and return timing planned around tender operations.",
     recommendMainTour: true,

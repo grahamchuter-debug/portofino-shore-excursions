@@ -1,4 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
+import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 
 export function buildOrganizationSchema() {
   return {
@@ -144,5 +146,42 @@ export function buildItemListSchema(
       name: item.name,
       description: item.description,
     })),
+  };
+}
+
+export function buildFeaturedTourTripSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: featuredTour.fullName,
+    description: featuredTourFacts.uniqueSellingPoint,
+    url: `${siteConfig.url}${featuredTour.path}`,
+    duration: featuredTourFacts.durationIso,
+    touristType: "Cruise passengers",
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Santa Margherita Ligure",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Camogli",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Portofino",
+        },
+      ],
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
   };
 }

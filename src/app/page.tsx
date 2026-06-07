@@ -19,6 +19,7 @@ import { featuredTourPassengerQuestions, featuredTourRecommendedBullets, feature
 import { buildPageMetadata } from "@/lib/site-metadata";
 import {
   buildFaqSchema,
+  buildFeaturedTourTripSchema,
   buildItemListSchema,
   buildWebPageSchema,
 } from "@/lib/site-schema";
@@ -28,7 +29,7 @@ const pageMeta = {
   title:
     "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino Tours",
   description:
-    "Small-group Portofino shore excursions for cruise passengers — explore Santa Margherita, Camogli and Portofino in one Riviera tour. Tender guides and return-to-ship planning.",
+    `Small-group Portofino shore excursions for cruise passengers — ${featuredTourFacts.durationLabel.toLowerCase()} tour covering Santa Margherita, Camogli and Portofino. Tender guides and return-to-ship planning.`,
   path: "/",
 } as const;
 
@@ -76,13 +77,14 @@ export default function Home() {
             {
               name: featuredTour.fullName,
               description:
-                "Three Riviera villages in one cruise day — Portofino, Santa Margherita Ligure and Camogli on a small-group shore excursion.",
+                `${featuredTourFacts.durationLabel} small-group shore excursion — Portofino, Santa Margherita Ligure and Camogli in one cruise day.`,
             },
             ...alternativeTours.map((t) => ({
               name: t.name,
               description: t.description,
             })),
           ]),
+          buildFeaturedTourTripSchema(),
           buildFaqSchema([...featuredTourPassengerQuestions]),
         ]}
       />

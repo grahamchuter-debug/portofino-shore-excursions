@@ -9,14 +9,14 @@ import { ShipScheduleBreadcrumbs } from "@/components/ship-schedule-breadcrumbs"
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts, featuredTourGroupSizeLine, featuredTourGuideMeetAdvice, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
-import { buildWebPageSchema } from "@/lib/site-schema";
+import { buildFeaturedTourTripSchema, buildWebPageSchema } from "@/lib/site-schema";
 import { siteConfig } from "@/lib/site-config";
 import { siteImages } from "@/lib/site-images";
 
 const pageMeta = {
   title: "Book Small Group Santa Margherita, Camogli & Portofino Tour",
   description:
-    "Book the small-group Santa Margherita, Camogli and Portofino shore excursion directly. Send your cruise details and we will confirm availability and meeting point.",
+    `Book the small-group Santa Margherita, Camogli and Portofino shore excursion directly. ${featuredTourFacts.durationLabel}, three Riviera villages — send your cruise details and we will confirm availability and meeting point.`,
   path: featuredTour.bookingPath,
   ogImage: siteImages.santaMargherita,
   ogImageAlt:
@@ -35,6 +35,7 @@ export default function BookFeaturedTourPage() {
             title: pageMeta.title,
             description: pageMeta.description,
           }),
+          buildFeaturedTourTripSchema(),
         ]}
       />
       <main className="min-h-screen bg-white text-gray-900">

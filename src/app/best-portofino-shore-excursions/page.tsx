@@ -29,7 +29,7 @@ const relatedLinks = [
 const faqs = [
   {
     question: "What is the best Portofino shore excursion for first-time visitors?",
-    answer: `The ${featuredTour.fullName} is our top recommendation. It covers Santa Margherita Ligure, Camogli, and Portofino village in one port day with a local guide and coordinated transport from the Portofino harbour.`,
+    answer: `The ${featuredTour.fullName} is our top recommendation. It covers Santa Margherita Ligure, Camogli, and Portofino village in ${featuredTourFacts.durationLabel.toLowerCase()} with a local guide and coordinated transport from the Portofino harbour.`,
   },
   {
     question: "Which excursion is best for a short port call?",

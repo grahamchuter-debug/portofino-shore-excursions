@@ -17,7 +17,7 @@ import { siteImages } from "@/lib/site-images";
 const pageMeta = {
   title: "Portofino Shore Excursions | Small Group Santa Margherita, Camogli & Portofino",
   description:
-    `Compare Portofino shore excursions for cruise passengers. Our top pick: the ${featuredTour.fullName} with return-to-ship timing.`,
+    `Compare Portofino shore excursions for cruise passengers. Our top pick: the ${featuredTour.fullName} (${featuredTourFacts.durationLabel.toLowerCase()}) with return-to-ship timing.`,
   path: "/portofino-shore-excursions",
   ogImage: siteImages.santaMargherita,
   ogImageAlt:
@@ -36,7 +36,7 @@ const relatedLinks = [
 const faqs = [
   {
     question: "What is the best Portofino shore excursion for cruise passengers?",
-    answer: `The ${featuredTour.fullName} is our top recommendation. It covers Santa Margherita Ligure, Camogli, and Portofino village in one port day with a local guide and return-to-ship timing.`,
+    answer: `The ${featuredTour.fullName} is our top recommendation. It covers Santa Margherita Ligure, Camogli, and Portofino village in ${featuredTourFacts.durationLabel.toLowerCase()} with a local guide and return-to-ship timing.`,
   },
   {
     question: "Should cruise passengers book Portofino excursions in advance?",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "How long do Portofino shore excursions take?",
     answer:
-      "The small-group Santa Margherita, Camogli and Portofino tour runs approximately four hours. The Camogli and Portofino coast tour needs a similar window. The coastal walk runs three to four hours. All durations exclude tender transfer time to and from the ship.",
+      "The small-group Santa Margherita, Camogli and Portofino tour runs approximately four hours. The Camogli and Portofino coast tour runs approximately five to six hours. The coastal walk runs three to four hours. All durations exclude tender transfer time to and from the ship.",
   },
   {
     question: "Do Portofino tours guarantee return to the cruise ship?",

@@ -5,6 +5,7 @@ import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-to
 import { ContentPage } from "@/components/content-page";
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { buildTouristAttractionSchema } from "@/lib/site-schema";
 import { excursionLinks, tenderLinks } from "@/lib/related-links";
@@ -53,7 +54,7 @@ const faqs = [
   },
   {
     question: "What is the best shore excursion for first-time visitors?",
-    answer: `The ${featuredTour.fullName} covers Santa Margherita Ligure, Camogli, and Portofino village in one port day — ideal when you have five or more usable hours ashore after tender delays.`,
+    answer: `The ${featuredTour.fullName} covers Santa Margherita Ligure, Camogli, and Portofino village in ${featuredTourFacts.durationLabel.toLowerCase()} — ideal when you have five or more usable hours ashore after tender delays.`,
   },
   {
     question: "How early should I return to the tender pier?",
@@ -228,9 +229,9 @@ export default function PortofinoCruisePortGuidePage() {
             recommendation is the{" "}
             <Link href={featuredTour.path}>{featuredTour.fullName}</Link>.
             It covers Santa Margherita Ligure, Camogli, and Portofino village
-            in one coordinated small-group day — with a meeting point at the
-            harbour and return-to-ship timing built around typical cruise
-            schedules.
+            in {featuredTourFacts.durationLabel.toLowerCase()} on a coordinated
+            small-group excursion — with a meeting point at Farmacia and
+            return-to-ship timing built around typical cruise schedules.
           </p>
           <p>
             This is not the right choice on very short calls. Use the port day

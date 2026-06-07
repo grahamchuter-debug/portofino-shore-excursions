@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/site-config";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
+  buildFeaturedTourTripSchema,
   buildWebPageSchema,
 } from "@/lib/site-schema";
 
@@ -54,6 +55,7 @@ export function ExcursionDetailPage({ excursion }: ExcursionDetailPageProps) {
     }),
     buildBreadcrumbSchema(excursion.breadcrumbs, excursion.path),
     buildFaqSchema(excursion.faqs),
+    ...(isFeaturedTour ? [buildFeaturedTourTripSchema()] : []),
   ];
 
   return (

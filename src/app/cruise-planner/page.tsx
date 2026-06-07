@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ContentPage } from "@/components/content-page";
 import { CruisePortDayPlanner } from "@/components/cruise-port-day-planner";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, excursionLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -54,7 +55,7 @@ const faqs = [
   {
     question: "When is the Small Group Santa Margherita, Camogli and Portofino tour recommended?",
     answer:
-      "When the planner shows five or more usable hours ashore, the small-group tour may work — check availability and tender timing. With seven or more usable hours, your schedule comfortably suits the full excursion including Portofino, Santa Margherita Ligure and Camogli.",
+      `When the planner shows five or more usable hours ashore, the ${featuredTourFacts.durationLabel.toLowerCase()} small-group tour may work — check availability and tender timing. With seven or more usable hours, your schedule comfortably suits the full excursion including Portofino, Santa Margherita Ligure and Camogli.`,
   },
   {
     question: "What does the port day rating mean?",

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ContentPage } from "@/components/content-page";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { coreGuideLinks, tenderLinks } from "@/lib/related-links";
 import { siteImages } from "@/lib/site-images";
@@ -131,7 +132,8 @@ export default function PortofinoTenderInformationPage() {
           <Link href="/excursions/portofino-coastal-walk">coastal walk</Link>.
           With five or more usable hours ashore, the{" "}
           <Link href={featuredTour.path}>{featuredTour.cardName}</Link> tour
-          covers Santa Margherita, Camogli, and Portofino in one day.
+          covers Santa Margherita, Camogli, and Portofino in{" "}
+          {featuredTourFacts.durationLabel.toLowerCase()}.
         </p>
       </section>
     </ContentPage>

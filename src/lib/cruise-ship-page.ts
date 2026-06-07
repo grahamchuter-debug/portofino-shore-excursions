@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import type { CruiseShipProfile } from "@/lib/cruise-ship-types";
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import { portGuidePath } from "@/lib/site-paths";
 import { portofinoTenderExplainer } from "@/lib/tender-port-copy";
 import { cruiseShipsHub } from "@/lib/portofino-cruise-ships";
@@ -47,7 +48,7 @@ export function getCruiseShipFaqs(ship: CruiseShipProfile) {
     },
     {
       question: `What shore excursions suit ${ship.name} passengers?`,
-      answer: `The ${featuredTour.fullName} works well when your port call is seven hours or longer once tender time is counted. See tour details for full information.`,
+      answer: `The ${featuredTour.fullName} works well when your port call is seven hours or longer once tender time is counted. The tour itself runs ${featuredTourFacts.durationLabel.toLowerCase()}. See tour details for full information.`,
     },
     {
       question: `When should ${ship.name} passengers return to the tender pier?`,
@@ -119,7 +120,7 @@ export function getVisitLengthAdvice(
     standard: {
       title: "Standard call 6–9 hours",
       items: [
-        "Enough time for the small-group Santa Margherita, Camogli and Portofino tour with return margin.",
+        "Enough time for the approximately four-hour small-group Santa Margherita, Camogli and Portofino tour with return margin.",
         "Book an excursion that meets near the tender pier rather than relying on local buses.",
         "Allow 45 minutes before all aboard at the tender landing, plus queue time.",
         "Camogli is possible on the longer end of this range with a guided tour.",
