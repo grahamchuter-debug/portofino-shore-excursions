@@ -1,5 +1,9 @@
 import { featuredTour } from "@/lib/featured-tour";
-import { featuredTourFacts, featuredTourMeetingPointLine } from "@/lib/featured-tour-facts";
+import {
+  featuredTourFacts,
+  featuredTourGroupSizeLine,
+  featuredTourMeetingPointLine,
+} from "@/lib/featured-tour-facts";
 
 /** Minutes after ship arrival before passengers are realistically ashore in Portofino. */
 export const TENDER_ASHORE_DELAY_MINUTES = 30;
@@ -29,14 +33,13 @@ export type PortofinoPlannerResult = {
   confidenceScore: number;
   confidenceLabel: string;
   band: PlannerFitBand;
-  fitBadge: string;
-  fitHeadline: string;
+  recommendationCardTitle: string;
   fitMessage: string;
   mainTourWhyItFits: string | null;
   recommendMainTour: boolean;
   mainTourStrength: "none" | "good" | "strong";
-  recommendationTitle: string;
-  recommendationSummary: string | null;
+  mainTourBenefits: readonly string[] | null;
+  shortStaySuggestions: readonly string[] | null;
   excursions: readonly PlannerExcursionLink[];
   dayPlan: readonly string[];
 };
@@ -47,10 +50,24 @@ export type PortofinoPlannerError = {
 
 export const portofinoPortDayPlannerConfig = {
   portName: "Portofino",
-  heading: "Portofino Cruise Smart Planner",
+  heading: "Portofino Cruise Day Planner",
   subtitle:
-    "Enter your ship arrival and departure times. We calculate tender delays and return-to-ship margins automatically — then show which excursions realistically fit.",
+    "Enter your ship arrival and departure times. We calculate tender delays and return-to-ship margins — then recommend excursions that fit your schedule.",
 } as const;
+
+export const plannerMainTourBenefits = [
+  `${featuredTourFacts.durationHours}-hour duration`,
+  "Tender-port friendly",
+  "Shared small-group experience",
+  featuredTourGroupSizeLine,
+  "Visits three Riviera destinations",
+] as const;
+
+export const plannerShortStaySuggestions = [
+  "Portofino harbour and piazzetta",
+  "Castello Brown",
+  "Shorter independent sightseeing near the tender pier",
+] as const;
 
 export function parseTimeToMinutes(time: string): number | null {
   const match = /^(\d{1,2}):(\d{2})$/.exec(time.trim());
@@ -164,16 +181,14 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
     return {
       confidenceScore: usableHours < 3 ? 3 : 4,
       confidenceLabel: "Tight schedule",
-      fitBadge: "Short port call",
-      fitHeadline: "Focus on Portofino village",
+      recommendationCardTitle: "Stay Close to Portofino",
       fitMessage:
-        "With under five hours ashore after tender time, stay close to the tender pier. Portofino village, the harbour, and a shorter walk are the best use of your day.",
+        "With under five hours ashore after tender time, stay near the tender pier. Portofino village, the harbour, and a shorter walk are the best use of your day.",
       mainTourWhyItFits: null,
       recommendMainTour: false,
       mainTourStrength: "none" as const,
-      recommendationTitle: "Best plan for your port time",
-      recommendationSummary:
-        "Explore Portofino village on foot from the tender landing — harbour views, the piazzetta, Castello Brown or the lighthouse walk if timing allows.",
+      mainTourBenefits: null,
+      shortStaySuggestions: plannerShortStaySuggestions,
       excursions: [
         { label: "Portofino village and piazzetta" },
         { label: "Harbour viewpoints and waterfront cafés" },
@@ -196,16 +211,15 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
     return {
       confidenceScore: 7,
       confidenceLabel: "Workable schedule",
-      fitBadge: "Check availability",
-      fitHeadline: `${featuredTour.cardName} may work for your schedule`,
+      recommendationCardTitle: "Good Fit",
       fitMessage:
-        "Your usable time ashore may allow the small-group tour, depending on tender timing and meeting time at Farmacia. We recommend checking availability before you book.",
+        `The ${featuredTour.fullName} may work on this schedule, depending on tender timing and how quickly you reach the meeting point at Farmacia. We recommend checking availability before you book.`,
       mainTourWhyItFits:
-        `A ${featuredTourFacts.durationLabel.toLowerCase()} small-group tour covering Santa Margherita, Camogli and Portofino can work on this schedule if tendering is smooth and you reach the meeting point on time.`,
+        `Your usable time ashore may allow this ${featuredTourFacts.durationLabel.toLowerCase()} tour if tendering is smooth and you arrive at ${featuredTourMeetingPointLine} on time.`,
       recommendMainTour: true,
       mainTourStrength: "good" as const,
-      recommendationTitle: "Recommended excursion for your port time",
-      recommendationSummary: null,
+      mainTourBenefits: plannerMainTourBenefits,
+      shortStaySuggestions: null,
       excursions: [
         {
           label: featuredTour.cardName,
@@ -228,16 +242,15 @@ function getBandDetails(usableHours: number, band: PlannerFitBand) {
   return {
     confidenceScore: usableHours >= 9 ? 10 : 9,
     confidenceLabel: "Comfortable schedule",
-    fitBadge: "Recommended",
-    fitHeadline: `Your schedule suits the full ${featuredTour.cardName} tour`,
-      fitMessage:
-        `You have enough usable time ashore for Portofino, Santa Margherita Ligure and Camogli on this ${featuredTourFacts.durationLabel.toLowerCase()} small-group excursion, with sensible return-to-ship planning built in.`,
+    recommendationCardTitle: "Excellent Fit",
+    fitMessage:
+      `Your schedule comfortably suits the ${featuredTour.fullName} — ${featuredTourFacts.durationLabel.toLowerCase()} covering Portofino, Santa Margherita Ligure and Camogli, with return-to-ship planning built in.`,
     mainTourWhyItFits:
       "This is our top recommendation for cruise passengers who want three Riviera villages in one port day — with an 8-seat van, Farmacia meeting point, and return timing planned around tender operations.",
     recommendMainTour: true,
     mainTourStrength: "strong" as const,
-    recommendationTitle: "Recommended excursion for your port time",
-    recommendationSummary: null,
+    mainTourBenefits: plannerMainTourBenefits,
+    shortStaySuggestions: null,
     excursions: [
       {
         label: featuredTour.cardName,
@@ -299,14 +312,13 @@ export function calculatePortofinoPlannerResult(
     confidenceScore: bandDetails.confidenceScore,
     confidenceLabel: bandDetails.confidenceLabel,
     band,
-    fitBadge: bandDetails.fitBadge,
-    fitHeadline: bandDetails.fitHeadline,
+    recommendationCardTitle: bandDetails.recommendationCardTitle,
     fitMessage: bandDetails.fitMessage,
     mainTourWhyItFits: bandDetails.mainTourWhyItFits,
     recommendMainTour: bandDetails.recommendMainTour,
     mainTourStrength: bandDetails.mainTourStrength,
-    recommendationTitle: bandDetails.recommendationTitle,
-    recommendationSummary: bandDetails.recommendationSummary,
+    mainTourBenefits: bandDetails.mainTourBenefits,
+    shortStaySuggestions: bandDetails.shortStaySuggestions,
     excursions: bandDetails.excursions,
     dayPlan: bandDetails.dayPlan,
   };

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { featuredTour } from "@/lib/featured-tour";
+import { featuredTourFacts } from "@/lib/featured-tour-facts";
 import {
   calculatePortofinoPlannerResult,
   getConfidenceTone,
@@ -16,7 +17,7 @@ import {
 const plannerBadges = [
   "Tender-aware",
   "Return-to-ship planning",
-  "Small-group recommendation",
+  "Excursion recommendations",
 ] as const;
 
 function ResultCard({
@@ -44,6 +45,166 @@ function ResultCard({
   );
 }
 
+function RecommendationCard({
+  result,
+}: {
+  result: Exclude<
+    ReturnType<typeof calculatePortofinoPlannerResult>,
+    { error: string } | null
+  >;
+}) {
+  const isMainTour = result.recommendMainTour;
+  const cardBorder = isMainTour ? "border-blue-500" : "border-amber-300";
+  const cardBg = isMainTour ? "bg-white" : "bg-white";
+
+  return (
+    <div
+      className={`rounded-2xl border-2 p-5 shadow-md sm:p-6 ${cardBorder} ${cardBg}`}
+    >
+      <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+        Excursion recommendation
+      </p>
+      <h3 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+        {result.recommendationCardTitle}
+      </h3>
+      <p className="mt-3 text-base leading-7 text-gray-700">
+        {result.fitMessage}
+      </p>
+
+      {isMainTour ? (
+        <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50/70 p-4 sm:p-5">
+          <h4 className="text-lg font-bold text-gray-900 sm:text-xl">
+            {featuredTour.fullName}
+          </h4>
+          {result.mainTourWhyItFits ? (
+            <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
+              {result.mainTourWhyItFits}
+            </p>
+          ) : null}
+          {result.mainTourBenefits && result.mainTourBenefits.length > 0 ? (
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
+              {result.mainTourBenefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-2">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
+                  />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href={featuredTour.path}
+              className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            >
+              View Tour
+            </Link>
+            <Link
+              href={featuredTour.bookingPath}
+              className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+            >
+              Check Availability
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50/60 p-4 sm:p-5">
+          {result.shortStaySuggestions && result.shortStaySuggestions.length > 0 ? (
+            <ul className="space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
+              {result.shortStaySuggestions.map((suggestion) => (
+                <li key={suggestion} className="flex items-start gap-2">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-600"
+                  />
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href="/one-day-in-portofino"
+              className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            >
+              One Day in Portofino
+            </Link>
+            <Link
+              href="/excursions/portofino-coastal-walk"
+              className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+            >
+              View Coastal Walk
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RecommendedExcursionSection({
+  result,
+}: {
+  result: Exclude<
+    ReturnType<typeof calculatePortofinoPlannerResult>,
+    { error: string } | null
+  >;
+}) {
+  if (!result.recommendMainTour) {
+    return (
+      <aside className="rounded-xl border border-gray-200 bg-white/90 p-4 sm:p-5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+          Recommended excursion
+        </p>
+        <p className="mt-2 text-sm leading-6 text-gray-700">
+          The {featuredTour.cardName} tour needs at least five usable hours
+          ashore after tender time. On a longer Portofino call, it covers Santa
+          Margherita Ligure, Camogli and Portofino in{" "}
+          {featuredTourFacts.durationLabel.toLowerCase()}.
+        </p>
+        <Link
+          href={featuredTour.path}
+          className="mt-3 inline-block text-sm font-medium text-blue-700 underline underline-offset-2"
+        >
+          View tour details for your next visit
+        </Link>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="rounded-xl border-2 border-blue-600 bg-blue-50/50 p-4 sm:p-5">
+      <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+        Recommended excursion
+      </p>
+      <h3 className="mt-2 text-lg font-bold text-gray-900">
+        {featuredTour.fullName}
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-gray-700">
+        {result.band === "excellent"
+          ? "Your port schedule is a strong match for our most popular small-group Riviera tour."
+          : "Your schedule may work for this tour — confirm tender timing and check availability before port day."}
+      </p>
+      <div className="mt-4 flex flex-wrap gap-3">
+        <Link
+          href={featuredTour.path}
+          className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+        >
+          View Tour
+        </Link>
+        <Link
+          href={featuredTour.bookingPath}
+          className="rounded-full border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+        >
+          Check Availability
+        </Link>
+      </div>
+    </aside>
+  );
+}
+
 export function CruisePortDayPlanner() {
   const [arrival, setArrival] = useState("");
   const [departure, setDeparture] = useState("");
@@ -63,12 +224,9 @@ export function CruisePortDayPlanner() {
       className="overflow-hidden rounded-2xl border border-sky-200 bg-gradient-to-br from-sky-50 via-blue-50 to-slate-50 p-5 shadow-sm sm:p-6 lg:p-8"
     >
       <div className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
-          Cruise planning tool
-        </p>
         <h2
           id="port-day-planner-heading"
-          className="!mt-2 text-2xl font-bold text-gray-900 sm:text-3xl"
+          className="text-2xl font-bold text-gray-900 sm:text-3xl"
         >
           {portofinoPortDayPlannerConfig.heading}
         </h2>
@@ -120,96 +278,7 @@ export function CruisePortDayPlanner() {
             </div>
           ) : (
             <>
-              <div
-                className={`rounded-2xl border-2 p-5 sm:p-6 ${
-                  result.recommendMainTour
-                    ? "border-blue-500 bg-white shadow-md"
-                    : "border-amber-300 bg-white shadow-md"
-                }`}
-              >
-                <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-                  Your Portofino port day result
-                </p>
-                <p
-                  className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                    result.recommendMainTour
-                      ? "bg-blue-600 text-white"
-                      : "bg-amber-100 text-amber-900"
-                  }`}
-                >
-                  {result.fitBadge}
-                </p>
-                <h3 className="mt-3 text-xl font-bold text-gray-900 sm:text-2xl">
-                  {result.fitHeadline}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-gray-700">
-                  {result.fitMessage}
-                </p>
-
-                <div
-                  className={`mt-5 rounded-xl border p-4 sm:p-5 ${
-                    result.recommendMainTour
-                      ? "border-blue-200 bg-blue-50/70"
-                      : "border-amber-200 bg-amber-50/60"
-                  }`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-                    {result.recommendationTitle}
-                  </p>
-
-                  {result.recommendMainTour ? (
-                    <>
-                      <h4 className="mt-2 text-lg font-bold text-gray-900">
-                        {featuredTour.fullName}
-                      </h4>
-                      {result.mainTourWhyItFits ? (
-                        <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
-                          {result.mainTourWhyItFits}
-                        </p>
-                      ) : null}
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        <Link
-                          href={featuredTour.path}
-                          className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                        >
-                          View Small Group Tour
-                        </Link>
-                        <Link
-                          href={featuredTour.bookingPath}
-                          className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-                        >
-                          Check Availability
-                        </Link>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <h4 className="mt-2 text-lg font-bold text-gray-900">
-                        Stay in Portofino village
-                      </h4>
-                      {result.recommendationSummary ? (
-                        <p className="mt-2 text-sm leading-6 text-gray-700 sm:text-base">
-                          {result.recommendationSummary}
-                        </p>
-                      ) : null}
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        <Link
-                          href="/excursions/portofino-coastal-walk"
-                          className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                        >
-                          View Coastal Walk
-                        </Link>
-                        <Link
-                          href="/one-day-in-portofino"
-                          className="rounded-full border border-blue-600 bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-                        >
-                          One Day in Portofino
-                        </Link>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
+              <RecommendationCard result={result} />
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <ResultCard title="Scheduled port time">
@@ -349,6 +418,8 @@ export function CruisePortDayPlanner() {
                   ))}
                 </ol>
               </ResultCard>
+
+              <RecommendedExcursionSection result={result} />
 
               <div className="rounded-xl border border-gray-200 bg-white/80 p-4 text-sm leading-6 text-gray-600">
                 <p className="font-medium text-gray-900">Helpful guides</p>
