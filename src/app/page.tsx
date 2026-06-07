@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { BookingReassurance } from "@/components/booking-reassurance";
 import { ConversionCtaStrip } from "@/components/conversion-cta-strip";
+import { FeaturedTourRecommendationBox } from "@/components/featured-tour-recommendation-box";
 import {
   FeaturedTourComparisonSection,
   FeaturedTourPassengerQuestionsSection,
@@ -14,14 +15,13 @@ import { WhyWeCreatedThisTourSection } from "@/components/why-we-created-this-to
 import { JsonLd } from "@/components/json-ld";
 import { featuredTour } from "@/lib/featured-tour";
 import { featuredTourFacts } from "@/lib/featured-tour-facts";
-import { featuredTourPassengerQuestions } from "@/lib/featured-tour-content";
+import { featuredTourPassengerQuestions, featuredTourRecommendedBullets, featuredTourTrustPoints } from "@/lib/featured-tour-content";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import {
   buildFaqSchema,
   buildItemListSchema,
   buildWebPageSchema,
 } from "@/lib/site-schema";
-import { featuredTourTrustPoints } from "@/lib/featured-tour-content";
 import { siteImages, siteHeroAlt } from "@/lib/site-images";
 
 const pageMeta = {
@@ -40,19 +40,6 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const trustBadges = featuredTourTrustPoints.slice(0, 3);
-
-const recommendedBadges = [
-  "Most Popular Cruise Excursion",
-  "Small Group Favourite",
-] as const;
-
-const recommendedBullets = [
-  "Three Riviera stops in one cruise day",
-  "Approx. 4 hours · 8-seat van",
-  "Meet at Farmacia, Piazza della Libertà",
-  "Tender-port aware",
-  "Return-to-ship friendly",
-] as const;
 
 const alternativeTours = [
   {
@@ -125,10 +112,10 @@ export default function Home() {
                   View Small Group Tour
                 </Link>
                 <Link
-                  href="/cruise-planner"
+                  href={featuredTour.path}
                   className="inline-block rounded-full border border-white/30 bg-white/10 px-6 py-3 text-base font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:px-8 sm:py-4 sm:text-lg"
                 >
-                  Plan My Portofino Cruise Day
+                  Check Availability
                 </Link>
               </div>
 
@@ -162,24 +149,14 @@ export default function Home() {
                   className="h-56 w-full object-cover lg:h-full lg:min-h-[360px]"
                 />
                 <div className="flex flex-col p-6 sm:p-8">
-                  <ul className="mb-4 flex flex-wrap gap-2">
-                    {recommendedBadges.map((badge) => (
-                      <li
-                        key={badge}
-                        className="rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white"
-                      >
-                        {badge}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mb-4 inline-flex w-fit rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
+                    Most Popular Cruise Excursion
+                  </p>
                   <h3 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl">
                     {featuredTour.fullName}
                   </h3>
-                  <p className="mb-4 text-base font-medium leading-7 text-blue-900 sm:text-lg">
-                    {featuredTourFacts.uniqueSellingPoint}
-                  </p>
                   <ul className="mb-6 flex-1 space-y-2 text-sm leading-6 text-gray-700 sm:text-base">
-                    {recommendedBullets.map((bullet) => (
+                    {featuredTourRecommendedBullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2">
                         <span
                           aria-hidden="true"
@@ -194,7 +171,7 @@ export default function Home() {
                       href={featuredTour.path}
                       className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base"
                     >
-                      View Small Group Tour
+                      View Tour
                     </Link>
                     <Link
                       href={featuredTour.bookingPath}
@@ -213,6 +190,12 @@ export default function Home() {
         <WhyThisExcursionIsDifferentSection showCta />
 
         <WhyWeCreatedThisTourSection variant="muted" showCta={false} />
+
+        <section className="border-y border-blue-100 bg-blue-50/40">
+          <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+            <FeaturedTourRecommendationBox />
+          </div>
+        </section>
 
         <FeaturedTourTrustSection />
 
@@ -241,6 +224,8 @@ export default function Home() {
             tour for tender-aware timing, an 8-seat van, and return-to-ship
             planning built around your cruise schedule.
           </p>
+
+          <FeaturedTourRecommendationBox className="mt-8" />
         </section>
 
         <section
@@ -248,65 +233,85 @@ export default function Home() {
           className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24"
         >
           <h2 className="mb-2 text-3xl font-bold sm:mb-3 sm:text-4xl">
-            Alternative Portofino shore excursions
+            Portofino shore excursions
           </h2>
-          <p className="mb-6 max-w-3xl text-base leading-7 text-gray-600 sm:mb-8">
-            Our top recommendation is the{" "}
-            <Link
-              href={featuredTour.path}
-              className="font-medium text-blue-700 underline"
-            >
-              {featuredTour.fullName}
-            </Link>
-            . These alternatives suit different port times or preferences.
+          <p className="mb-8 max-w-3xl text-base leading-7 text-gray-600">
+            Start with our recommended small-group tour — other options below
+            suit different port times or preferences.
           </p>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <article className="mb-10 overflow-hidden rounded-2xl border-2 border-blue-600 bg-white shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <img
+                src={siteImages.santaMargherita}
+                alt="Small Group Santa Margherita, Camogli and Portofino shore excursion on the Italian Riviera"
+                className="h-56 w-full object-cover lg:h-full lg:min-h-[280px]"
+              />
+              <div className="flex flex-col p-6 sm:p-8">
+                <p className="mb-3 inline-flex w-fit rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
+                  Most Popular Cruise Excursion
+                </p>
+                <h3 className="mb-3 text-2xl font-bold text-gray-900">
+                  {featuredTour.fullName}
+                </h3>
+                <p className="mb-4 flex-1 text-sm leading-6 text-gray-700 sm:text-base">
+                  {featuredTourFacts.uniqueSellingPoint}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href={featuredTour.path}
+                    className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                  >
+                    View Tour
+                  </Link>
+                  <Link
+                    href={featuredTour.bookingPath}
+                    className="rounded-full border border-blue-600 px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                  >
+                    Check Availability
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <h3 className="mb-4 text-lg font-semibold text-gray-500">
+            Other Portofino excursions
+          </h3>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {alternativeTours.map((tour) => (
               <article
                 key={tour.href}
-                className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 shadow-sm"
+                className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-gray-50/80 shadow-sm"
               >
                 <img
                   src={tour.image}
                   alt={tour.imageAlt}
-                  className="h-40 w-full object-cover"
+                  className="h-36 w-full object-cover opacity-90"
                 />
 
-                <div className="flex flex-1 flex-col p-3.5 md:p-4">
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
+                <div className="flex flex-1 flex-col p-4">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
                     {tour.badge}
                   </p>
-                  <h3 className="mb-1.5 text-base font-semibold">{tour.name}</h3>
+                  <h3 className="mb-2 text-base font-semibold text-gray-800">
+                    {tour.name}
+                  </h3>
 
-                  <p className="mb-3 flex-1 text-sm leading-5 text-gray-600">
+                  <p className="mb-4 flex-1 text-sm leading-5 text-gray-600">
                     {tour.description}
                   </p>
 
                   <Link
                     href={tour.href}
-                    className="w-fit rounded-full bg-gray-900 px-4 py-1.5 text-xs font-medium text-white transition hover:bg-black"
+                    className="w-fit rounded-full border border-gray-300 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 transition hover:border-gray-400"
                   >
                     View Tour
                   </Link>
                 </div>
               </article>
             ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link
-              href={featuredTour.path}
-              className="mr-3 inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base"
-            >
-              View Small Group Tour
-            </Link>
-            <Link
-              href={featuredTour.bookingPath}
-              className="inline-block rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 sm:text-base"
-            >
-              Check Availability
-            </Link>
           </div>
         </section>
 
@@ -352,6 +357,8 @@ export default function Home() {
               for the best way to combine Santa Margherita, Camogli and
               Portofino.
             </p>
+
+            <FeaturedTourRecommendationBox className="mt-8" />
           </div>
         </section>
 
@@ -364,6 +371,8 @@ export default function Home() {
               Match excursions to your arrival and departure times so you can
               enjoy the Riviera and still return before all aboard.
             </p>
+
+            <FeaturedTourRecommendationBox className="mb-8" />
             <ul className="flex flex-wrap gap-3">
               <li>
                 <Link

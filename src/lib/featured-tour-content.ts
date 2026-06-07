@@ -122,14 +122,26 @@ export const featuredTourPassengerQuestions = [
 ] as const;
 
 export const featuredTourWhyDifferent = {
-  heading: "Why this excursion is different",
+  heading: "Why this tour is different",
   paragraphs: [
-    "Most Portofino excursions are private tours designed for a single family or group.",
-    featuredTourFacts.uniqueSellingPoint,
-    `${featuredTourGroupSizeLine}. ${featuredTourFacts.vehicle.largerGroupsNote}.`,
-    "The itinerary is specifically designed around cruise ship schedules and Portofino tender operations.",
+    "Most Portofino excursions are private tours designed for one family or group.",
+    "This is one of the only shared small-group shore excursions available in Portofino.",
+    `With a maximum of ${featuredTourFacts.vehicle.maxGuestsPerVan} guests per van, cruise passengers can visit Portofino, Santa Margherita Ligure and Camogli without the cost of a private tour.`,
+    "The itinerary is designed specifically around cruise ship schedules and tender operations.",
   ],
 } as const;
+
+export const featuredTourRecommendedBullets = [
+  "Most Popular Cruise Excursion",
+  featuredTourGroupSizeLine,
+  "Shared small-group experience",
+  "Portofino",
+  "Santa Margherita Ligure",
+  "Camogli",
+  "Tender-port friendly",
+  "Return-to-ship planning",
+  "Limited spaces",
+] as const;
 
 export const featuredTourWhyCreated = {
   heading: "Why we created this tour",
@@ -148,9 +160,9 @@ export const bookingReassurancePoints = [
 ] as const;
 
 export const featuredTourRecommendationCopy = {
-  label: "Recommended Portofino excursion",
+  label: "Our recommended Portofino shore excursion",
   title: featuredTour.fullName,
   description: featuredTourFacts.uniqueSellingPoint,
-  tourLinkLabel: "View Small Group Tour",
+  tourLinkLabel: "View Tour",
   availabilityLinkLabel: "Check Availability",
 } as const;

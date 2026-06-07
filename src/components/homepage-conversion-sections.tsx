@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ConversionCtaStrip } from "@/components/conversion-cta-strip";
+import { FeaturedTourRecommendationBox } from "@/components/featured-tour-recommendation-box";
 import { featuredTour } from "@/lib/featured-tour";
 import {
   featuredTourComparisonRows,
@@ -30,6 +31,7 @@ export function FeaturedTourTrustSection() {
             </li>
           ))}
         </ul>
+        <FeaturedTourRecommendationBox className="mx-auto mt-8 max-w-2xl" />
       </div>
     </section>
   );
@@ -165,6 +167,8 @@ export function FeaturedTourSampleItinerarySection() {
             See full tour details, inclusions and FAQs
           </Link>
         </div>
+
+        <FeaturedTourRecommendationBox className="mx-auto mt-10 max-w-2xl" />
       </div>
     </section>
   );

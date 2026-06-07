@@ -54,7 +54,7 @@ export function WhyThisExcursionIsDifferentSection({
               href={featuredTour.path}
               className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
-              View Small Group Tour
+              View Tour
             </Link>
             <Link
               href={featuredTour.bookingPath}
